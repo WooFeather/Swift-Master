@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MagazineTableViewController: UITableViewController {
 
@@ -25,6 +26,10 @@ class MagazineTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MagazineTableViewCell", for: indexPath) as! MagazineTableViewCell
         let row = magazines[indexPath.row]
         
+        let url = URL(string: row.photo_image)
+        cell.magazineImageView.kf.setImage(with: url)
+        cell.magazineImageView.contentMode = .scaleAspectFill
+        cell.magazineImageView.layer.cornerRadius = 10
         
         return cell
     }
