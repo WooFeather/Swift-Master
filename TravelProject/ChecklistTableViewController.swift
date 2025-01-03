@@ -9,7 +9,6 @@ import UIKit
 
 class ChecklistTableViewController: UITableViewController {
 
-    @IBOutlet var headerLabel: UILabel!
     @IBOutlet var textFieldBackground: UIView!
     @IBOutlet var addTextField: UITextField!
     @IBOutlet var addButton: UIButton!
@@ -33,7 +32,6 @@ class ChecklistTableViewController: UITableViewController {
         // 고정 셀높이
         tableView.rowHeight = 52
         
-        headerLabelDesign()
         textFieldDesign()
         addButtonDesign()
     }
@@ -55,11 +53,6 @@ class ChecklistTableViewController: UITableViewController {
     
     @IBAction func textFieldDidEndOnExit(_ sender: UITextField) {
         addButtonTapped(addButton)
-    }
-    
-    func headerLabelDesign() {
-        headerLabel.text = "쇼핑"
-        headerLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
     func textFieldDesign() {
