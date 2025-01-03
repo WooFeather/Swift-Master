@@ -31,10 +31,15 @@ class MagazineTableViewController: UITableViewController {
         cell.magazineImageView.contentMode = .scaleAspectFill
         cell.magazineImageView.layer.cornerRadius = 10
         
+        cell.titleLabel.text = row.title
+        cell.titleLabel.textColor = .magazineTitle
+        cell.titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        cell.titleLabel.numberOfLines = 0
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 480
+        return 500
     }
 }
