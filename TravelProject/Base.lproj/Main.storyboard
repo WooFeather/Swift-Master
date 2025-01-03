@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--SeSAC TRAVEL-->
         <scene sceneID="Ylr-Wm-ccQ">
             <objects>
-                <tableViewController id="5Gx-Qi-qET" sceneMemberID="viewController">
+                <tableViewController id="5Gx-Qi-qET" customClass="MagazineTableViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="EOZ-cl-V0b">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,11 +30,11 @@
                             <outlet property="delegate" destination="5Gx-Qi-qET" id="I5c-5l-Z17"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="L1s-WD-PMP"/>
+                    <navigationItem key="navigationItem" title="SeSAC TRAVEL" id="L1s-WD-PMP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PB7-fI-G8N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2959.5419847328244" y="-73.239436619718319"/>
+            <point key="canvasLocation" x="2946" y="-73"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="NQv-Qa-NKa">
