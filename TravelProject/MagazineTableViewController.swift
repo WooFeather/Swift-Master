@@ -26,6 +26,7 @@ class MagazineTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MagazineTableViewCell", for: indexPath) as! MagazineTableViewCell
         let row = magazines[indexPath.row]
         
+        // 아래 이미지, 타이틀 등을 묶어서 분리할 수 없을까?
         let url = URL(string: row.photo_image)
         cell.magazineImageView.kf.setImage(with: url)
         cell.magazineImageView.contentMode = .scaleAspectFill
@@ -40,6 +41,9 @@ class MagazineTableViewController: UITableViewController {
         cell.subtitleLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         cell.subtitleLabel.textColor = .gray
         
+        cell.dateLabel.text = row.date.toDate()?.toString() ?? "날짜오류"
+        cell.dateLabel.font = .systemFont(ofSize: 14, weight: .semibold)
+        cell.dateLabel.textColor = .gray
         
         return cell
     }
