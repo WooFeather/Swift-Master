@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MagazineTableViewCell" rowHeight="479" id="xpr-2b-2xO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MagazineTableViewCell" rowHeight="479" id="xpr-2b-2xO" customClass="MagazineTableViewCell" customModule="TravelProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="479"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xpr-2b-2xO" id="UXr-5C-Qvu">
@@ -63,6 +63,12 @@
                                         <constraint firstItem="tod-xa-huj" firstAttribute="trailing" secondItem="UXr-5C-Qvu" secondAttribute="trailingMargin" id="Zce-Tt-0O0"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="th7-Iv-GoQ" id="xQo-Gs-w9H"/>
+                                    <outlet property="magazineImageView" destination="tod-xa-huj" id="KHJ-IO-WX1"/>
+                                    <outlet property="subtitleLabel" destination="snK-kD-0Me" id="VAK-94-RDz"/>
+                                    <outlet property="titleLabel" destination="Qik-nm-dck" id="Buh-HH-abO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
