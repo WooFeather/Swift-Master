@@ -123,6 +123,6 @@ struct TravelInfo {
                grade: 5.0,
                save: 30,
                like: true,
-               ad: false),
+               ad: false)
     ]
 }
