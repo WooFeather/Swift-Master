@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		793595C12D27FBEA0063ECD5 /* Assignment8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment8.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		793595C12D27FBEA0063ECD5 /* TravelProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		793595D32D27FBEB0063ECD5 /* Exceptions for "Assignment8" folder in "Assignment8" target */ = {
+		793595D32D27FBEB0063ECD5 /* Exceptions for "TravelProject" folder in "TravelProject" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 793595C02D27FBEA0063ECD5 /* Assignment8 */;
+			target = 793595C02D27FBEA0063ECD5 /* TravelProject */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		793595C32D27FBEA0063ECD5 /* Assignment8 */ = {
+		793595C32D27FBEA0063ECD5 /* TravelProject */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				793595D32D27FBEB0063ECD5 /* Exceptions for "Assignment8" folder in "Assignment8" target */,
+				793595D32D27FBEB0063ECD5 /* Exceptions for "TravelProject" folder in "TravelProject" target */,
 			);
-			path = Assignment8;
+			path = TravelProject;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -45,7 +45,7 @@
 		793595B82D27FBEA0063ECD5 = {
 			isa = PBXGroup;
 			children = (
-				793595C32D27FBEA0063ECD5 /* Assignment8 */,
+				793595C32D27FBEA0063ECD5 /* TravelProject */,
 				793595C22D27FBEA0063ECD5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 		793595C22D27FBEA0063ECD5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				793595C12D27FBEA0063ECD5 /* Assignment8.app */,
+				793595C12D27FBEA0063ECD5 /* TravelProject.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,9 +61,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		793595C02D27FBEA0063ECD5 /* Assignment8 */ = {
+		793595C02D27FBEA0063ECD5 /* TravelProject */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 793595D42D27FBEB0063ECD5 /* Build configuration list for PBXNativeTarget "Assignment8" */;
+			buildConfigurationList = 793595D42D27FBEB0063ECD5 /* Build configuration list for PBXNativeTarget "TravelProject" */;
 			buildPhases = (
 				793595BD2D27FBEA0063ECD5 /* Sources */,
 				793595BE2D27FBEA0063ECD5 /* Frameworks */,
@@ -74,13 +74,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				793595C32D27FBEA0063ECD5 /* Assignment8 */,
+				793595C32D27FBEA0063ECD5 /* TravelProject */,
 			);
-			name = Assignment8;
+			name = TravelProject;
 			packageProductDependencies = (
 			);
 			productName = Assignment8;
-			productReference = 793595C12D27FBEA0063ECD5 /* Assignment8.app */;
+			productReference = 793595C12D27FBEA0063ECD5 /* TravelProject.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 793595BC2D27FBEA0063ECD5 /* Build configuration list for PBXProject "Assignment8" */;
+			buildConfigurationList = 793595BC2D27FBEA0063ECD5 /* Build configuration list for PBXProject "TravelProject" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				793595C02D27FBEA0063ECD5 /* Assignment8 */,
+				793595C02D27FBEA0063ECD5 /* TravelProject */,
 			);
 		};
 /* End PBXProject section */
@@ -326,7 +326,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		793595BC2D27FBEA0063ECD5 /* Build configuration list for PBXProject "Assignment8" */ = {
+		793595BC2D27FBEA0063ECD5 /* Build configuration list for PBXProject "TravelProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				793595D72D27FBEB0063ECD5 /* Debug */,
@@ -335,7 +335,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		793595D42D27FBEB0063ECD5 /* Build configuration list for PBXNativeTarget "Assignment8" */ = {
+		793595D42D27FBEB0063ECD5 /* Build configuration list for PBXNativeTarget "TravelProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				793595D52D27FBEB0063ECD5 /* Debug */,
