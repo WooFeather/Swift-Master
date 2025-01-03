@@ -30,7 +30,7 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Aen-XN-By8">
-                                            <rect key="frame" x="20" y="376" width="300" height="68"/>
+                                            <rect key="frame" x="20" y="376" width="300" height="72"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qik-nm-dck">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="48"/>
@@ -42,14 +42,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snK-kD-0Me">
-                                                    <rect key="frame" x="0.0" y="56" width="300" height="12"/>
+                                                    <rect key="frame" x="0.0" y="56" width="300" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="68" id="9RU-AS-bfe"/>
+                                                <constraint firstAttribute="height" constant="72" id="9RU-AS-bfe"/>
                                                 <constraint firstAttribute="width" constant="300" id="CsV-Jr-HLR"/>
                                             </constraints>
                                         </stackView>

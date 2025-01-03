@@ -36,6 +36,11 @@ class MagazineTableViewController: UITableViewController {
         cell.titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         cell.titleLabel.numberOfLines = 0
         
+        cell.subtitleLabel.text = row.subtitle
+        cell.subtitleLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        cell.subtitleLabel.textColor = .gray
+        
+        
         return cell
     }
     
