@@ -46,13 +46,23 @@ class ChecklistTableViewController: UITableViewController {
             alert.addAction(okAction)
             present(alert, animated: true)
         } else {
-            checklistItems.append(Checklist(title: text))
+            checklistItems.insert(Checklist(title: text), at: 0)
             addTextField.text = ""
         }
     }
     
     @IBAction func textFieldDidEndOnExit(_ sender: UITextField) {
         addButtonTapped(addButton)
+    }
+    
+    @objc func completeButtonTapped(_ sender: UIButton) {
+        checklistItems[sender.tag].complete?.toggle()
+        tableView.reloadData()
+    }
+    
+    @objc func bookmarkButtonTapped(_ sender: UIButton) {
+        checklistItems[sender.tag].bookmark?.toggle()
+        tableView.reloadData()
     }
     
     func textFieldDesign() {
@@ -90,12 +100,21 @@ class ChecklistTableViewController: UITableViewController {
         if let completeButton = row.complete {
             let image = UIImage(systemName: completeButton ? "checkmark.square.fill" : "checkmark.square")
             cell.completeButton.setImage(image, for: .normal)
+        } else {
+            cell.completeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
         }
         
         if let bookmarkButton = row.bookmark {
             let image = UIImage(systemName: bookmarkButton ? "star.fill" : "star")
             cell.bookmarkButton.setImage(image, for: .normal)
+        } else {
+            cell.completeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
         }
+        
+        cell.completeButton.tag = indexPath.row
+        cell.bookmarkButton.tag = indexPath.row
+        cell.completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
+        cell.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside)
         
         return cell
     }
