@@ -15,7 +15,7 @@ class ChecklistTableViewController: UITableViewController {
     
     // 즐겨찾기, 체크여부를 함께 관리하기 위해 클래스로 만들어보기
     // UserDefaults에 저장해보기 => done
-    var checklistItems = ChecklistItem().checklists {
+    var checklistItems: [Checklist] = ChecklistItem().checklists {
         didSet {
             // 배열이 변경될때마다 reload 및 데이터 저장
             tableView.reloadData()
@@ -56,12 +56,12 @@ class ChecklistTableViewController: UITableViewController {
     }
     
     @objc func completeButtonTapped(_ sender: UIButton) {
-        checklistItems[sender.tag].complete?.toggle()
+        checklistItems[sender.tag].complete.toggle()
         tableView.reloadData()
     }
     
     @objc func bookmarkButtonTapped(_ sender: UIButton) {
-        checklistItems[sender.tag].bookmark?.toggle()
+        checklistItems[sender.tag].bookmark.toggle()
         tableView.reloadData()
     }
     
@@ -97,19 +97,8 @@ class ChecklistTableViewController: UITableViewController {
         
         cell.titleLabel.setChecklistCellLabel(row.title ?? "불러오기 실패")
         
-        if let completeButton = row.complete {
-            let image = UIImage(systemName: completeButton ? "checkmark.square.fill" : "checkmark.square")
-            cell.completeButton.setImage(image, for: .normal)
-        } else {
-            cell.completeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
-        }
-        
-        if let bookmarkButton = row.bookmark {
-            let image = UIImage(systemName: bookmarkButton ? "star.fill" : "star")
-            cell.bookmarkButton.setImage(image, for: .normal)
-        } else {
-            cell.completeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
-        }
+        cell.completeButton.setImage(UIImage(systemName: row.complete ? "checkmark.square.fill" : "checkmark.square"), for: .normal)
+        cell.bookmarkButton.setImage(UIImage(systemName: row.bookmark ? "star.fill" : "star"), for: .normal)
         
         cell.completeButton.tag = indexPath.row
         cell.bookmarkButton.tag = indexPath.row

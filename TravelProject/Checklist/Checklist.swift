@@ -9,8 +9,8 @@ import Foundation
 
 struct Checklist {
     var title: String?
-    var bookmark: Bool? = false
-    var complete: Bool? = false
+    var bookmark: Bool = false
+    var complete: Bool = false
 }
 
 struct ChecklistItem {
