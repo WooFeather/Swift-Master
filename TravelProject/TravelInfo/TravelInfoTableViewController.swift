@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class InfoTableViewController: UITableViewController {
     
@@ -34,13 +35,25 @@ class InfoTableViewController: UITableViewController {
         cell.descriptionLabel.textColor = .gray
         cell.descriptionLabel.numberOfLines = 0
         
-        cell.gradeLabel.text = row.grade != nil ? "\(row.grade!) •" : "불러오기 실패 •"
+        cell.gradeLabel.text = row.grade != nil ? "\(row.grade!) • " : "불러오기 실패 • "
         cell.gradeLabel.font = .systemFont(ofSize: 14, weight: .medium)
         cell.gradeLabel.textColor = .lightGray
         
-        cell.saveLabel.text = row.save != nil ? "\(row.save!.numberFormatting()!)" : "불러오기 실패"
+        cell.saveLabel.text = row.save != nil ? "저장 \(row.save!.numberFormatting()!)" : "불러오기 실패"
         cell.saveLabel.font = .systemFont(ofSize: 14, weight: .medium)
         cell.saveLabel.textColor = .lightGray
+        
+        let image = row.travel_image
+        
+        if let image {
+            let url = URL(string: image)
+            cell.travelImageView.kf.setImage(with: url)
+            cell.travelImageView.contentMode = .scaleAspectFill
+            cell.travelImageView.layer.cornerRadius = 10
+        } else {
+            cell.travelImageView.image = UIImage(systemName: "xmark.circle")
+            cell.travelImageView.tintColor = .gray
+        }
     
         return cell
     }
