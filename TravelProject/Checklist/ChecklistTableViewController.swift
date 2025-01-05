@@ -46,7 +46,7 @@ class ChecklistTableViewController: UITableViewController {
             alert.addAction(okAction)
             present(alert, animated: true)
         } else {
-            checklistItems[0].title = text
+            checklistItems.append(Checklist(title: text))
             addTextField.text = ""
         }
     }
@@ -87,6 +87,15 @@ class ChecklistTableViewController: UITableViewController {
         
         cell.titleLabel.setChecklistCellLabel(row.title ?? "불러오기 실패")
         
+        if let completeButton = row.complete {
+            let image = UIImage(systemName: completeButton ? "checkmark.square.fill" : "checkmark.square")
+            cell.completeButton.setImage(image, for: .normal)
+        }
+        
+        if let bookmarkButton = row.bookmark {
+            let image = UIImage(systemName: bookmarkButton ? "star.fill" : "star")
+            cell.bookmarkButton.setImage(image, for: .normal)
+        }
         
         return cell
     }
