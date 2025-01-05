@@ -8,5 +8,10 @@
 import UIKit
 
 class TravelInfoTableViewCell: UITableViewCell {
-    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var gradeLabel: UILabel!
+    @IBOutlet var saveLabel: UILabel!
+    @IBOutlet var travelImageView: UIImageView!
+    @IBOutlet var likeButton: UIButton!
 }
