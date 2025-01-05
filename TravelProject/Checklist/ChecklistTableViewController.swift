@@ -110,7 +110,17 @@ class ChecklistTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(#function, indexPath)
+        // 수정가능하게 만들어보기
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        checklistItems.remove(at: indexPath.row)
+        let delete = UIContextualAction(style: .destructive, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print(#function)
+            
+            self.checklistItems.remove(at: indexPath.row)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }
