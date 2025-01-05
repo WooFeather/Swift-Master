@@ -7,6 +7,6 @@
 
 import UIKit
 
-class InfoTableViewCell: UITableViewCell {
+class TravelInfoTableViewCell: UITableViewCell {
     
 }
