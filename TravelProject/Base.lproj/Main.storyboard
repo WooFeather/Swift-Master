@@ -270,21 +270,44 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="checklistCell" textLabel="hCV-90-4qa" style="IBUITableViewCellStyleDefault" id="ZUk-5n-fFm">
-                                <rect key="frame" x="0.0" y="135" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistTableViewCell" rowHeight="51" id="ZUk-5n-fFm">
+                                <rect key="frame" x="0.0" y="135" width="393" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZUk-5n-fFm" id="ybj-Ex-ySE">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="51"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hCV-90-4qa">
-                                            <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEb-kA-NLK">
+                                            <rect key="frame" x="349" y="13.666666666666664" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="LEb-kA-NLK" secondAttribute="height" multiplier="1:1" id="lHd-pR-liK"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title=""/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btB-8X-CHt">
+                                            <rect key="frame" x="64" y="15.333333333333334" width="41.333333333333343" height="20.333333333333329"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcg-Nk-XU9">
+                                            <rect key="frame" x="20" y="13.666666666666664" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Kcg-Nk-XU9" secondAttribute="height" multiplier="1:1" id="0jD-Yp-OMT"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title=""/>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LEb-kA-NLK" secondAttribute="trailing" id="0CZ-bZ-c5W"/>
+                                        <constraint firstItem="btB-8X-CHt" firstAttribute="leading" secondItem="Kcg-Nk-XU9" secondAttribute="trailing" constant="20" id="BFk-py-RTq"/>
+                                        <constraint firstItem="btB-8X-CHt" firstAttribute="centerY" secondItem="ybj-Ex-ySE" secondAttribute="centerY" id="kEp-U9-buH"/>
+                                        <constraint firstItem="Kcg-Nk-XU9" firstAttribute="centerY" secondItem="ybj-Ex-ySE" secondAttribute="centerY" id="scY-qt-jMO"/>
+                                        <constraint firstItem="Kcg-Nk-XU9" firstAttribute="leading" secondItem="ybj-Ex-ySE" secondAttribute="leadingMargin" id="vnG-3r-FZN"/>
+                                        <constraint firstItem="LEb-kA-NLK" firstAttribute="centerY" secondItem="ybj-Ex-ySE" secondAttribute="centerY" id="zCZ-4e-Qv0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

@@ -9,6 +9,17 @@ import Foundation
 
 struct Checklist {
     var title: String?
-    var bookmark: Bool?
-    var complete: Bool?
+    var bookmark: Bool? = false
+    var complete: Bool? = false
+}
+
+struct ChecklistTable {
+    let checklists: [Checklist] = [
+        Checklist(title: "그립톡 구매하기",
+                  bookmark: true,
+                  complete: true),
+        Checklist(title: "사이다 구매",
+                  bookmark: false,
+                  complete: false)
+    ]
 }
