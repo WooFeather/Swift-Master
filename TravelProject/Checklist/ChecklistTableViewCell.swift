@@ -8,5 +8,7 @@
 import UIKit
 
 class ChecklistTableViewCell: UITableViewCell {
-
+    @IBOutlet var completeButton: UIButton!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var bookmarkButton: UIButton!
 }

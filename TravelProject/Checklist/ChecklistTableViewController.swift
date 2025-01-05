@@ -15,19 +15,19 @@ class ChecklistTableViewController: UITableViewController {
     
     // 즐겨찾기, 체크여부를 함께 관리하기 위해 클래스로 만들어보기
     // UserDefaults에 저장해보기 => done
-    var checklistItems = ChecklistTable().checklists {
+    var checklistItems = ChecklistItem().checklists {
         didSet {
             // 배열이 변경될때마다 reload 및 데이터 저장
             tableView.reloadData()
-            UserDefaults.standard.set(checklistItems, forKey: "checklistItems")
-            print(UserDefaults.standard.array(forKey: "checklistItems")!)
+//            UserDefaults.standard.set(checklistItems, forKey: "checklistItems")
+//            print(UserDefaults.standard.array(forKey: "checklistItems")!)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checklistItems = UserDefaults.standard.array(forKey: "checklistItems") as? [Checklist] ?? []
+//        checklistItems = UserDefaults.standard.array(forKey: "checklistItems") as? [Checklist] ?? []
         
         // 고정 셀높이
         tableView.rowHeight = 52
@@ -77,14 +77,16 @@ class ChecklistTableViewController: UITableViewController {
     
     // 셀 디자인 및 데이터처리
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistTableViewCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistTableViewCell", for: indexPath) as! ChecklistTableViewCell
+        let row = checklistItems[indexPath.row]
         
-        // 체크박스, 즐겨찾기 추가해보기
-//        cell.textLabel?.setChecklistCellLabel(checklistItems[indexPath.row])
         cell.layer.cornerRadius = 10
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.white.cgColor
         cell.backgroundColor = .cellBackground
+        
+        cell.titleLabel.setChecklistCellLabel(row.title ?? "불러오기 실패")
+        
         
         return cell
     }

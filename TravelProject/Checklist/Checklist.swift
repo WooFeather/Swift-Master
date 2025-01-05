@@ -13,7 +13,7 @@ struct Checklist {
     var complete: Bool? = false
 }
 
-struct ChecklistTable {
+struct ChecklistItem {
     let checklists: [Checklist] = [
         Checklist(title: "그립톡 구매하기",
                   bookmark: true,

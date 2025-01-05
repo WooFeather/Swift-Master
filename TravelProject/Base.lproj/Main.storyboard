@@ -270,7 +270,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistTableViewCell" rowHeight="51" id="ZUk-5n-fFm">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistTableViewCell" rowHeight="51" id="ZUk-5n-fFm" customClass="ChecklistTableViewCell" customModule="TravelProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="135" width="393" height="51"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZUk-5n-fFm" id="ybj-Ex-ySE">
@@ -309,6 +309,11 @@
                                         <constraint firstItem="LEb-kA-NLK" firstAttribute="centerY" secondItem="ybj-Ex-ySE" secondAttribute="centerY" id="zCZ-4e-Qv0"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bookmarkButton" destination="LEb-kA-NLK" id="sc6-mS-po9"/>
+                                    <outlet property="completeButton" destination="Kcg-Nk-XU9" id="Roi-DF-kH4"/>
+                                    <outlet property="titleLabel" destination="btB-8X-CHt" id="DH7-wY-ORu"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -8,12 +8,6 @@
 import UIKit
 
 extension UILabel {
-    func setSettingCellLabel(_ text: String) {
-        self.text = text
-        self.textColor = .white
-        self.font = .systemFont(ofSize: 14)
-    }
-    
     func setChecklistCellLabel(_ text: String) {
         self.text = text
         self.textColor = .black
