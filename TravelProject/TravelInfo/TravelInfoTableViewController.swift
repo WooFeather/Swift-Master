@@ -10,15 +10,21 @@ import Kingfisher
 
 class InfoTableViewController: UITableViewController {
     
-    let travels = TravelInfo().travel
+    var travels = TravelInfo().travel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    @objc func likeButtonTapped(_ sender: UIButton) {
+        print(#function, sender.tag)
+        travels[sender.tag].like?.toggle()
+        
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        travels.count
+        return travels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,10 +48,8 @@ class InfoTableViewController: UITableViewController {
         cell.saveLabel.text = row.save != nil ? "저장 \(row.save!.numberFormatting()!)" : "불러오기 실패"
         cell.saveLabel.font = .systemFont(ofSize: 14, weight: .medium)
         cell.saveLabel.textColor = .lightGray
-        
-        let image = row.travel_image
-        
-        if let image {
+
+        if let image = row.travel_image {
             let url = URL(string: image)
             cell.travelImageView.kf.setImage(with: url)
             cell.travelImageView.contentMode = .scaleAspectFill
@@ -53,6 +57,17 @@ class InfoTableViewController: UITableViewController {
         } else {
             cell.travelImageView.image = UIImage(systemName: "xmark.circle")
             cell.travelImageView.tintColor = .gray
+        }
+        
+        if let button = row.like {
+            let name = button ? "heart.fill" : "heart"
+            let btnImage = UIImage(systemName: name)
+            
+            cell.likeButton.setImage(btnImage, for: .normal)
+            cell.likeButton.tag = indexPath.row
+            cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        } else {
+            cell.likeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
         }
     
         return cell
