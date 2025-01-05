@@ -13,8 +13,7 @@ class ChecklistTableViewController: UITableViewController {
     @IBOutlet var addTextField: UITextField!
     @IBOutlet var addButton: UIButton!
     
-    // 즐겨찾기, 체크여부를 함께 관리하기 위해 클래스로 만들어보기
-    // UserDefaults에 저장해보기 => done
+    // UserDefaults에 저장해보기
     var checklistItems: [Checklist] = ChecklistItem().checklists {
         didSet {
             // 배열이 변경될때마다 reload 및 데이터 저장
