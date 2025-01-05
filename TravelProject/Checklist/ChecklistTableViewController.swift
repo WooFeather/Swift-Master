@@ -16,8 +16,9 @@ class ChecklistTableViewController: UITableViewController {
     // UserDefaults에 저장해보기
     var checklistItems: [Checklist] = ChecklistItem().checklists {
         didSet {
-            // 배열이 변경될때마다 reload 및 데이터 저장
+            // 배열이 변경될때마다 reload
             tableView.reloadData()
+            // 데이터 저장 좀더 연구해보기
 //            UserDefaults.standard.set(checklistItems, forKey: "checklistItems")
 //            print(UserDefaults.standard.array(forKey: "checklistItems")!)
         }
@@ -28,7 +29,6 @@ class ChecklistTableViewController: UITableViewController {
 
 //        checklistItems = UserDefaults.standard.array(forKey: "checklistItems") as? [Checklist] ?? []
         
-        // 고정 셀높이
         tableView.rowHeight = 52
         
         textFieldDesign()
@@ -78,13 +78,11 @@ class ChecklistTableViewController: UITableViewController {
         addButton.layer.cornerRadius = 10
     }
     
-    // 셀 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(#function)
         return checklistItems.count
     }
     
-    // 셀 디자인 및 데이터처리
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistTableViewCell", for: indexPath) as! ChecklistTableViewCell
         let row = checklistItems[indexPath.row]

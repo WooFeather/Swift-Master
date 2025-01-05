@@ -8,5 +8,7 @@
 import UIKit
 
 class TravelInfoAdViewCell: UITableViewCell {
-    
+    @IBOutlet var adBackground: UIView!
+    @IBOutlet var adTagLabel: UILabel!
+    @IBOutlet var adTitleLabel: UILabel!
 }
