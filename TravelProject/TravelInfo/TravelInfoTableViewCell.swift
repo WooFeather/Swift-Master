@@ -27,6 +27,7 @@ class TravelInfoTableViewCell: UITableViewCell {
         likeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
     }
     
+    // 추가로 해볼것: 이 안에서도 분리해보기
     private func configure() {
         titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
         titleLabel.textColor = .magazineTitle
@@ -44,6 +45,7 @@ class TravelInfoTableViewCell: UITableViewCell {
         likeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
     }
     
+    // 추가로 해볼것: 옵셔널 처리 연산속성으로 빼보기
     func configureData(row: Travel) {
         titleLabel.text = row.title
         descriptionLabel.text = row.description != nil ? row.description : "불러오기 실패"
