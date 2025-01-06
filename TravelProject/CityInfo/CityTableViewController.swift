@@ -13,6 +13,8 @@ class CityTableViewController: UITableViewController {
     @IBOutlet var searchTextField: UITextField!
     var cities = CityInfo().city
     var filteredCities: [City] = []
+    var searchedCities: [City] = []
+    var isSearching: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +32,44 @@ class CityTableViewController: UITableViewController {
     }
     
     func searchCities() {
-        let searchText = searchTextField.text!.trimmingCharacters(in: .whitespaces).lowercased()
+        let searchText = searchTextField.text!.trimmingCharacters(in: .whitespaces)
         
         print(searchText)
         
         if searchText.isEmpty {
-            filteredCities = cities
+            isSearching = false
+            switch citySegmentControl.selectedSegmentIndex {
+            case 0:
+                searchedCities = cities
+            case 1:
+                searchedCities = filteredCities
+            case 2:
+                searchedCities = filteredCities
+            default:
+                searchedCities = cities
+            }
         } else {
-            filteredCities = cities.filter {
-                $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+            isSearching = true
+            switch citySegmentControl.selectedSegmentIndex {
+            case 0:
+                searchedCities = cities.filter {
+                    $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+                }
+            case 1:
+                searchedCities = filteredCities.filter {
+                    $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+                }
+            case 2:
+                searchedCities = filteredCities.filter {
+                    $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+                }
+            default:
+                searchedCities = cities.filter {
+                    $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+                }
             }
         }
-        print(filteredCities)
+        print(searchedCities)
         tableView.reloadData()
     }
     
@@ -49,13 +77,29 @@ class CityTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch citySegmentControl.selectedSegmentIndex {
         case 0:
-            return cities.count
+            if isSearching {
+                return searchedCities.count
+            } else {
+                return cities.count
+            }
         case 1:
-            return filteredCities.count
+            if isSearching {
+                return searchedCities.count
+            } else {
+                return filteredCities.count
+            }
         case 2:
-            return filteredCities.count
+            if isSearching {
+                return searchedCities.count
+            } else {
+                return filteredCities.count
+            }
         default:
-            return cities.count
+            if isSearching {
+                return searchedCities.count
+            } else {
+                return cities.count
+            }
         }
     }
     
@@ -65,17 +109,37 @@ class CityTableViewController: UITableViewController {
         
         switch citySegmentControl.selectedSegmentIndex {
         case 0:
-            let row = cities[indexPath.row]
-            cell.configureData(row: row)
+            if isSearching {
+                let row = searchedCities[indexPath.row]
+                cell.configureData(row: row)
+            } else {
+                let row = cities[indexPath.row]
+                cell.configureData(row: row)
+            }
         case 1:
-            let row = filteredCities[indexPath.row]
-            cell.configureData(row: row)
+            if isSearching {
+                let row = searchedCities[indexPath.row]
+                cell.configureData(row: row)
+            } else {
+                let row = filteredCities[indexPath.row]
+                cell.configureData(row: row)
+            }
         case 2:
-            let row = filteredCities[indexPath.row]
-            cell.configureData(row: row)
+            if isSearching {
+                let row = searchedCities[indexPath.row]
+                cell.configureData(row: row)
+            } else {
+                let row = filteredCities[indexPath.row]
+                cell.configureData(row: row)
+            }
         default:
-            let row = cities[indexPath.row]
-            cell.configureData(row: row)
+            if isSearching {
+                let row = searchedCities[indexPath.row]
+                cell.configureData(row: row)
+            } else {
+                let row = cities[indexPath.row]
+                cell.configureData(row: row)
+            }
         }
         
         return cell
