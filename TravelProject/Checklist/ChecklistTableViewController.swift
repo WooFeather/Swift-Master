@@ -13,7 +13,6 @@ class ChecklistTableViewController: UITableViewController {
     @IBOutlet var addTextField: UITextField!
     @IBOutlet var addButton: UIButton!
     
-    // UserDefaults에 저장해보기
     var checklistItems: [Checklist] = [] {
         didSet {
             // 배열이 변경될때마다 reload
@@ -95,15 +94,7 @@ class ChecklistTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistTableViewCell", for: indexPath) as! ChecklistTableViewCell
         let row = checklistItems[indexPath.row]
         
-        cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.backgroundColor = .cellBackground
-        
-        cell.titleLabel.setChecklistCellLabel(row.title ?? "불러오기 실패")
-        
-        cell.completeButton.setImage(UIImage(systemName: row.complete ? "checkmark.square.fill" : "checkmark.square"), for: .normal)
-        cell.bookmarkButton.setImage(UIImage(systemName: row.bookmark ? "star.fill" : "star"), for: .normal)
+        cell.configureData(row: row)
         
         cell.completeButton.tag = indexPath.row
         cell.bookmarkButton.tag = indexPath.row
