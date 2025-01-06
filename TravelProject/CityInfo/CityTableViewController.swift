@@ -27,6 +27,8 @@ class CityTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.cityTableViewCell.rawValue, for: indexPath) as! CityTableViewCell
         let row = cities[indexPath.row]
         
+        cell.configureData(row: row)
+        
         return cell
     }
     
