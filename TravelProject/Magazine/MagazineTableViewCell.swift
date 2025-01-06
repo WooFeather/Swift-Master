@@ -17,17 +17,18 @@ class MagazineTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         print(#function)
-        
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        print(#function)
-        
+        configure()
     }
     
     private func configure() {
-        
+        magazineImageView.contentMode = .scaleAspectFill
+        magazineImageView.layer.cornerRadius = 10
+        titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        titleLabel.numberOfLines = 0
+        subtitleLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        subtitleLabel.textColor = .gray
+        dateLabel.font = .systemFont(ofSize: 14, weight: .semibold)
+        dateLabel.textColor = .gray
     }
     
     func configureData(row: Magazine) {
@@ -35,20 +36,9 @@ class MagazineTableViewCell: UITableViewCell {
         
         let url = URL(string: row.photo_image)
         magazineImageView.kf.setImage(with: url)
-        magazineImageView.contentMode = .scaleAspectFill
-        magazineImageView.layer.cornerRadius = 10
-        
         titleLabel.text = row.title
         titleLabel.textColor = .magazineTitle
-        titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
-        titleLabel.numberOfLines = 0
-        
         subtitleLabel.text = row.subtitle
-        subtitleLabel.font = .systemFont(ofSize: 16, weight: .semibold)
-        subtitleLabel.textColor = .gray
-        
         dateLabel.text = row.date.toDate()?.toString() ?? "날짜오류"
-        dateLabel.font = .systemFont(ofSize: 14, weight: .semibold)
-        dateLabel.textColor = .gray
     }
 }
