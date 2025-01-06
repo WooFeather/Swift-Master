@@ -91,7 +91,7 @@ class ChecklistTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistTableViewCell", for: indexPath) as! ChecklistTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.checklistTableViewCell.rawValue, for: indexPath) as! ChecklistTableViewCell
         let row = checklistItems[indexPath.row]
         
         cell.configureData(row: row)

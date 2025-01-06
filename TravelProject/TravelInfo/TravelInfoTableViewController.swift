@@ -28,7 +28,7 @@ class InfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if travels[indexPath.row].ad == false {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TravelInfoTableViewCell", for: indexPath) as! TravelInfoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.travelInfoViewCell.rawValue, for: indexPath) as! TravelInfoTableViewCell
             let row = travels[indexPath.row]
             
             cell.configureData(row: row)
@@ -37,7 +37,7 @@ class InfoTableViewController: UITableViewController {
             
             return cell
         } else {
-            let adCell = tableView.dequeueReusableCell(withIdentifier: "TravelInfoAdViewCell", for: indexPath) as! TravelInfoAdViewCell
+            let adCell = tableView.dequeueReusableCell(withIdentifier: Identifier.travelInfoAdViewCell.rawValue, for: indexPath) as! TravelInfoAdViewCell
             let row = travels[indexPath.row]
             
             adCell.configureData(row: row)
