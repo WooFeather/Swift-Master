@@ -379,7 +379,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teF-LR-gOI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2965.6488549618321" y="1329.5774647887324"/>
+            <point key="canvasLocation" x="2960" y="2254"/>
         </scene>
         <!--인기 도시-->
         <scene sceneID="5Pv-QN-Dhj">
@@ -400,6 +400,9 @@
                                         <segment title="국내"/>
                                         <segment title="해외"/>
                                     </segments>
+                                    <connections>
+                                        <action selector="segmentControlValueChanged:" destination="KgC-PO-hPm" eventType="valueChanged" id="z4m-Pt-HvY"/>
+                                    </connections>
                                 </segmentedControl>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kq-s7-VQl">
                                     <rect key="frame" x="8" y="8" width="377" height="34"/>
@@ -436,7 +439,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFv-w0-lLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2965.6488549618321" y="2080.9859154929577"/>
+            <point key="canvasLocation" x="2966" y="1395"/>
         </scene>
         <!--매거진-->
         <scene sceneID="JR1-NE-8nl">
@@ -493,7 +496,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SY7-8E-85A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2038.9312977099237" y="1329.5774647887324"/>
+            <point key="canvasLocation" x="2033" y="2254"/>
         </scene>
         <!--인기도시-->
         <scene sceneID="JdZ-ki-LEZ">
@@ -512,7 +515,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dsy-hI-aiU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2039" y="2082"/>
+            <point key="canvasLocation" x="2039" y="1396"/>
         </scene>
     </scenes>
     <resources>
