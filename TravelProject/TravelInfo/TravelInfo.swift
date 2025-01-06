@@ -7,17 +7,6 @@
 
 import Foundation
 
-struct Travel {
-    let title: String
-    let description: String?
-    let travel_image: String?
-    let grade: Double?
-    let save: Int?
-    var like: Bool?
-    let ad: Bool
-}
-
-// 광고셀 데이터 추후에 주석 풀어서 대응
 struct TravelInfo {
     let travel: [Travel] = [
         Travel(title: "하나우마 베이",
