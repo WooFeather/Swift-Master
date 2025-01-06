@@ -21,7 +21,7 @@ class InfoTableViewController: UITableViewController {
         print(#function, sender.tag)
         travels[sender.tag].like?.toggle()
         
-        tableView.reloadData()
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
