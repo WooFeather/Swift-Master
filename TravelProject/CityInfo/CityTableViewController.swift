@@ -53,19 +53,19 @@ class CityTableViewController: UITableViewController {
             switch citySegmentControl.selectedSegmentIndex {
             case 0:
                 searchedCities = cities.filter {
-                    $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+                    $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
                 }
             case 1:
                 searchedCities = filteredCities.filter {
-                    $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+                    $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
                 }
             case 2:
                 searchedCities = filteredCities.filter {
-                    $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+                    $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
                 }
             default:
                 searchedCities = cities.filter {
-                    $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+                    $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
                 }
             }
         }
