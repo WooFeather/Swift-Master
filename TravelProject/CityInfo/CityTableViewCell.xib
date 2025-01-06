@@ -31,9 +31,8 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvf-ZX-Gw3">
                         <rect key="frame" x="4" y="128" width="312" height="32"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSP-gu-EYZ">
-                                <rect key="frame" x="8" y="4" width="42" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSP-gu-EYZ">
+                                <rect key="frame" x="8" y="4" width="42" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,6 +40,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="SSP-gu-EYZ" secondAttribute="bottom" constant="4" id="5PI-oA-5eD"/>
+                            <constraint firstItem="SSP-gu-EYZ" firstAttribute="leading" secondItem="lvf-ZX-Gw3" secondAttribute="leading" constant="8" id="9Lh-po-MwR"/>
+                            <constraint firstItem="SSP-gu-EYZ" firstAttribute="top" secondItem="lvf-ZX-Gw3" secondAttribute="top" constant="4" id="mHx-r0-3gR"/>
                             <constraint firstAttribute="height" constant="32" id="tsn-z7-rb1"/>
                         </constraints>
                     </view>
