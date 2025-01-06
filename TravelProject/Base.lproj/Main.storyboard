@@ -246,6 +246,7 @@
                     <connections>
                         <segue destination="bNj-cR-dDS" kind="relationship" relationship="viewControllers" id="NQj-zJ-3Gg"/>
                         <segue destination="iDO-ZE-PYB" kind="relationship" relationship="viewControllers" id="9Z6-py-ajf"/>
+                        <segue destination="j8t-8K-4Bh" kind="relationship" relationship="viewControllers" id="aqc-da-vVn"/>
                         <segue destination="MDN-gt-bid" kind="relationship" relationship="viewControllers" id="0FE-0t-GGx"/>
                     </connections>
                 </tabBarController>
@@ -380,6 +381,35 @@
             </objects>
             <point key="canvasLocation" x="2965.6488549618321" y="1329.5774647887324"/>
         </scene>
+        <!--인기 도시-->
+        <scene sceneID="5Pv-QN-Dhj">
+            <objects>
+                <tableViewController id="KgC-PO-hPm" customClass="CityTableViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="4zH-U4-Xeo">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8YP-h6-svE">
+                                <rect key="frame" x="0.0" y="50" width="393" height="44.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8YP-h6-svE" id="OAL-5C-UA4">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KgC-PO-hPm" id="zLx-ss-f3i"/>
+                            <outlet property="delegate" destination="KgC-PO-hPm" id="lGV-JF-se4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="인기 도시" id="R6z-UM-Pf8"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lFv-w0-lLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2966" y="2082"/>
+        </scene>
         <!--매거진-->
         <scene sceneID="JR1-NE-8nl">
             <objects>
@@ -437,11 +467,31 @@
             </objects>
             <point key="canvasLocation" x="2038.9312977099237" y="1329.5774647887324"/>
         </scene>
+        <!--인기도시-->
+        <scene sceneID="JdZ-ki-LEZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j8t-8K-4Bh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="인기도시" image="flame" catalog="system" id="SdY-XV-u3g"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hl-HG-lyy">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KgC-PO-hPm" kind="relationship" relationship="rootViewController" id="gXm-qM-hPx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dsy-hI-aiU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2039" y="2082"/>
+        </scene>
     </scenes>
     <resources>
         <image name="book.pages" catalog="system" width="107" height="128"/>
         <image name="building.2" catalog="system" width="120" height="128"/>
         <image name="checklist" catalog="system" width="128" height="107"/>
+        <image name="flame" catalog="system" width="106" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
