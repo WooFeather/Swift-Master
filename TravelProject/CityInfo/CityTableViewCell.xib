@@ -23,7 +23,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cp-hj-NdD">
-                        <rect key="frame" x="266" y="12" width="42" height="21"/>
+                        <rect key="frame" x="262" y="16" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8cp-hj-NdD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="1au-N4-x2P"/>
+                    <constraint firstItem="8cp-hj-NdD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="1au-N4-x2P"/>
                     <constraint firstItem="lvf-ZX-Gw3" firstAttribute="leading" secondItem="kQv-YZ-hsv" secondAttribute="leading" id="2y4-mg-ELj"/>
                     <constraint firstItem="lvf-ZX-Gw3" firstAttribute="bottom" secondItem="kQv-YZ-hsv" secondAttribute="bottom" id="Abd-mE-hem"/>
                     <constraint firstAttribute="trailing" secondItem="kQv-YZ-hsv" secondAttribute="trailing" constant="4" id="C9N-mB-Y30"/>
@@ -54,7 +54,7 @@
                     <constraint firstItem="kQv-YZ-hsv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="N59-h1-1Wo"/>
                     <constraint firstItem="lvf-ZX-Gw3" firstAttribute="trailing" secondItem="kQv-YZ-hsv" secondAttribute="trailing" id="Yn7-WU-O2D"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kQv-YZ-hsv" secondAttribute="bottom" constant="4" id="bqp-oY-EgP"/>
-                    <constraint firstAttribute="trailing" secondItem="8cp-hj-NdD" secondAttribute="trailing" constant="12" id="cXF-WR-IiU"/>
+                    <constraint firstAttribute="trailing" secondItem="8cp-hj-NdD" secondAttribute="trailing" constant="16" id="cXF-WR-IiU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
