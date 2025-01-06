@@ -408,6 +408,10 @@
                                     <rect key="frame" x="8" y="8" width="377" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="searchTextFieldDidEndOnExit:" destination="KgC-PO-hPm" eventType="editingDidEndOnExit" id="A0D-rr-lfe"/>
+                                        <action selector="searchTextFieldEditingChanged:" destination="KgC-PO-hPm" eventType="editingChanged" id="8Ub-mP-4rM"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -437,7 +441,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="인기 도시" id="R6z-UM-Pf8"/>
                     <connections>
-                        <outlet property="travelSegmentControl" destination="KIc-In-6mx" id="UFh-F5-W5d"/>
+                        <outlet property="citySegmentControl" destination="KIc-In-6mx" id="UFh-F5-W5d"/>
+                        <outlet property="searchTextField" destination="2kq-s7-VQl" id="IGg-GQ-vLv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFv-w0-lLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

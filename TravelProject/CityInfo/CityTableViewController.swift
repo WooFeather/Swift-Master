@@ -9,7 +9,8 @@ import UIKit
 
 class CityTableViewController: UITableViewController {
 
-    @IBOutlet var travelSegmentControl: UISegmentedControl!
+    @IBOutlet var citySegmentControl: UISegmentedControl!
+    @IBOutlet var searchTextField: UITextField!
     var cities = CityInfo().city
     var filteredCities: [City] = []
     
@@ -20,8 +21,33 @@ class CityTableViewController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: Identifier.cityTableViewCell.rawValue)
     }
     
+    @IBAction func searchTextFieldDidEndOnExit(_ sender: UITextField) {
+        searchCities()
+    }
+    
+    @IBAction func searchTextFieldEditingChanged(_ sender: UITextField) {
+        searchCities()
+    }
+    
+    func searchCities() {
+        let searchText = searchTextField.text!.trimmingCharacters(in: .whitespaces).lowercased()
+        
+        print(searchText)
+        
+        if searchText.isEmpty {
+            filteredCities = cities
+        } else {
+            filteredCities = cities.filter {
+                $0.city_name.contains(searchText) || $0.city_english_name.contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
+            }
+        }
+        print(filteredCities)
+        tableView.reloadData()
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch travelSegmentControl.selectedSegmentIndex {
+        switch citySegmentControl.selectedSegmentIndex {
         case 0:
             return cities.count
         case 1:
@@ -37,7 +63,7 @@ class CityTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.cityTableViewCell.rawValue, for: indexPath) as! CityTableViewCell
         
-        switch travelSegmentControl.selectedSegmentIndex {
+        switch citySegmentControl.selectedSegmentIndex {
         case 0:
             let row = cities[indexPath.row]
             cell.configureData(row: row)
