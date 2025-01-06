@@ -10,7 +10,6 @@ import UIKit
 class InfoTableViewController: UITableViewController {
     
     var travels = TravelInfo().travel
-    let adBackgrounds: [UIColor] = [.adBackground1, .adBackground2, .adBackground3]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,20 +40,7 @@ class InfoTableViewController: UITableViewController {
             let adCell = tableView.dequeueReusableCell(withIdentifier: "TravelInfoAdViewCell", for: indexPath) as! TravelInfoAdViewCell
             let row = travels[indexPath.row]
             
-            // adBackgrounds 배열을 이용하고싶은데... 어떻게 하는게 좋을까요
-            adCell.adBackground.backgroundColor = .adBackground1
-            adCell.adBackground.layer.cornerRadius = 10
-            
-            adCell.adTagLabel.text = " AD "
-            adCell.adTagLabel.font = .systemFont(ofSize: 14, weight: .medium)
-            adCell.adTagLabel.backgroundColor = .white
-            adCell.adTagLabel.layer.cornerRadius = 8
-            adCell.adTagLabel.clipsToBounds = true
-            
-            adCell.adTitleLabel.text = row.title
-            adCell.adTitleLabel.font = .systemFont(ofSize: 16, weight: .bold)
-            adCell.adTitleLabel.numberOfLines = 0
-            adCell.adTitleLabel.textAlignment = .center
+            adCell.configureData(row: row)
             
             return adCell
         }
