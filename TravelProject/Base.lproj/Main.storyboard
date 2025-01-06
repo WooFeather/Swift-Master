@@ -436,6 +436,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="인기 도시" id="R6z-UM-Pf8"/>
+                    <connections>
+                        <outlet property="travelSegmentControl" destination="KIc-In-6mx" id="UFh-F5-W5d"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFv-w0-lLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

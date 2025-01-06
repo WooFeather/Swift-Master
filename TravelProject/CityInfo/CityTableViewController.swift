@@ -9,7 +9,9 @@ import UIKit
 
 class CityTableViewController: UITableViewController {
 
+    @IBOutlet var travelSegmentControl: UISegmentedControl!
     var cities = CityInfo().city
+    var filteredCities: [City] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +21,36 @@ class CityTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cities.count
+        switch travelSegmentControl.selectedSegmentIndex {
+        case 0:
+            return cities.count
+        case 1:
+            return filteredCities.count
+        case 2:
+            return filteredCities.count
+        default:
+            return cities.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.cityTableViewCell.rawValue, for: indexPath) as! CityTableViewCell
-        let row = cities[indexPath.row]
         
-        cell.configureData(row: row)
+        switch travelSegmentControl.selectedSegmentIndex {
+        case 0:
+            let row = cities[indexPath.row]
+            cell.configureData(row: row)
+        case 1:
+            let row = filteredCities[indexPath.row]
+            cell.configureData(row: row)
+        case 2:
+            let row = filteredCities[indexPath.row]
+            cell.configureData(row: row)
+        default:
+            let row = cities[indexPath.row]
+            cell.configureData(row: row)
+        }
         
         return cell
     }
@@ -39,13 +62,20 @@ class CityTableViewController: UITableViewController {
     @IBAction func segmentControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            print("0")
+            print("모두")
+            filteredCities = cities
+            print(filteredCities)
         case 1:
-            print("1")
+            print("국내")
+            filteredCities = cities.filter { $0.domestic_travel }
+            print(filteredCities)
         case 2:
-            print("2")
+            print("해외")
+            filteredCities = cities.filter { $0.domestic_travel == false }
+            print(filteredCities)
         default:
-            print("Default")
+            break
         }
+        tableView.reloadData()
     }
 }
