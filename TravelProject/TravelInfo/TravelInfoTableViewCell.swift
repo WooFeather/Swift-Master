@@ -21,6 +21,12 @@ class TravelInfoTableViewCell: UITableViewCell {
         configure()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        travelImageView.image = UIImage(systemName: "xmark.circle")
+        likeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
+    }
+    
     private func configure() {
         titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
         titleLabel.textColor = .magazineTitle
@@ -34,6 +40,8 @@ class TravelInfoTableViewCell: UITableViewCell {
         travelImageView.contentMode = .scaleAspectFill
         travelImageView.layer.cornerRadius = 10
         travelImageView.tintColor = .gray
+        travelImageView.image = UIImage(systemName: "xmark.circle")
+        likeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
     }
     
     func configureData(row: Travel) {
@@ -45,8 +53,6 @@ class TravelInfoTableViewCell: UITableViewCell {
         if let image = row.travel_image {
             let url = URL(string: image)
             travelImageView.kf.setImage(with: url)
-        } else {
-            travelImageView.image = UIImage(systemName: "xmark.circle")
         }
         
         if let button = row.like {
@@ -54,7 +60,6 @@ class TravelInfoTableViewCell: UITableViewCell {
             let btnImage = UIImage(systemName: name)
             likeButton.setImage(btnImage, for: .normal)
         } else {
-            likeButton.setImage(UIImage(systemName: "questionmark"), for: .normal)
             likeButton.isUserInteractionEnabled = false
         }
     }
