@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Checklist {
+struct Checklist: Codable {
     var title: String?
     var bookmark: Bool = false
     var complete: Bool = false

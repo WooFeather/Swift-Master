@@ -14,20 +14,28 @@ class ChecklistTableViewController: UITableViewController {
     @IBOutlet var addButton: UIButton!
     
     // UserDefaults에 저장해보기
-    var checklistItems: [Checklist] = ChecklistItem().checklists {
+    var checklistItems: [Checklist] = [] {
         didSet {
             // 배열이 변경될때마다 reload
             tableView.reloadData()
-            // 데이터 저장 좀더 연구해보기
-//            UserDefaults.standard.set(checklistItems, forKey: "checklistItems")
-//            print(UserDefaults.standard.array(forKey: "checklistItems")!)
+            
+            let encoder = JSONEncoder()
+            if let encodedData = try? encoder.encode(checklistItems) {
+                UserDefaults.standard.set(encodedData, forKey: "checklistItems")
+                print("success")
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        checklistItems = UserDefaults.standard.array(forKey: "checklistItems") as? [Checklist] ?? []
+        if let savedData = UserDefaults.standard.object(forKey: "checklistItems") as? Data {
+            let decoder = JSONDecoder()
+            if let savedObject = try? decoder.decode([Checklist].self, from: savedData) {
+                checklistItems = savedObject
+            }
+        }
         
         tableView.rowHeight = 52
         
