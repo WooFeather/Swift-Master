@@ -50,7 +50,9 @@ class InfoTableViewController: UITableViewController {
         print(#function)
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc
+        let vc = sb.instantiateViewController(withIdentifier: "TravelDetailViewController") as! TravelDetailViewController
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -243,25 +243,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Fg-Tf-NrN">
-                                <rect key="frame" x="24" y="159" width="345" height="345"/>
+                                <rect key="frame" x="24" y="103" width="345" height="345"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9Fg-Tf-NrN" secondAttribute="height" multiplier="1:1" id="WU5-YG-Lvs"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg3-SZ-gzc">
-                                <rect key="frame" x="176" y="524" width="41.333333333333343" height="20.333333333333371"/>
+                                <rect key="frame" x="176" y="468" width="41.333333333333343" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHs-yQ-3VF">
-                                <rect key="frame" x="176" y="564.33333333333337" width="41.333333333333343" height="20.333333333333371"/>
+                                <rect key="frame" x="176" y="508.33333333333331" width="41.333333333333343" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cv-Oa-m91">
-                                <rect key="frame" x="159" y="604.66666666666663" width="75" height="34.333333333333371"/>
+                                <rect key="frame" x="159" y="548.66666666666663" width="75" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
@@ -275,7 +275,7 @@
                             <constraint firstItem="6Cv-Oa-m91" firstAttribute="top" secondItem="lHs-yQ-3VF" secondAttribute="bottom" constant="20" id="Ovx-RQ-e10"/>
                             <constraint firstItem="6Cv-Oa-m91" firstAttribute="centerX" secondItem="jao-gw-m2F" secondAttribute="centerX" id="QxZ-dM-SHr"/>
                             <constraint firstItem="hg3-SZ-gzc" firstAttribute="centerX" secondItem="jao-gw-m2F" secondAttribute="centerX" id="bA9-Ak-DR7"/>
-                            <constraint firstItem="9Fg-Tf-NrN" firstAttribute="top" secondItem="yne-V5-O2J" secondAttribute="top" constant="100" id="cYZ-Ig-aTq"/>
+                            <constraint firstItem="9Fg-Tf-NrN" firstAttribute="top" secondItem="yne-V5-O2J" secondAttribute="top" constant="44" id="cYZ-Ig-aTq"/>
                             <constraint firstItem="9Fg-Tf-NrN" firstAttribute="leading" secondItem="yne-V5-O2J" secondAttribute="leading" constant="24" id="o7a-fo-jHQ"/>
                             <constraint firstItem="hg3-SZ-gzc" firstAttribute="top" secondItem="9Fg-Tf-NrN" secondAttribute="bottom" constant="20" id="oT0-ow-guW"/>
                         </constraints>
