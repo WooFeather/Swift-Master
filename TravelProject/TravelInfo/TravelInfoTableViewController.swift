@@ -62,9 +62,12 @@ class InfoTableViewController: UITableViewController {
         } else {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "TravelAdDetailViewController") as! TravelAdDetailViewController
+            let nav = UINavigationController(rootViewController: vc)
             
+            nav.modalPresentationStyle = .fullScreen
+            nav.modalTransitionStyle = .flipHorizontal
             vc.titleContents = row.title
-            present(vc, animated: true)
+            present(nav, animated: true)
         }
     }
     

@@ -15,7 +15,21 @@ class TravelAdDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationDesign()
         titleDesign()
+    }
+    
+    func navigationDesign() {
+        navigationItem.title = "광고 화면"
+        
+        let xmark = UIImage(systemName: "xmark")
+        let closeButton = (UIBarButtonItem(image: xmark, style: .plain, target: self, action: #selector(closeButtonTapped)))
+        navigationItem.leftBarButtonItem = closeButton
+        navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    
+    @objc func closeButtonTapped() {
+        dismiss(animated: true)
     }
     
     func titleDesign() {
