@@ -50,14 +50,22 @@ class InfoTableViewController: UITableViewController {
         print(#function)
         let row = travels[indexPath.row]
         
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "TravelDetailViewController") as! TravelDetailViewController
-        
-        vc.imageContents = row.travel_image
-        vc.titleContents = row.title
-        vc.descriptionContents = row.description
-        
-        navigationController?.pushViewController(vc, animated: true)
+        if travels[indexPath.row].ad == false {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "TravelDetailViewController") as! TravelDetailViewController
+            
+            vc.imageContents = row.travel_image
+            vc.titleContents = row.title
+            vc.descriptionContents = row.description
+            
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "TravelAdDetailViewController") as! TravelAdDetailViewController
+            
+            vc.titleContents = row.title
+            present(vc, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
