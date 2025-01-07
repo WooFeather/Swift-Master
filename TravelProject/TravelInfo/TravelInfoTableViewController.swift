@@ -48,9 +48,14 @@ class InfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(#function)
+        let row = travels[indexPath.row]
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "TravelDetailViewController") as! TravelDetailViewController
+        
+        vc.imageContents = row.travel_image
+        vc.titleContents = row.title
+        vc.descriptionContents = row.description
         
         navigationController?.pushViewController(vc, animated: true)
     }

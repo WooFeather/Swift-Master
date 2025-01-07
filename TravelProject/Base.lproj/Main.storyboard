@@ -280,6 +280,12 @@
                             <constraint firstItem="hg3-SZ-gzc" firstAttribute="top" secondItem="9Fg-Tf-NrN" secondAttribute="bottom" constant="20" id="oT0-ow-guW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="lHs-yQ-3VF" id="Fty-tm-XMe"/>
+                        <outlet property="popButton" destination="6Cv-Oa-m91" id="uQ9-zD-j5d"/>
+                        <outlet property="titleLabel" destination="hg3-SZ-gzc" id="dJY-KX-7HW"/>
+                        <outlet property="travelImageView" destination="9Fg-Tf-NrN" id="rJU-T8-5rG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTO-3R-XGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
