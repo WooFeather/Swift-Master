@@ -22,8 +22,8 @@ class TravelDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "관광지 화면"
         
+        navigationDesign()
         imageDesign()
         titleDesign()
         descriptionDesign()
@@ -32,6 +32,19 @@ class TravelDetailViewController: UIViewController {
     
     @IBAction func popButtonTapped(_ sender: UIButton) {
         print(#function)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func navigationDesign() {
+        navigationItem.title = "관광지 화면"
+        
+        let chevron = UIImage(systemName: "chevron.left")
+        let backButton = (UIBarButtonItem(image: chevron, style: .plain, target: self, action: #selector(backButtonTapped)))
+        navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    
+    @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
     
