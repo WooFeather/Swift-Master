@@ -7,12 +7,24 @@
 
 import UIKit
 
-class CityInfoViewController: UIViewController {
-
+class CityInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet var cityInfoCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        cityInfoCollectionView.delegate = self
+        cityInfoCollectionView.dataSource = self
 
         navigationDesign()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
     }
     
     func navigationDesign() {
