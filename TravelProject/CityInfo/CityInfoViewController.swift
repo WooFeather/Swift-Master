@@ -26,14 +26,6 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
         cellLayout()
     }
     
-    @IBAction func searchTextFieldDidEndOnExit(_ sender: UITextField) {
-        searchCities()
-    }
-    
-    @IBAction func searchTextFieldEditingChanged(_ sender: UITextField) {
-        searchCities()
-    }
-    
     @IBAction func citySegmentControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -54,42 +46,27 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
         cityInfoCollectionView.reloadData()
     }
     
+    @IBAction func searchTextFieldDidEndOnExit(_ sender: UITextField) {
+        searchCities()
+    }
+    
+    @IBAction func searchTextFieldEditingChanged(_ sender: UITextField) {
+        searchCities()
+    }
+    
     func searchCities() {
+        let segIndex = citySegmentControl.selectedSegmentIndex
         let searchText = searchTextField.text!.trimmingCharacters(in: .whitespaces)
-        
         print(searchText)
         
         if searchText.isEmpty {
             isSearching = false
-            switch citySegmentControl.selectedSegmentIndex {
-            case 0:
-                searchedCities = cities
-            case 1:
-                searchedCities = filteredCities
-            case 2:
-                searchedCities = filteredCities
-            default:
-                searchedCities = cities
-            }
+            searchedCities = segIndex == 0 ? cities : filteredCities
         } else {
             isSearching = true
-            switch citySegmentControl.selectedSegmentIndex {
-            case 0:
-                searchedCities = cities.filter {
-                    $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
-                }
-            case 1:
-                searchedCities = filteredCities.filter {
-                    $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
-                }
-            case 2:
-                searchedCities = filteredCities.filter {
-                    $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
-                }
-            default:
-                searchedCities = cities.filter {
-                    $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
-                }
+            let cityArray = segIndex == 0 ? cities : filteredCities
+            searchedCities = cityArray.filter {
+                $0.city_name.contains(searchText) || $0.city_english_name.lowercased().contains(searchText.lowercased()) || $0.city_explain.contains(searchText)
             }
         }
         print(searchedCities)
@@ -97,33 +74,24 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch citySegmentControl.selectedSegmentIndex {
-        case 0:
+        let segIndex = citySegmentControl.selectedSegmentIndex
+        
+        if segIndex == 0 {
             return isSearching ? searchedCities.count : cities.count
-        case 1:
+        } else {
             return isSearching ? searchedCities.count : filteredCities.count
-        case 2:
-            return isSearching ? searchedCities.count : filteredCities.count
-        default:
-            return isSearching ? searchedCities.count : cities.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cityInfoCollectionView.dequeueReusableCell(withReuseIdentifier: Identifier.cityInfoCollectionViewCell.rawValue, for: indexPath) as! CityInfoCollectionViewCell
+        let segIndex = citySegmentControl.selectedSegmentIndex
         
-        switch citySegmentControl.selectedSegmentIndex {
-        case 0:
+        if segIndex == 0 {
             let item = isSearching ? searchedCities[indexPath.item] : cities[indexPath.item]
             cell.configureData(item: item)
-        case 1:
+        } else {
             let item = isSearching ? searchedCities[indexPath.item] : filteredCities[indexPath.item]
-            cell.configureData(item: item)
-        case 2:
-            let item = isSearching ? searchedCities[indexPath.item] : filteredCities[indexPath.item]
-            cell.configureData(item: item)
-        default:
-            let item = isSearching ? searchedCities[indexPath.item] : cities[indexPath.item]
             cell.configureData(item: item)
         }
         
