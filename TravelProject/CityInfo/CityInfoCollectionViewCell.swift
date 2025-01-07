@@ -6,12 +6,33 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CityInfoCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet var cityImageView: UIImageView!
+    @IBOutlet var cityNameLabel: UILabel!
+    @IBOutlet var cityExplainLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        configure()
     }
-
+    
+    private func configure() {
+        // 일부만 cornerRadius주기
+        cityImageView.layer.cornerRadius = 100
+        cityImageView.contentMode = .scaleAspectFill
+        cityNameLabel.font = .systemFont(ofSize: 16, weight: .heavy)
+        cityNameLabel.textColor = .black
+        cityExplainLabel.textColor = .lightGray
+        cityExplainLabel.font = .systemFont(ofSize: 12, weight: .medium)
+    }
+    
+    func configureData(item: City) {
+        let url = URL(string: item.city_image)
+        cityImageView.kf.setImage(with: url)
+        cityNameLabel.text = item.title
+        cityExplainLabel.text = item.city_explain
+    }
 }

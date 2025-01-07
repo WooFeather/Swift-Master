@@ -54,6 +54,11 @@
                 <constraint firstItem="k3D-Dh-Jm5" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zSb-VN-k1L"/>
             </constraints>
             <size key="customSize" width="428" height="423"/>
+            <connections>
+                <outlet property="cityExplainLabel" destination="pIz-9I-bRn" id="kn3-0c-wAz"/>
+                <outlet property="cityImageView" destination="FzW-AK-Ie6" id="IVb-UO-VhS"/>
+                <outlet property="cityNameLabel" destination="k3D-Dh-Jm5" id="YiI-Uh-FOe"/>
+            </connections>
             <point key="canvasLocation" x="413.74045801526717" y="105.98591549295776"/>
         </collectionViewCell>
     </objects>

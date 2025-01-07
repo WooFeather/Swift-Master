@@ -12,20 +12,30 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet var cityInfoCollectionView: UICollectionView!
     @IBOutlet var citySegmentControl: UISegmentedControl!
     
+    var cities = CityInfo().city
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cityInfoCollectionView.delegate = self
         cityInfoCollectionView.dataSource = self
+        
+        let xib = UINib(nibName: "CityInfoCollectionViewCell", bundle: nil)
+        cityInfoCollectionView.register(xib, forCellWithReuseIdentifier: "CityInfoCollectionViewCell")
 
         navigationDesign()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return cities.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = cityInfoCollectionView.dequeueReusableCell(withReuseIdentifier: "CityInfoCollectionViewCell", for: indexPath) as! CityInfoCollectionViewCell
+        let item = cities[indexPath.item]
+        
+        cell.configureData(item: item)
+        
+        return cell
     }
     
     func navigationDesign() {
