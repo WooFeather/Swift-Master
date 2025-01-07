@@ -23,19 +23,19 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fcm-Zv-pSU">
-                        <rect key="frame" x="0.0" y="689" width="681" height="60"/>
+                        <rect key="frame" x="0.0" y="689" width="681" height="64"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3D-Dh-Jm5">
-                                <rect key="frame" x="0.0" y="0.0" width="681" height="16"/>
+                                <rect key="frame" x="0.0" y="0.0" width="681" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="jhn-ps-2H5"/>
+                                    <constraint firstAttribute="height" constant="20" id="jhn-ps-2H5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIz-9I-bRn">
-                                <rect key="frame" x="0.0" y="16" width="681" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="681" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uut-8Y-OXV"/>
                                 </constraints>

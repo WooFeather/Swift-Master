@@ -20,12 +20,8 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cityInfoCollectionView.delegate = self
-        cityInfoCollectionView.dataSource = self
-        
-        let xib = UINib(nibName: Identifier.cityInfoCollectionViewCell.rawValue, bundle: nil)
-        cityInfoCollectionView.register(xib, forCellWithReuseIdentifier: Identifier.cityInfoCollectionViewCell.rawValue)
-
+        collectionViewConfig()
+        xibConfig()
         navigationDesign()
         cellLayout()
     }
@@ -132,6 +128,16 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         return cell
+    }
+    
+    func collectionViewConfig() {
+        cityInfoCollectionView.delegate = self
+        cityInfoCollectionView.dataSource = self
+    }
+    
+    func xibConfig() {
+        let xib = UINib(nibName: Identifier.cityInfoCollectionViewCell.rawValue, bundle: nil)
+        cityInfoCollectionView.register(xib, forCellWithReuseIdentifier: Identifier.cityInfoCollectionViewCell.rawValue)
     }
     
     func navigationDesign() {
