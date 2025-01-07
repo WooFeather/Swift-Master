@@ -26,6 +26,8 @@ class TravelDetailViewController: UIViewController {
         navigationItem.title = "관광지 화면"
         
         imageDesign()
+        titleDesign()
+        descriptionDesign()
     }
     
     func imageDesign() {
@@ -38,5 +40,23 @@ class TravelDetailViewController: UIViewController {
         
         travelImageView.contentMode = .scaleAspectFill
         travelImageView.layer.cornerRadius = 8
+    }
+    
+    func titleDesign() {
+        if let titleContents {
+            titleLabel.text = titleContents
+            titleLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        } else {
+            titleLabel.text = "불러오기 실패"
+        }
+    }
+    
+    func descriptionDesign() {
+        if let descriptionContents {
+            descriptionLabel.text = descriptionContents
+            descriptionLabel.font = .systemFont(ofSize: 24, weight: .bold)
+            descriptionLabel.numberOfLines = 0
+            descriptionLabel.textAlignment = .center
+        }
     }
 }
