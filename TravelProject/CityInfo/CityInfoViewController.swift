@@ -11,19 +11,32 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @IBOutlet var cityInfoCollectionView: UICollectionView!
     @IBOutlet var citySegmentControl: UISegmentedControl!
+    @IBOutlet var searchTextField: UITextField!
     
     var cities = CityInfo().city
+    var filteredCities: [City] = []
+    var searchedCities: [City] = []
+    var isSearching: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cityInfoCollectionView.delegate = self
         cityInfoCollectionView.dataSource = self
         
-        let xib = UINib(nibName: "CityInfoCollectionViewCell", bundle: nil)
-        cityInfoCollectionView.register(xib, forCellWithReuseIdentifier: "CityInfoCollectionViewCell")
+        let xib = UINib(nibName: Identifier.cityInfoCollectionViewCell.rawValue, bundle: nil)
+        cityInfoCollectionView.register(xib, forCellWithReuseIdentifier: Identifier.cityInfoCollectionViewCell.rawValue)
 
         navigationDesign()
         cellLayout()
+    }
+    
+    @IBAction func searchTextFieldDidEndOnExit(_ sender: UITextField) {
+    }
+    
+    @IBAction func searchTextFieldEditingChanged(_ sender: UITextField) {
+    }
+    
+    @IBAction func citySegmentControlValueChanged(_ sender: UISegmentedControl) {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -31,12 +44,16 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = cityInfoCollectionView.dequeueReusableCell(withReuseIdentifier: "CityInfoCollectionViewCell", for: indexPath) as! CityInfoCollectionViewCell
+        let cell = cityInfoCollectionView.dequeueReusableCell(withReuseIdentifier: Identifier.cityInfoCollectionViewCell.rawValue, for: indexPath) as! CityInfoCollectionViewCell
         let item = cities[indexPath.item]
         
         cell.configureData(item: item)
         
         return cell
+    }
+    
+    func navigationDesign() {
+        navigationItem.title = "인기 도시"
     }
     
     func cellLayout() {
@@ -49,9 +66,4 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cityInfoCollectionView.collectionViewLayout = layout
     }
-    
-    func navigationDesign() {
-        navigationItem.title = "인기 도시"
-    }
-
 }

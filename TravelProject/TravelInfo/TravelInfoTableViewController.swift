@@ -52,7 +52,7 @@ class InfoTableViewController: UITableViewController {
         
         if travels[indexPath.row].ad == false {
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "TravelDetailViewController") as! TravelDetailViewController
+            let vc = sb.instantiateViewController(withIdentifier: Identifier.travelDetailViewController.rawValue) as! TravelDetailViewController
             
             vc.imageContents = row.travel_image
             vc.titleContents = row.title
@@ -61,7 +61,7 @@ class InfoTableViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "TravelAdDetailViewController") as! TravelAdDetailViewController
+            let vc = sb.instantiateViewController(withIdentifier: Identifier.travelAdDetailViewController.rawValue) as! TravelAdDetailViewController
             let nav = UINavigationController(rootViewController: vc)
             
             nav.modalPresentationStyle = .fullScreen

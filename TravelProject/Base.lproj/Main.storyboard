@@ -552,7 +552,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uh2-5K-t63">
-                                <rect key="frame" x="0.0" y="146" width="393" height="706"/>
+                                <rect key="frame" x="0.0" y="204" width="393" height="648"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y6V-Vk-Nxw">
                                     <size key="itemSize" width="128" height="128"/>
@@ -571,30 +571,47 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="m4c-hT-36P">
-                                <rect key="frame" x="12" y="115" width="369" height="32"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SUp-sT-Smd">
+                                <rect key="frame" x="16" y="161" width="361" height="32"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="모두"/>
+                                    <segment title="국내"/>
+                                    <segment title="해외"/>
                                 </segments>
+                                <connections>
+                                    <action selector="citySegmentControlValueChanged:" destination="EIv-vO-nKY" eventType="valueChanged" id="oBa-C3-9tP"/>
+                                </connections>
                             </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="도시를 검색해보세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OKc-tJ-ZAk">
+                                <rect key="frame" x="16" y="115" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchTextFieldDidEndOnExit:" destination="EIv-vO-nKY" eventType="editingDidEndOnExit" id="EiD-4q-gsu"/>
+                                    <action selector="searchTextFieldEditingChanged:" destination="EIv-vO-nKY" eventType="editingChanged" id="mXx-IU-77d"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tFi-mJ-Ohy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="m4c-hT-36P" firstAttribute="leading" secondItem="tFi-mJ-Ohy" secondAttribute="leading" constant="12" id="5BN-3E-bGf"/>
+                            <constraint firstItem="OKc-tJ-ZAk" firstAttribute="top" secondItem="tFi-mJ-Ohy" secondAttribute="top" constant="12" id="03n-8k-id7"/>
+                            <constraint firstItem="OKc-tJ-ZAk" firstAttribute="leading" secondItem="tFi-mJ-Ohy" secondAttribute="leading" constant="16" id="5Je-h7-Sr5"/>
+                            <constraint firstItem="SUp-sT-Smd" firstAttribute="top" secondItem="OKc-tJ-ZAk" secondAttribute="bottom" constant="12" id="5jS-Um-k7d"/>
                             <constraint firstAttribute="bottom" secondItem="uh2-5K-t63" secondAttribute="bottom" id="9hU-o6-i9B"/>
                             <constraint firstItem="uh2-5K-t63" firstAttribute="trailing" secondItem="tFi-mJ-Ohy" secondAttribute="trailing" id="IJf-yc-dnX"/>
                             <constraint firstItem="uh2-5K-t63" firstAttribute="leading" secondItem="tFi-mJ-Ohy" secondAttribute="leading" id="QEw-Gr-pnX"/>
-                            <constraint firstItem="tFi-mJ-Ohy" firstAttribute="trailing" secondItem="m4c-hT-36P" secondAttribute="trailing" constant="12" id="UxG-aU-8ln"/>
-                            <constraint firstItem="m4c-hT-36P" firstAttribute="top" secondItem="tFi-mJ-Ohy" secondAttribute="top" constant="12" id="txO-Ej-7eQ"/>
-                            <constraint firstItem="uh2-5K-t63" firstAttribute="top" secondItem="m4c-hT-36P" secondAttribute="bottom" id="zHG-pm-Dc8"/>
+                            <constraint firstItem="tFi-mJ-Ohy" firstAttribute="trailing" secondItem="OKc-tJ-ZAk" secondAttribute="trailing" constant="16" id="Ute-aq-YkB"/>
+                            <constraint firstItem="uh2-5K-t63" firstAttribute="top" secondItem="SUp-sT-Smd" secondAttribute="bottom" constant="12" id="WTk-En-fFW"/>
+                            <constraint firstItem="tFi-mJ-Ohy" firstAttribute="trailing" secondItem="SUp-sT-Smd" secondAttribute="trailing" constant="16" id="p00-84-1fA"/>
+                            <constraint firstItem="SUp-sT-Smd" firstAttribute="leading" secondItem="tFi-mJ-Ohy" secondAttribute="leading" constant="16" id="zvN-cC-qSi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gd4-Ky-xVp"/>
                     <connections>
                         <outlet property="cityInfoCollectionView" destination="uh2-5K-t63" id="vq3-hm-r5F"/>
-                        <outlet property="citySegmentControl" destination="m4c-hT-36P" id="31b-bq-W6C"/>
+                        <outlet property="citySegmentControl" destination="SUp-sT-Smd" id="l0y-v1-YgU"/>
+                        <outlet property="searchTextField" destination="OKc-tJ-ZAk" id="lvK-Ol-ZuY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyN-zr-Mfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

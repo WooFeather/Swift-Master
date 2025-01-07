@@ -13,4 +13,8 @@ enum Identifier: String {
     case magazineTableViewCell = "MagazineTableViewCell"
     case checklistTableViewCell = "ChecklistTableViewCell"
     case cityTableViewCell = "CityTableViewCell"
+    case cityInfoCollectionViewCell = "CityInfoCollectionViewCell"
+    
+    case travelDetailViewController = "TravelDetailViewController"
+    case travelAdDetailViewController = "TravelAdDetailViewController"
 }
