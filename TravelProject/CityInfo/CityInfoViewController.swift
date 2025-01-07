@@ -10,6 +10,7 @@ import UIKit
 class CityInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet var cityInfoCollectionView: UICollectionView!
+    @IBOutlet var citySegmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()

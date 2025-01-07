@@ -594,6 +594,7 @@
                     <navigationItem key="navigationItem" id="Gd4-Ky-xVp"/>
                     <connections>
                         <outlet property="cityInfoCollectionView" destination="uh2-5K-t63" id="vq3-hm-r5F"/>
+                        <outlet property="citySegmentControl" destination="m4c-hT-36P" id="31b-bq-W6C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyN-zr-Mfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
