@@ -540,7 +540,23 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFv-w0-lLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2966" y="1395"/>
+            <point key="canvasLocation" x="3949" y="1396"/>
+        </scene>
+        <!--City Info View Controller-->
+        <scene sceneID="Ral-tP-rSh">
+            <objects>
+                <viewController storyboardIdentifier="CityInfoViewController" id="EIv-vO-nKY" customClass="CityInfoViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UvA-ed-awl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tFi-mJ-Ohy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Gd4-Ky-xVp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lyN-zr-Mfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2966" y="1396"/>
         </scene>
         <!--매거진-->
         <scene sceneID="JR1-NE-8nl">
@@ -611,7 +627,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="KgC-PO-hPm" kind="relationship" relationship="rootViewController" id="gXm-qM-hPx"/>
+                        <segue destination="EIv-vO-nKY" kind="relationship" relationship="rootViewController" id="ZwG-l1-vpQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dsy-hI-aiU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
