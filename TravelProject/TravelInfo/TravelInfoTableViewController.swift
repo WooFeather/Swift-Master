@@ -46,6 +46,13 @@ class InfoTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if travels[indexPath.row].ad == false {
             return 164
