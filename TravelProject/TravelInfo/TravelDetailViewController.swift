@@ -22,12 +22,17 @@ class TravelDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "관광지 화면"
         
         imageDesign()
         titleDesign()
         descriptionDesign()
+        popButtonDesign()
+    }
+    
+    @IBAction func popButtonTapped(_ sender: UIButton) {
+        print(#function)
+        navigationController?.popViewController(animated: true)
     }
     
     func imageDesign() {
@@ -57,6 +62,15 @@ class TravelDetailViewController: UIViewController {
             descriptionLabel.font = .systemFont(ofSize: 24, weight: .bold)
             descriptionLabel.numberOfLines = 0
             descriptionLabel.textAlignment = .center
+        } else {
+            descriptionLabel.text = "불러오기 실패"
         }
+    }
+    
+    func popButtonDesign() {
+        popButton.setTitle("다른 관광지 보러 가기", for: .normal)
+        popButton.layer.cornerRadius = 16
+        popButton.backgroundColor = .popButton
+        popButton.setTitleColor(.white, for: .normal)
     }
 }
