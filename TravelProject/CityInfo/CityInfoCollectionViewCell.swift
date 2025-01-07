@@ -21,12 +21,15 @@ class CityInfoCollectionViewCell: UICollectionViewCell {
     
     private func configure() {
         // 일부만 cornerRadius주기
-        cityImageView.layer.cornerRadius = 100
+        cityImageView.layer.cornerRadius = 80
         cityImageView.contentMode = .scaleAspectFill
         cityNameLabel.font = .systemFont(ofSize: 16, weight: .heavy)
         cityNameLabel.textColor = .black
+        cityNameLabel.textAlignment = .center
         cityExplainLabel.textColor = .lightGray
         cityExplainLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        cityExplainLabel.numberOfLines = 0
+        cityExplainLabel.textAlignment = .center
     }
     
     func configureData(item: City) {

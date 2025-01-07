@@ -23,6 +23,7 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
         cityInfoCollectionView.register(xib, forCellWithReuseIdentifier: "CityInfoCollectionViewCell")
 
         navigationDesign()
+        cellLayout()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -36,6 +37,17 @@ class CityInfoViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.configureData(item: item)
         
         return cell
+    }
+    
+    func cellLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: 160, height: 240)
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 8
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 24, bottom: 20, right: 24)
+        
+        cityInfoCollectionView.collectionViewLayout = layout
     }
     
     func navigationDesign() {
