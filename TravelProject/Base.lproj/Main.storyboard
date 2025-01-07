@@ -552,7 +552,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uh2-5K-t63">
-                                <rect key="frame" x="0.0" y="134" width="393" height="718"/>
+                                <rect key="frame" x="0.0" y="146" width="393" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y6V-Vk-Nxw">
                                     <size key="itemSize" width="128" height="128"/>
@@ -572,7 +572,7 @@
                                 </cells>
                             </collectionView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="m4c-hT-36P">
-                                <rect key="frame" x="0.0" y="103" width="393" height="32"/>
+                                <rect key="frame" x="12" y="115" width="369" height="32"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
@@ -582,12 +582,12 @@
                         <viewLayoutGuide key="safeArea" id="tFi-mJ-Ohy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="m4c-hT-36P" firstAttribute="leading" secondItem="tFi-mJ-Ohy" secondAttribute="leading" id="5BN-3E-bGf"/>
+                            <constraint firstItem="m4c-hT-36P" firstAttribute="leading" secondItem="tFi-mJ-Ohy" secondAttribute="leading" constant="12" id="5BN-3E-bGf"/>
                             <constraint firstAttribute="bottom" secondItem="uh2-5K-t63" secondAttribute="bottom" id="9hU-o6-i9B"/>
                             <constraint firstItem="uh2-5K-t63" firstAttribute="trailing" secondItem="tFi-mJ-Ohy" secondAttribute="trailing" id="IJf-yc-dnX"/>
                             <constraint firstItem="uh2-5K-t63" firstAttribute="leading" secondItem="tFi-mJ-Ohy" secondAttribute="leading" id="QEw-Gr-pnX"/>
-                            <constraint firstItem="tFi-mJ-Ohy" firstAttribute="trailing" secondItem="m4c-hT-36P" secondAttribute="trailing" id="UxG-aU-8ln"/>
-                            <constraint firstItem="m4c-hT-36P" firstAttribute="top" secondItem="tFi-mJ-Ohy" secondAttribute="top" id="txO-Ej-7eQ"/>
+                            <constraint firstItem="tFi-mJ-Ohy" firstAttribute="trailing" secondItem="m4c-hT-36P" secondAttribute="trailing" constant="12" id="UxG-aU-8ln"/>
+                            <constraint firstItem="m4c-hT-36P" firstAttribute="top" secondItem="tFi-mJ-Ohy" secondAttribute="top" constant="12" id="txO-Ej-7eQ"/>
                             <constraint firstItem="uh2-5K-t63" firstAttribute="top" secondItem="m4c-hT-36P" secondAttribute="bottom" id="zHG-pm-Dc8"/>
                         </constraints>
                     </view>
