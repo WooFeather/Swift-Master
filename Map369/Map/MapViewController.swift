@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     let restaurants = RestaurantList().restaurantArray
     var filteredRestaurants: [Restaurant] = RestaurantList().restaurantArray
     let categories = ["한식", "양식", "일식", "중식", "분식", "카페", "샐러드"]
-    var selectedCategory = "양식"
+    var selectedCategory = "전체"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,68 +33,104 @@ class MapViewController: UIViewController {
             preferredStyle: .actionSheet
         )
         
+        // 반복되는 코드를 어떻게 합칠까
         let korean = UIAlertAction(
             title: categories[0],
             style: .default
-        ) { action in
-            print("Choose First Alert Action")
+            // 캡쳐리스트 개념..공부...
+        ) { [self] action in
+            // 필터링
+            mapView.removeAnnotations(mapView.annotations)
+            filteredRestaurants = restaurants.filter { $0.category == categories[0] }
+            setAnnotation()
+            // selectedCategory에 title 넣기
+            selectedCategory = categories[0]
+            // 이렇게 매번 actionSheetButtonDesign() 함수를 호출하는것 외의 방법은?
+            actionSheetButtonDesign()
         }
         
         let western = UIAlertAction(
             title: categories[1],
             style: .default
+            // 이렇게 전부 self 붙여주는것과 위의 차이점 알아보기!!!
         ) { action in
-            print("Choose Second Alert Action")
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.filteredRestaurants = self.restaurants.filter { $0.category == self.categories[1] }
+            self.setAnnotation()
+            self.selectedCategory = self.categories[1]
+            self.actionSheetButtonDesign()
         }
         
         let japanese = UIAlertAction(
             title: categories[2],
             style: .default
-        ) { action in
-            print("Choose Third Alert Action")
+        ) { [self] action in
+            mapView.removeAnnotations(mapView.annotations)
+            filteredRestaurants = restaurants.filter { $0.category == categories[2] }
+            setAnnotation()
+            selectedCategory = categories[2]
+            actionSheetButtonDesign()
         }
         
         let chinese = UIAlertAction(
             title: categories[3],
             style: .default
-        ) { action in
-            print("Choose Third Alert Action")
+        ) { [self] action in
+            mapView.removeAnnotations(mapView.annotations)
+            filteredRestaurants = restaurants.filter { $0.category == categories[3] }
+            setAnnotation()
+            selectedCategory = categories[3]
+            actionSheetButtonDesign()
         }
         
         let snack = UIAlertAction(
             title: categories[4],
             style: .default
-        ) { action in
-            print("Choose Third Alert Action")
+        ) { [self] action in
+            mapView.removeAnnotations(mapView.annotations)
+            filteredRestaurants = restaurants.filter { $0.category == categories[4] }
+            setAnnotation()
+            selectedCategory = categories[4]
+            actionSheetButtonDesign()
         }
         
         let cafe = UIAlertAction(
             title: categories[5],
             style: .default
-        ) { action in
-            print("Choose Third Alert Action")
+        ) { [self] action in
+            mapView.removeAnnotations(mapView.annotations)
+            filteredRestaurants = restaurants.filter { $0.category == categories[5] }
+            setAnnotation()
+            selectedCategory = categories[5]
+            actionSheetButtonDesign()
         }
         
         let salad = UIAlertAction(
             title: categories[6],
             style: .default
-        ) { action in
-            print("Choose Third Alert Action")
+        ) { [self] action in
+            mapView.removeAnnotations(mapView.annotations)
+            filteredRestaurants = restaurants.filter { $0.category == categories[6] }
+            setAnnotation()
+            selectedCategory = categories[6]
+            actionSheetButtonDesign()
         }
         
         let all = UIAlertAction(
             title: "전체",
             style: .default
-        ) { action in
-            print("Choose Third Alert Action")
+        ) { [self] action in
+            mapView.removeAnnotations(mapView.annotations)
+            filteredRestaurants = restaurants
+            setAnnotation()
+            selectedCategory = "전체"
+            actionSheetButtonDesign()
         }
         
         let cancel = UIAlertAction(
             title: "취소",
             style: .cancel
-        ) { action in
-            print("Choose Cancel Alert Action")
-        }
+        ) { action in }
         
         [korean, western, japanese, chinese, snack, cafe, salad, all, cancel].forEach {
             actionSheet.addAction($0)
@@ -133,7 +169,7 @@ class MapViewController: UIViewController {
     }
     
     func mapViewConfig() {
-        let center = CLLocationCoordinate2D(latitude: 37.65370, longitude: 127.04740)
+        let center = CLLocationCoordinate2D(latitude: 37.6543873, longitude: 127.0478787)
         mapView.region = MKCoordinateRegion(center: center, latitudinalMeters: 300, longitudinalMeters: 300)
         
         setAnnotation()
