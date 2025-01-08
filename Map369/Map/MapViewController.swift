@@ -15,12 +15,94 @@ class MapViewController: UIViewController {
     
     let restaurants = RestaurantList().restaurantArray
     var filteredRestaurants: [Restaurant] = RestaurantList().restaurantArray
+    let categories = ["한식", "양식", "일식", "중식", "분식", "카페", "샐러드"]
+    var selectedCategory = "양식"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapViewConfig()
+        actionSheetButtonDesign()
+        actionSheetButtonConfig()
     }
+    
+    @objc private func showActionSheet() {
+        let actionSheet = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        
+        let korean = UIAlertAction(
+            title: categories[0],
+            style: .default
+        ) { action in
+            print("Choose First Alert Action")
+        }
+        
+        let western = UIAlertAction(
+            title: categories[1],
+            style: .default
+        ) { action in
+            print("Choose Second Alert Action")
+        }
+        
+        let japanese = UIAlertAction(
+            title: categories[2],
+            style: .default
+        ) { action in
+            print("Choose Third Alert Action")
+        }
+        
+        let chinese = UIAlertAction(
+            title: categories[3],
+            style: .default
+        ) { action in
+            print("Choose Third Alert Action")
+        }
+        
+        let snack = UIAlertAction(
+            title: categories[4],
+            style: .default
+        ) { action in
+            print("Choose Third Alert Action")
+        }
+        
+        let cafe = UIAlertAction(
+            title: categories[5],
+            style: .default
+        ) { action in
+            print("Choose Third Alert Action")
+        }
+        
+        let salad = UIAlertAction(
+            title: categories[6],
+            style: .default
+        ) { action in
+            print("Choose Third Alert Action")
+        }
+        
+        let all = UIAlertAction(
+            title: "전체",
+            style: .default
+        ) { action in
+            print("Choose Third Alert Action")
+        }
+        
+        let cancel = UIAlertAction(
+            title: "취소",
+            style: .cancel
+        ) { action in
+            print("Choose Cancel Alert Action")
+        }
+        
+        [korean, western, japanese, chinese, snack, cafe, salad, all, cancel].forEach {
+            actionSheet.addAction($0)
+        }
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+
     
     @IBAction func mapSegmentControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -65,5 +147,16 @@ class MapViewController: UIViewController {
 
             mapView.showAnnotations([annotation], animated: true)
         }
+    }
+    
+    func actionSheetButtonDesign() {
+        actionSheetButton.setTitle(selectedCategory, for: .normal)
+        actionSheetButton.setImage(UIImage(systemName: "chevron.up.chevron.down"), for: .normal)
+        actionSheetButton.semanticContentAttribute = .forceRightToLeft
+        actionSheetButton.setPreferredSymbolConfiguration(.init(scale: .small), forImageIn: .normal)
+    }
+    
+    func actionSheetButtonConfig() {
+        actionSheetButton.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
     }
 }
