@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,8 +16,37 @@
                     <view key="view" contentMode="scaleToFill" id="1Lf-Ft-ymJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKM-MR-Vr1">
+                                <rect key="frame" x="0.0" y="142" width="393" height="562"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rqa-ck-PkW">
+                                <rect key="frame" x="16" y="103" width="361" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-Q9-1Ir">
+                                <rect key="frame" x="159" y="712" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="akj-j3-8Ss"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="akj-j3-8Ss" firstAttribute="trailing" secondItem="rqa-ck-PkW" secondAttribute="trailing" constant="16" id="1OQ-Ob-vBZ"/>
+                            <constraint firstItem="oKM-MR-Vr1" firstAttribute="trailing" secondItem="akj-j3-8Ss" secondAttribute="trailing" id="4OK-Ja-MOS"/>
+                            <constraint firstItem="akj-j3-8Ss" firstAttribute="bottom" secondItem="hC8-Q9-1Ir" secondAttribute="bottom" constant="22" id="Aqw-dH-nKA"/>
+                            <constraint firstItem="rqa-ck-PkW" firstAttribute="top" secondItem="akj-j3-8Ss" secondAttribute="top" id="aZf-iF-iM8"/>
+                            <constraint firstItem="oKM-MR-Vr1" firstAttribute="leading" secondItem="akj-j3-8Ss" secondAttribute="leading" id="c28-yY-4RN"/>
+                            <constraint firstItem="rqa-ck-PkW" firstAttribute="leading" secondItem="akj-j3-8Ss" secondAttribute="leading" constant="16" id="fWR-uQ-g2P"/>
+                            <constraint firstItem="hC8-Q9-1Ir" firstAttribute="centerX" secondItem="1Lf-Ft-ymJ" secondAttribute="centerX" id="kgQ-R0-teL"/>
+                            <constraint firstItem="oKM-MR-Vr1" firstAttribute="top" secondItem="rqa-ck-PkW" secondAttribute="bottom" constant="8" id="oCa-J7-COg"/>
+                            <constraint firstItem="hC8-Q9-1Ir" firstAttribute="top" secondItem="oKM-MR-Vr1" secondAttribute="bottom" constant="8" id="wn4-NH-BdN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="맛집지도" id="amA-By-b2C"/>
                 </viewController>
