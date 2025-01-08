@@ -24,9 +24,14 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rqa-ck-PkW">
                                 <rect key="frame" x="16" y="103" width="361" height="32"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="전체"/>
+                                    <segment title="한식"/>
+                                    <segment title="중식"/>
+                                    <segment title="양식"/>
                                 </segments>
+                                <connections>
+                                    <action selector="mapSegmentControlValueChanged:" destination="mFE-EH-u4L" eventType="valueChanged" id="LYJ-ws-p5X"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-Q9-1Ir">
                                 <rect key="frame" x="159" y="712" width="75" height="35"/>
