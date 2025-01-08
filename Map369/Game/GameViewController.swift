@@ -16,6 +16,7 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     let pickerView = UIPickerView()
     var pickerItems: [Int] = []
+    var resultText: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         pickerItemsDesign()
         selectTextFieldConfig()
         titleLabelDesign()
-        selectTextFieldConfig()
+        selectTextFieldDesign()
         resultTextViewDesign()
         countLabelDesign()
     }
@@ -37,11 +38,19 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        String(pickerItems[row])
+        String(pickerItems.reversed()[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectTextField.text = String(pickerItems[row])
+        resultText = []
+        
+        let rowItem = pickerItems.reversed()[row]
+        
+        for i in 1...rowItem {
+            resultText.append(String(i))
+        }
+        
+        resultTextView.text = resultText.joined(separator: " ")
     }
     
     func selectTextFieldConfig() {
