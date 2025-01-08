@@ -49,6 +49,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="맛집지도" id="amA-By-b2C"/>
+                    <connections>
+                        <outlet property="actionSheetButton" destination="hC8-Q9-1Ir" id="uua-og-Mpw"/>
+                        <outlet property="mapSegmentControl" destination="rqa-ck-PkW" id="bP8-qb-lHy"/>
+                        <outlet property="mapView" destination="oKM-MR-Vr1" id="uzr-2I-VkX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgc-mF-xc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
