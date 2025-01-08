@@ -50,6 +50,13 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             resultText.append(String(i))
         }
         
+        for i in 1..<resultText.count {
+            if resultText[i].contains("3") || resultText[i].contains("6") || resultText[i].contains("9") {
+                // 한 글자만 처리를 어떻게 할까..
+                resultText[i] = "👏"
+            }
+        }
+        
         resultTextView.text = resultText.joined(separator: ", ")
     }
     
