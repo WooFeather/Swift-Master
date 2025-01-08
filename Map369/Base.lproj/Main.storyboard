@@ -87,10 +87,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="47M-BG-HH7">
-                                <rect key="frame" x="44" y="273.33333333333331" width="305" height="200"/>
+                                <rect key="frame" x="44" y="273.33333333333331" width="305" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="5ge-dF-oGs"/>
+                                    <constraint firstAttribute="height" constant="100" id="5ge-dF-oGs"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -98,7 +98,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3V-pH-Bxd">
-                                <rect key="frame" x="44" y="509.33333333333326" width="305" height="21"/>
+                                <rect key="frame" x="44" y="409.33333333333331" width="305" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="cFG-10-FZF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -122,6 +125,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="369게임" id="6FW-wv-ZkG"/>
+                    <connections>
+                        <outlet property="countLabel" destination="z3V-pH-Bxd" id="QJU-V1-3ty"/>
+                        <outlet property="resultTextView" destination="47M-BG-HH7" id="mvh-TA-Ev1"/>
+                        <outlet property="selectTextField" destination="eRI-f6-TlZ" id="3QF-ka-b28"/>
+                        <outlet property="titleLabel" destination="S2R-U3-TpF" id="2Ql-BR-oZZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epD-W2-bbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
