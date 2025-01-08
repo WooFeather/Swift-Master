@@ -109,6 +109,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pya-TA-JZg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Pya-TA-JZg" firstAttribute="trailing" secondItem="47M-BG-HH7" secondAttribute="trailing" constant="44" id="69t-5s-e2P"/>
                             <constraint firstItem="z3V-pH-Bxd" firstAttribute="top" secondItem="47M-BG-HH7" secondAttribute="bottom" constant="36" id="6FN-K6-e0r"/>
@@ -123,6 +124,9 @@
                             <constraint firstItem="47M-BG-HH7" firstAttribute="leading" secondItem="Pya-TA-JZg" secondAttribute="leading" constant="44" id="uRG-nD-tn1"/>
                             <constraint firstItem="eRI-f6-TlZ" firstAttribute="top" secondItem="S2R-U3-TpF" secondAttribute="bottom" constant="28" id="xf0-Tg-wdz"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="v26-Tf-iv1" appends="YES" id="Uts-PP-UvM"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="369게임" id="6FW-wv-ZkG"/>
                     <connections>
@@ -133,6 +137,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epD-W2-bbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="v26-Tf-iv1">
+                    <connections>
+                        <action selector="endEditingTapGesture:" destination="3E8-67-07e" id="Od9-q2-a0Q"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="944.27480916030527" y="714.78873239436621"/>
         </scene>

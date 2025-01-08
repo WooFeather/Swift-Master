@@ -36,6 +36,14 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         pickerItems.count
     }
     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        String(pickerItems[row])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectTextField.text = String(pickerItems[row])
+    }
+    
     func selectTextFieldConfig() {
         selectTextField.tintColor = .clear
         selectTextField.inputView = pickerView
@@ -45,7 +53,7 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func pickerItemsDesign() {
-        for i in 0...100 {
+        for i in 1...100 {
             pickerItems.append(i)
         }
     }
@@ -72,5 +80,9 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         countLabel.font = .systemFont(ofSize: 30, weight: .bold)
         countLabel.textAlignment = .center
         countLabel.numberOfLines = 0
+    }
+    
+    @IBAction func endEditingTapGesture(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }
