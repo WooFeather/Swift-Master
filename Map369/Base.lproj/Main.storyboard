@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mFE-EH-u4L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qPK-KL-e4W">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
@@ -8,23 +8,99 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--맛집지도-->
         <scene sceneID="OoM-rE-quR">
             <objects>
-                <viewController id="mFE-EH-u4L" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="mFE-EH-u4L" customClass="MapViewController" customModule="Map369" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Lf-Ft-ymJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="akj-j3-8Ss"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="맛집지도" id="amA-By-b2C"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgc-mF-xc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="-96"/>
+            <point key="canvasLocation" x="944.27480916030527" y="-96.478873239436624"/>
+        </scene>
+        <!--369게임-->
+        <scene sceneID="2oq-Yq-lGr">
+            <objects>
+                <viewController storyboardIdentifier="GameViewController" id="3E8-67-07e" customClass="GameViewController" customModule="Map369" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DLJ-Q0-w6g">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Pya-TA-JZg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="369게임" id="6FW-wv-ZkG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epD-W2-bbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.27480916030527" y="714.78873239436621"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="KBJ-kb-nlh">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qPK-KL-e4W" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yw8-2b-yKA">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="7CG-58-dcH" kind="relationship" relationship="viewControllers" id="dfs-0I-r3g"/>
+                        <segue destination="odc-zP-HlF" kind="relationship" relationship="viewControllers" id="PDj-0e-vZe"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Owl-sc-iq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1193" y="-96"/>
+        </scene>
+        <!--맛집지도-->
+        <scene sceneID="viP-cB-h0Z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7CG-58-dcH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="맛집지도" image="map" catalog="system" id="xFz-ic-oaQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NPB-c1-qeZ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mFE-EH-u4L" kind="relationship" relationship="rootViewController" id="326-RN-WFE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xAd-bY-x1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17.557251908396946" y="-96.478873239436624"/>
+        </scene>
+        <!--369게임-->
+        <scene sceneID="tEl-PS-2Be">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="odc-zP-HlF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="369게임" image="hands.clap" catalog="system" id="a8J-Dm-gPG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nvV-ku-Wcj">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3E8-67-07e" kind="relationship" relationship="rootViewController" id="1xg-n3-w6m"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Leb-f2-8Md" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17.557251908396946" y="714.78873239436621"/>
         </scene>
     </scenes>
     <resources>
+        <image name="hands.clap" catalog="system" width="128" height="117"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
