@@ -17,6 +17,8 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let pickerView = UIPickerView()
     var pickerItems: [Int] = []
     var resultText: [String] = []
+    var selectedNumber = 0
+    var clapCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,8 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         let rowItem = pickerItems.reversed()[row]
         
+        selectedNumber = rowItem
+        
         for i in 1...rowItem {
             resultText.append(String(i))
         }
@@ -54,10 +58,13 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if resultText[i].contains("3") || resultText[i].contains("6") || resultText[i].contains("9") {
                 // 한 글자만 처리를 어떻게 할까..
                 resultText[i] = "👏"
+                clapCount+=1
             }
         }
         
         resultTextView.text = resultText.joined(separator: ", ")
+        countLabelDesign()
+        clapCount = 0
     }
     
     func selectTextFieldConfig() {
@@ -95,6 +102,7 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func countLabelDesign() {
+        countLabel.text = "숫자 \(selectedNumber)까지 총 박수는 \(clapCount)번 입니다."
         countLabel.font = .systemFont(ofSize: 30, weight: .bold)
         countLabel.textAlignment = .center
         countLabel.numberOfLines = 0
