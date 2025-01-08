@@ -50,7 +50,7 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             resultText.append(String(i))
         }
         
-        resultTextView.text = resultText.joined(separator: " ")
+        resultTextView.text = resultText.joined(separator: ", ")
     }
     
     func selectTextFieldConfig() {
@@ -80,8 +80,10 @@ class GameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func resultTextViewDesign() {
+        resultTextView.text = ""
+        resultTextView.textAlignment = .center
         resultTextView.isUserInteractionEnabled = false
-        resultTextView.font = .systemFont(ofSize: 20)
+        resultTextView.font = .systemFont(ofSize: 22)
         resultTextView.textColor = .lightGray
     }
     
