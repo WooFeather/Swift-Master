@@ -18,5 +18,16 @@ class GameCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                cellBackground.backgroundColor = .black
+                numberLabel.textColor = .white
+            } else {
+                cellBackground.backgroundColor = .white
+                numberLabel.textColor = .black
+            }
+        }
+    }
 }

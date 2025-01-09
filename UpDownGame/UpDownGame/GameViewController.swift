@@ -38,6 +38,7 @@ class GameViewController: UIViewController {
     func collectionViewConfig() {
         upDownCollectionView.delegate = self
         upDownCollectionView.dataSource = self
+        upDownCollectionView.allowsMultipleSelection = false
         
         let id = GameCollectionViewCell.identifier
         let xib = UINib(nibName: id, bundle: nil)
