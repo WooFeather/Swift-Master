@@ -14,17 +14,18 @@ class GameViewController: UIViewController {
     @IBOutlet var upDownCollectionView: UICollectionView!
     @IBOutlet var resultButton: UIButton!
     
+    var maxNumber: Int?
     var selectedNumber: Int?
     var guideText: String = "UP DOWN"
     var tryCount: Int = 0
     var tryCountText: String {
         "시도 횟수: \(tryCount)"
     }
-    lazy var numberList: [Int] = Array(1...(selectedNumber ?? 1))
+    lazy var numberList: [Int] = Array(1...(maxNumber ?? 1))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("선택한 숫자: \(selectedNumber!)")
+        print("최대 숫자: \(maxNumber!)")
         
         view.backgroundColor = .main
         guideLabelDesign()
@@ -44,8 +45,20 @@ class GameViewController: UIViewController {
     }
     
     func upDownCollectionViewLayout() {
+        let sectionInset: CGFloat = 16
+        let cellSpacing: CGFloat = 16
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let cellHeight = upDownCollectionView.frame.height - (sectionInset * 2) - (cellSpacing * 4)
+        
+        layout.itemSize = CGSize(width: cellHeight / 5, height: cellHeight / 5)
+        layout.sectionInset = UIEdgeInsets(top: sectionInset, left: sectionInset, bottom: sectionInset, right: sectionInset)
+        
+        upDownCollectionView.collectionViewLayout = layout
+        upDownCollectionView.showsHorizontalScrollIndicator = false
         upDownCollectionView.backgroundColor = .main
-//        upDownCollectionView.collectionViewLayout =
     }
     
     func guideLabelDesign() {
@@ -75,8 +88,16 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = upDownCollectionView.dequeueReusableCell(withReuseIdentifier: GameCollectionViewCell.identifier, for: indexPath) as! GameCollectionViewCell
         
-        cell.numberLabel.text = "\(numberList[indexPath.row])"
+        cell.numberLabel.text = "\(numberList[indexPath.item])"
+        DispatchQueue.main.async {
+            cell.cellBackground.layer.cornerRadius = cell.cellBackground.frame.height / 2
+        }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // cell을 탭했을 때 UI의 변화 및 해당 text를 selectedNumber에 담기
+        // 다른 cell을 탭하면 이전 셀은 원래 상태로 돌아가고 selectedNumber도 새로운 값이 들어감
     }
 }
