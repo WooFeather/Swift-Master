@@ -39,12 +39,12 @@ class MainViewController: UIViewController {
         let vc = sb.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         let text = numberTextField.text!.trimmingCharacters(in: .whitespaces)
         
-        if let intText = Int(text) {
-            if intText < 1 || intText > 100 {
+        if let textNum = Int(text) {
+            if textNum < 1 || textNum > 100 {
                 showAlert(title: "다시 확인해주세요😭", message: "1~100까지의 숫자를 입력해주세요.")
                 numberTextField.text = ""
             } else {
-                vc.maxNumber = intText
+                vc.maxNumber = textNum
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {

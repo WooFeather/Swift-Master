@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     @IBOutlet var resultButton: UIButton!
     
     var maxNumber: Int?
+    var targetNumber: Int?
     var selectedNumber: Int?
     var guideText: String = "UP DOWN"
     var tryCount: Int = 0
@@ -22,10 +23,11 @@ class GameViewController: UIViewController {
         "시도 횟수: \(tryCount)"
     }
     lazy var numberList: [Int] = Array(1...(maxNumber ?? 1))
+    var filteredNumberList: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("최대 숫자: \(maxNumber!)")
+        print("최대 숫자: \(maxNumber ?? 0)")
         
         view.backgroundColor = .main
         guideLabelDesign()
@@ -33,6 +35,12 @@ class GameViewController: UIViewController {
         resultButtonDesign()
         collectionViewConfig()
         upDownCollectionViewLayout()
+        selectTargetNumber()
+    }
+    
+    func selectTargetNumber() {
+        targetNumber = numberList.randomElement()
+        print("타겟넘버: \(targetNumber ?? 0)")
     }
     
     func collectionViewConfig() {
@@ -98,7 +106,8 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // cell을 탭했을 때 UI의 변화 및 해당 text를 selectedNumber에 담기
-        // 다른 cell을 탭하면 이전 셀은 원래 상태로 돌아가고 selectedNumber도 새로운 값이 들어감
+        let row = numberList[indexPath.item]
+        selectedNumber = row
+        print(selectedNumber ?? 0)
     }
 }
