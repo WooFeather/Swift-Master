@@ -16,16 +16,23 @@ class MainViewController: UIViewController {
     @IBOutlet var startButton: UIButton!
     @IBOutlet var mainImageConstraint: NSLayoutConstraint!
     
+    let mainImageList: [UIImage] = [.emotion1, .emotion2, .emotion3, .emotion4, .emotion5]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .main
         titleLabelDesign()
         subtitleLabelDesign()
-        mainImageDesign()
         numberTextFieldDesign()
         startButtonDesign()
 //        mainImageTopConstraintConfig()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        mainImageDesign()
     }
     
     @IBAction func numberTextFieldDidEndOnExit(_ sender: UITextField) {}
@@ -74,7 +81,7 @@ class MainViewController: UIViewController {
     }
     
     func mainImageDesign() {
-        mainImageView.image = .emotion1
+        mainImageView.image = mainImageList.randomElement()
         mainImageView.contentMode = .scaleAspectFill
     }
     
