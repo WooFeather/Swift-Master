@@ -42,12 +42,12 @@ class GameViewController: UIViewController {
         print(#function)
         // selectedNumber와 targetNumber를 비교해서 TargetNumber가 SelectedNumber에 비해 Up인지 Down인지 판단
         // 만약 Up이라면 selectedNumber 미만의 numberList 항목들을 제외한 항목들을 filteredNumberList에 담고 filteredNumberList를 기준으로 CollectionView reload
-            // guideLabel에 UP이라고 표시하고 tryCount += 1
+        // guideLabel에 UP이라고 표시하고 tryCount += 1
         // 만약 Down이라면 selectedNumber 초과의 numberList 항목들을 제외한 항목들을 filteredNumberList에 담고 filteredNumberList를 기준으로 CollectionView reload
-            // guideLabel에 DOWN이라고 표시하고 tryCount += 1
+        // guideLabel에 DOWN이라고 표시하고 tryCount += 1
         // 만약 selectedNumber와 targetNumber가 일치한다면 guideLabel에 GOOD!표시하고 tryCount += 1 및 Alert표시(메인으로 돌아갈 수 있게)
         
-        guard let targetNumber, let selectedNumber, let maxNumber else {
+        guard let targetNumber, let selectedNumber else {
             print("옵셔널 반환 실패!")
             return
         }
@@ -57,13 +57,21 @@ class GameViewController: UIViewController {
             guideText = "UP"
             tryCount += 1
             
-            filteredNumberList = Array(selectedNumber + 1...maxNumber)
+            filteredNumberList = tryCount == 0 ? numberList.filter { $0 > selectedNumber } : filteredNumberList.filter { $0 > selectedNumber }
             upDownCollectionView.reloadData()
             componentsReDesign()
         } else if targetNumber < selectedNumber {
             print("DOWN!")
+            guideText = "DOWN"
+            tryCount += 1
+            
+            filteredNumberList = tryCount == 0 ? numberList.filter { $0 < selectedNumber } : filteredNumberList.filter { $0 < selectedNumber }
+            upDownCollectionView.reloadData()
+            componentsReDesign()
         } else {
             print("GOOD!")
+            guideText = "GOOD"
+            tryCount += 1
         }
     }
     
