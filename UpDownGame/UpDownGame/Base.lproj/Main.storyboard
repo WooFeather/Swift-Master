@@ -120,13 +120,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCx-eD-keD">
-                                <rect key="frame" x="44" y="103" width="305" height="21"/>
+                                <rect key="frame" x="44" y="59" width="305" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cue-Vv-BEe">
-                                <rect key="frame" x="175.66666666666666" y="132" width="42" height="21"/>
+                                <rect key="frame" x="175.66666666666666" y="88" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -177,7 +177,7 @@
                             <constraint firstItem="cnZ-a8-pJG" firstAttribute="leading" secondItem="hDD-uf-pyW" secondAttribute="leading" id="g1h-Ti-C7c"/>
                             <constraint firstItem="cnZ-a8-pJG" firstAttribute="centerY" secondItem="h51-Mz-AQm" secondAttribute="centerY" id="mBI-Jd-dz9"/>
                             <constraint firstItem="hDD-uf-pyW" firstAttribute="trailing" secondItem="TCx-eD-keD" secondAttribute="trailing" constant="44" id="r9d-g0-MYo"/>
-                            <constraint firstItem="TCx-eD-keD" firstAttribute="top" secondItem="hDD-uf-pyW" secondAttribute="top" constant="44" id="yB8-Ok-Ksh"/>
+                            <constraint firstItem="TCx-eD-keD" firstAttribute="top" secondItem="hDD-uf-pyW" secondAttribute="top" id="yB8-Ok-Ksh"/>
                         </constraints>
                     </view>
                     <connections>
