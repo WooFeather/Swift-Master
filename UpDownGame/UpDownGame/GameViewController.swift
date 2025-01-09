@@ -14,8 +14,11 @@ class GameViewController: UIViewController {
     @IBOutlet var upDownCollectionView: UICollectionView!
     @IBOutlet var resultButton: UIButton!
     
+    var selectedNumber: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("선택한 숫자: \(selectedNumber!)")
     }
 }

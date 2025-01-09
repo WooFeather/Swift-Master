@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
                 showAlert(title: "다시 확인해주세요😭", message: "1~100까지의 숫자를 입력해주세요.")
                 numberTextField.text = ""
             } else {
+                vc.selectedNumber = intText
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
