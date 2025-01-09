@@ -53,6 +53,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6PO-qm-g30"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAN-sZ-xlr">
                                 <rect key="frame" x="76" y="647.66666666666663" width="241" height="2"/>
@@ -106,6 +109,21 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1052.6717557251909" y="-34.507042253521128"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="5e8-Q2-hll">
+            <objects>
+                <viewController storyboardIdentifier="GameViewController" id="pys-yw-aK4" customClass="GameViewController" customModule="UpDownGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h51-Mz-AQm">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hDD-uf-pyW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ba-zm-qXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2021" y="-35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l3f-Zd-4zA">

@@ -36,6 +36,12 @@ class MainViewController: UIViewController {
         view.endEditing(true)
     }
     
+    @IBAction func startButtonTapped(_ sender: UIButton) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // 이런식으로 제약사항을 0으로 만들어서 뷰를 위로 올려보려고 했는데 실패했습니다. 사용방법 좀더 알아보기!
 //    func mainImageTopConstraintConfig() {
 //        if numberTextField.isEditing {
