@@ -33,6 +33,7 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         
         mainImageDesign()
+        numberTextField.text = ""
     }
     
     @IBAction func numberTextFieldDidEndOnExit(_ sender: UITextField) {}
