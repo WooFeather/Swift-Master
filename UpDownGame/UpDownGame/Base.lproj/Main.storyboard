@@ -161,6 +161,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="resultButtonTapped:" destination="pys-yw-aK4" eventType="touchUpInside" id="IZy-yj-j1M"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hDD-uf-pyW"/>

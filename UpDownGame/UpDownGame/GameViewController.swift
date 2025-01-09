@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
         "시도 횟수: \(tryCount)"
     }
     lazy var numberList: [Int] = Array(1...(maxNumber ?? 1))
-    var filteredNumberList: [Int] = []
+    lazy var filteredNumberList: [Int] = numberList
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +38,44 @@ class GameViewController: UIViewController {
         selectTargetNumber()
     }
     
+    @IBAction func resultButtonTapped(_ sender: UIButton) {
+        print(#function)
+        // selectedNumber와 targetNumber를 비교해서 TargetNumber가 SelectedNumber에 비해 Up인지 Down인지 판단
+        // 만약 Up이라면 selectedNumber 미만의 numberList 항목들을 제외한 항목들을 filteredNumberList에 담고 filteredNumberList를 기준으로 CollectionView reload
+            // guideLabel에 UP이라고 표시하고 tryCount += 1
+        // 만약 Down이라면 selectedNumber 초과의 numberList 항목들을 제외한 항목들을 filteredNumberList에 담고 filteredNumberList를 기준으로 CollectionView reload
+            // guideLabel에 DOWN이라고 표시하고 tryCount += 1
+        // 만약 selectedNumber와 targetNumber가 일치한다면 guideLabel에 GOOD!표시하고 tryCount += 1 및 Alert표시(메인으로 돌아갈 수 있게)
+        
+        guard let targetNumber, let selectedNumber, let maxNumber else {
+            print("옵셔널 반환 실패!")
+            return
+        }
+        
+        if targetNumber > selectedNumber {
+            print("UP!")
+            guideText = "UP"
+            tryCount += 1
+            
+            filteredNumberList = Array(selectedNumber + 1...maxNumber)
+            upDownCollectionView.reloadData()
+            componentsReDesign()
+        } else if targetNumber < selectedNumber {
+            print("DOWN!")
+        } else {
+            print("GOOD!")
+        }
+    }
+    
+    // 라벨에 바뀐 데이터 적용 진짜 이게 최선..?
+    func componentsReDesign() {
+        guideLabelDesign()
+        tryCountLabelDesign()
+        resultButton.buttonDisable()
+    }
+    
     func selectTargetNumber() {
-        targetNumber = numberList.randomElement()
+        targetNumber = filteredNumberList.randomElement()
         print("타겟넘버: \(targetNumber ?? 0)")
     }
     
@@ -85,20 +121,19 @@ class GameViewController: UIViewController {
     func resultButtonDesign() {
         resultButton.setTitle("결과 확인하기", for: .normal)
         resultButton.tintColor = .white
-        resultButton.backgroundColor = .gray
-        resultButton.isEnabled = false
+        resultButton.buttonDisable()
     }
 }
 
 extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberList.count
+        return filteredNumberList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = upDownCollectionView.dequeueReusableCell(withReuseIdentifier: GameCollectionViewCell.identifier, for: indexPath) as! GameCollectionViewCell
         
-        cell.numberLabel.text = "\(numberList[indexPath.item])"
+        cell.numberLabel.text = "\(filteredNumberList[indexPath.item])"
         DispatchQueue.main.async {
             cell.cellBackground.layer.cornerRadius = cell.cellBackground.frame.height / 2
         }
@@ -107,11 +142,10 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let row = numberList[indexPath.item]
+        let row = filteredNumberList[indexPath.item]
         selectedNumber = row
-        print(selectedNumber ?? 0)
+        print(selectedNumber!)
         
-        resultButton.isEnabled = true
-        resultButton.backgroundColor = .black
+        resultButton.buttonEnable()
     }
 }
