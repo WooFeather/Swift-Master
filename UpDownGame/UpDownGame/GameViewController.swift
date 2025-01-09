@@ -72,8 +72,17 @@ class GameViewController: UIViewController {
             print("GOOD!")
             guideText = "GOOD"
             tryCount += 1
+            componentsReDesign()
+            
+            let alert = UIAlertController(title: "정답입니다 🥳", message: tryCountText, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "다시하기", style: .default) { _ in
+                self.navigationController?.popViewController(animated: true)
+            })
+            present(alert, animated: true)
         }
     }
+    
+    
     
     // 라벨에 바뀐 데이터 적용 진짜 이게 최선..?
     func componentsReDesign() {
@@ -152,7 +161,7 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let row = filteredNumberList[indexPath.item]
         selectedNumber = row
-        print(selectedNumber!)
+        print("선택한 숫자:\(selectedNumber!)")
         
         resultButton.buttonEnable()
     }
