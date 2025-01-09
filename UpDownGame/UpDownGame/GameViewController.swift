@@ -85,7 +85,8 @@ class GameViewController: UIViewController {
     func resultButtonDesign() {
         resultButton.setTitle("결과 확인하기", for: .normal)
         resultButton.tintColor = .white
-        resultButton.backgroundColor = .black
+        resultButton.backgroundColor = .gray
+        resultButton.isEnabled = false
     }
 }
 
@@ -109,5 +110,8 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let row = numberList[indexPath.item]
         selectedNumber = row
         print(selectedNumber ?? 0)
+        
+        resultButton.isEnabled = true
+        resultButton.backgroundColor = .black
     }
 }
