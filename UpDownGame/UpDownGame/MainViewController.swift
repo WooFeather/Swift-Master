@@ -28,9 +28,7 @@ class MainViewController: UIViewController {
 //        mainImageTopConstraintConfig()
     }
     
-    @IBAction func numberTextFieldDidEndOnExit(_ sender: UITextField) {
-        // 다음으로 가는 동작 추후에 추가
-    }
+    @IBAction func numberTextFieldDidEndOnExit(_ sender: UITextField) {}
     
     @IBAction func EndEditingTapGesture(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -39,7 +37,19 @@ class MainViewController: UIViewController {
     @IBAction func startButtonTapped(_ sender: UIButton) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
-        navigationController?.pushViewController(vc, animated: true)
+        let text = numberTextField.text!.trimmingCharacters(in: .whitespaces)
+        
+        if let intText = Int(text) {
+            if intText < 1 || intText > 100 {
+                showAlert(title: "다시 확인해주세요😭", message: "1~100까지의 숫자를 입력해주세요.")
+                numberTextField.text = ""
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            showAlert(title: "다시 확인해주세요😭", message: "숫자가 아닌 문자나 공백은 입력할 수 없습니다.")
+            numberTextField.text = ""
+        }
     }
     
     // 이런식으로 제약사항을 0으로 만들어서 뷰를 위로 올려보려고 했는데 실패했습니다. 사용방법 좀더 알아보기!
@@ -72,6 +82,7 @@ class MainViewController: UIViewController {
         numberTextField.font = .systemFont(ofSize: 30, weight: .bold)
         numberTextField.textAlignment = .center
         numberTextField.borderStyle = .none
+        numberTextField.keyboardType = .decimalPad
     }
     
     func startButtonDesign() {
