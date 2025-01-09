@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     var tryCountText: String {
         "시도 횟수: \(tryCount)"
     }
+    lazy var numberList: [Int] = Array(1...(selectedNumber ?? 1))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,22 @@ class GameViewController: UIViewController {
         guideLabelDesign()
         tryCountLabelDesign()
         resultButtonDesign()
+        collectionViewConfig()
+        upDownCollectionViewLayout()
+    }
+    
+    func collectionViewConfig() {
+        upDownCollectionView.delegate = self
+        upDownCollectionView.dataSource = self
+        
+        let id = GameCollectionViewCell.identifier
+        let xib = UINib(nibName: id, bundle: nil)
+        upDownCollectionView.register(xib, forCellWithReuseIdentifier: id)
+    }
+    
+    func upDownCollectionViewLayout() {
+        upDownCollectionView.backgroundColor = .main
+//        upDownCollectionView.collectionViewLayout =
     }
     
     func guideLabelDesign() {
@@ -47,5 +64,19 @@ class GameViewController: UIViewController {
         resultButton.setTitle("결과 확인하기", for: .normal)
         resultButton.tintColor = .white
         resultButton.backgroundColor = .black
+    }
+}
+
+extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return numberList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = upDownCollectionView.dequeueReusableCell(withReuseIdentifier: GameCollectionViewCell.identifier, for: indexPath) as! GameCollectionViewCell
+        
+        cell.numberLabel.text = "\(numberList[indexPath.row])"
+        
+        return cell
     }
 }
