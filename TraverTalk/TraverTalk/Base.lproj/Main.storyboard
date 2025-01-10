@@ -61,6 +61,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JDb-YZ-TtA"/>
+                    <connections>
+                        <outlet property="chatListCollectionView" destination="Uif-M9-g4y" id="8R6-wV-aPD"/>
+                        <outlet property="chatListSearchBar" destination="5EP-y1-mpP" id="X2J-2h-ec8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
