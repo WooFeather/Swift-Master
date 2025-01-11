@@ -13,6 +13,9 @@ class ChattingViewController: UIViewController {
     @IBOutlet var messageTextView: UITextView!
     @IBOutlet var sendButton: UIButton!
     
+    var chatList = ChatInfo().mockChatList
+    
+    var chatRoomIdContents: Int?
     var titleContents: String?
     var chatListContents: String?
     var imageContents: UIImage?
@@ -21,6 +24,7 @@ class ChattingViewController: UIViewController {
         super.viewDidLoad()
         
         navigationDesign()
+        tableViewConfig()
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -34,5 +38,38 @@ class ChattingViewController: UIViewController {
         let backButton = (UIBarButtonItem(image: chevron, style: .plain, target: self, action: #selector(backButtonTapped)))
         navigationItem.leftBarButtonItem = backButton
         navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    
+    func tableViewConfig() {
+        chattingTableView.delegate = self
+        chattingTableView.dataSource = self
+        
+        let xib = UINib(nibName: Identifier.LeftBubbleTableViewCell.rawValue, bundle: nil)
+        chattingTableView.register(xib, forCellReuseIdentifier: Identifier.LeftBubbleTableViewCell.rawValue)
+    }
+}
+
+extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let chatRoomIdContents else {
+            print("잘못된 접근입니다!")
+            return 0
+        }
+        
+        let index = chatRoomIdContents - 1
+        return chatList[index].chatList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let chatRoomIdContents else {
+            print("잘못된 접근입니다!")
+            return UITableViewCell.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        }
+        
+        let cell = chattingTableView.dequeueReusableCell(withIdentifier: Identifier.LeftBubbleTableViewCell.rawValue) as! LeftBubbleTableViewCell
+        let index = chatRoomIdContents - 1
+        let row = chatList[index].chatList[indexPath.row]
+        
+        return cell
     }
 }

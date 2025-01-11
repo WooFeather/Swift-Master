@@ -87,6 +87,7 @@ extension ChatListViewController: UICollectionViewDelegate, UICollectionViewData
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: Identifier.ChattingViewController.rawValue) as! ChattingViewController
         vc.titleContents = item.chatroomName
+        vc.chatRoomIdContents = item.chatroomId
         
         navigationController?.pushViewController(vc, animated: true)
     }
