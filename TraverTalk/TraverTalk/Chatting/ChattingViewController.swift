@@ -43,8 +43,11 @@ class ChattingViewController: UIViewController {
         chattingTableView.dataSource = self
         chattingTableView.separatorStyle = .none
         
-        let xib = UINib(nibName: Identifier.LeftBubbleTableViewCell.rawValue, bundle: nil)
-        chattingTableView.register(xib, forCellReuseIdentifier: Identifier.LeftBubbleTableViewCell.rawValue)
+        let leftBubbleXib = UINib(nibName: Identifier.LeftBubbleTableViewCell.rawValue, bundle: nil)
+        chattingTableView.register(leftBubbleXib, forCellReuseIdentifier: Identifier.LeftBubbleTableViewCell.rawValue)
+        
+        let rightBubbleXib = UINib(nibName: Identifier.RightBubbleTableViewCell.rawValue, bundle: nil)
+        chattingTableView.register(rightBubbleXib, forCellReuseIdentifier: Identifier.RightBubbleTableViewCell.rawValue)
     }
 }
 
@@ -68,13 +71,16 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
         let chatRoomIndex = chatRoomIdContents - 1
         let row = chatList[chatRoomIndex].chatList[indexPath.row]
         
-//        if row.user != .user {
+        if row.user != .user {
             let cell = chattingTableView.dequeueReusableCell(withIdentifier: Identifier.LeftBubbleTableViewCell.rawValue) as! LeftBubbleTableViewCell
             cell.configureData(row: row)
         
             return cell
-//        } else {
-//            // RightBubbleTableViewCell
-//        }
+        } else {
+            let cell = chattingTableView.dequeueReusableCell(withIdentifier: Identifier.RightBubbleTableViewCell.rawValue) as! RightBubbleTableViewCell
+            cell.configureData(row: row)
+            
+            return cell
+        }
     }
 }
