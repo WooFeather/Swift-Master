@@ -13,6 +13,7 @@ class LeftBubbleTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var bubbleBackground: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,11 +22,22 @@ class LeftBubbleTableViewCell: UITableViewCell {
     }
     
     private func configure() {
+        DispatchQueue.main.async { [self] in
+            profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        }
         messageLabel.numberOfLines = 0
+        bubbleBackground.backgroundColor = .clear
+        bubbleBackground.layer.cornerRadius = 10
+        bubbleBackground.layer.borderWidth = 1
+        bubbleBackground.layer.borderColor = UIColor.lightGray.cgColor
         timeLabel.font = .systemFont(ofSize: 14)
+        timeLabel.textColor = .lightGray
     }
     
-    func configureData() {
-        
+    func configureData(row: Chat) {
+        nameLabel.text = row.user.rawValue
+        profileImage.image = UIImage(named: row.user.profileImage)
+        messageLabel.text = row.message
+        timeLabel.text = row.date.toDate()?.toTimeString()
     }
 }

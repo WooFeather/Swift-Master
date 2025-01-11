@@ -16,6 +16,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="475" height="157"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-LA-J3U">
+                        <rect key="frame" x="56" y="33" width="57.333333333333343" height="120"/>
+                        <color key="backgroundColor" systemColor="tableCellBlueTextColor"/>
+                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7kw-Nz-vzW">
                         <rect key="frame" x="8" y="8" width="44" height="44"/>
                         <constraints>
@@ -33,13 +37,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBP-Nn-kTS">
-                        <rect key="frame" x="60" y="37" width="41.333333333333343" height="112"/>
+                        <rect key="frame" x="64" y="41" width="41.333333333333343" height="104"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88:88 오전" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xik-nY-faj">
-                        <rect key="frame" x="109.33333333333331" y="132" width="70" height="17"/>
+                        <rect key="frame" x="117.33333333333331" y="132" width="70" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="HSw-0d-myf"/>
                             <constraint firstAttribute="width" constant="70" id="Rqb-JD-YcG"/>
@@ -50,21 +54,26 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="GBP-Nn-kTS" firstAttribute="bottom" secondItem="NAh-LA-J3U" secondAttribute="bottom" constant="-8" id="7Fs-o6-K7n"/>
                     <constraint firstItem="7u2-Jt-3Hi" firstAttribute="leading" secondItem="7kw-Nz-vzW" secondAttribute="trailing" constant="8" id="9xA-Iy-djO"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xik-nY-faj" secondAttribute="trailing" constant="40" id="C6O-nW-w34"/>
-                    <constraint firstItem="GBP-Nn-kTS" firstAttribute="leading" secondItem="7kw-Nz-vzW" secondAttribute="trailing" constant="8" id="Ky7-vv-wuB"/>
+                    <constraint firstItem="GBP-Nn-kTS" firstAttribute="leading" secondItem="7kw-Nz-vzW" secondAttribute="trailing" constant="12" id="Ky7-vv-wuB"/>
                     <constraint firstAttribute="trailing" secondItem="7u2-Jt-3Hi" secondAttribute="trailing" constant="50" id="Okr-3t-g6D"/>
+                    <constraint firstItem="GBP-Nn-kTS" firstAttribute="leading" secondItem="NAh-LA-J3U" secondAttribute="leading" constant="8" id="Sjf-lv-QJY"/>
                     <constraint firstItem="7kw-Nz-vzW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="TZg-fg-JHw"/>
-                    <constraint firstAttribute="bottom" secondItem="GBP-Nn-kTS" secondAttribute="bottom" constant="8" id="j6a-qE-XnQ"/>
+                    <constraint firstItem="GBP-Nn-kTS" firstAttribute="trailing" secondItem="NAh-LA-J3U" secondAttribute="trailing" constant="-8" id="cY6-RS-QXc"/>
+                    <constraint firstAttribute="bottom" secondItem="GBP-Nn-kTS" secondAttribute="bottom" constant="12" id="j6a-qE-XnQ"/>
                     <constraint firstItem="7u2-Jt-3Hi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nCj-f1-h5V"/>
-                    <constraint firstItem="xik-nY-faj" firstAttribute="leading" secondItem="GBP-Nn-kTS" secondAttribute="trailing" constant="8" id="sKo-6W-FCV"/>
+                    <constraint firstItem="xik-nY-faj" firstAttribute="leading" secondItem="GBP-Nn-kTS" secondAttribute="trailing" constant="12" id="sKo-6W-FCV"/>
                     <constraint firstAttribute="bottom" secondItem="xik-nY-faj" secondAttribute="bottom" constant="8" id="snM-4K-9fJ"/>
                     <constraint firstItem="7kw-Nz-vzW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="syl-JC-wtD"/>
-                    <constraint firstItem="GBP-Nn-kTS" firstAttribute="top" secondItem="7u2-Jt-3Hi" secondAttribute="bottom" constant="8" id="uEG-A3-NUy"/>
+                    <constraint firstItem="GBP-Nn-kTS" firstAttribute="top" secondItem="7u2-Jt-3Hi" secondAttribute="bottom" constant="12" id="uEG-A3-NUy"/>
+                    <constraint firstItem="GBP-Nn-kTS" firstAttribute="top" secondItem="NAh-LA-J3U" secondAttribute="top" constant="8" id="yPh-9y-Go9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bubbleBackground" destination="NAh-LA-J3U" id="1rK-r9-Mb8"/>
                 <outlet property="messageLabel" destination="GBP-Nn-kTS" id="55z-aH-h6M"/>
                 <outlet property="nameLabel" destination="7u2-Jt-3Hi" id="FML-ag-Bta"/>
                 <outlet property="profileImage" destination="7kw-Nz-vzW" id="cQY-aD-hOl"/>
@@ -73,4 +82,9 @@
             <point key="canvasLocation" x="-538.16793893129773" y="33.450704225352112"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="tableCellBlueTextColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

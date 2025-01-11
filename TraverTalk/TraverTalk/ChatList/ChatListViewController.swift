@@ -88,7 +88,6 @@ extension ChatListViewController: UICollectionViewDelegate, UICollectionViewData
         let vc = sb.instantiateViewController(withIdentifier: Identifier.ChattingViewController.rawValue) as! ChattingViewController
         vc.titleContents = item.chatroomName
         vc.chatRoomIdContents = item.chatroomId
-        vc.imageContents = UIImage(named: item.chatroomImage.first ?? "")
         
         navigationController?.pushViewController(vc, animated: true)
     }

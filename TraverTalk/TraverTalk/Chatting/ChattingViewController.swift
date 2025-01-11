@@ -17,8 +17,6 @@ class ChattingViewController: UIViewController {
     
     var chatRoomIdContents: Int?
     var titleContents: String?
-//    var chatListContents: String?
-    var imageContents: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,10 +70,7 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
         
 //        if row.user != .user {
             let cell = chattingTableView.dequeueReusableCell(withIdentifier: Identifier.LeftBubbleTableViewCell.rawValue) as! LeftBubbleTableViewCell
-        cell.nameLabel.text = row.user.rawValue
-        cell.profileImage.image = imageContents
-        cell.messageLabel.text = row.message
-        cell.timeLabel.text = row.date.toDate()?.toTimeString()
+            cell.configureData(row: row)
         
             return cell
 //        } else {
