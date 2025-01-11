@@ -44,12 +44,9 @@ extension ChatListViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = chatListCollectionView.dequeueReusableCell(withReuseIdentifier: "ChatListCollectionViewCell", for: indexPath) as! ChatListCollectionViewCell
-        let row = chatList[indexPath.row]
+        let item = chatList[indexPath.item]
         
-        cell.chatRoomImage.image = UIImage(named: row.chatroomImage.first ?? "")
-        cell.chatRoomTitleLabel.text = row.chatroomName
-        cell.chatRoomPreviewLabel.text = row.chatList.last?.message
-        cell.dateLabel.text = row.chatList.last?.date.toDate()?.toString()
+        cell.configureData(item: item)
         
         return cell
     }
