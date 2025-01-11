@@ -18,17 +18,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G68-LU-Dua">
-                        <rect key="frame" x="493" y="4" width="58" height="126"/>
+                        <rect key="frame" x="489" y="4" width="58" height="122"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPw-ix-mGE">
-                        <rect key="frame" x="501" y="12" width="42" height="110"/>
+                        <rect key="frame" x="497" y="12" width="42" height="106"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNQ-nK-9D7">
-                        <rect key="frame" x="447" y="109" width="42" height="17"/>
+                        <rect key="frame" x="443" y="109" width="42" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="zq3-DL-R8H"/>
                         </constraints>
@@ -38,7 +38,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="dPw-ix-mGE" secondAttribute="trailing" constant="12" id="Ca4-kj-ivm"/>
+                    <constraint firstAttribute="trailing" secondItem="dPw-ix-mGE" secondAttribute="trailing" constant="16" id="Ca4-kj-ivm"/>
                     <constraint firstItem="dPw-ix-mGE" firstAttribute="leading" secondItem="G68-LU-Dua" secondAttribute="leading" constant="8" id="Czp-L1-z2M"/>
                     <constraint firstAttribute="bottom" secondItem="UNQ-nK-9D7" secondAttribute="bottom" constant="8" id="HcG-5T-FBG"/>
                     <constraint firstItem="dPw-ix-mGE" firstAttribute="top" secondItem="G68-LU-Dua" secondAttribute="top" constant="8" id="KY7-QN-kbd"/>
@@ -47,7 +47,7 @@
                     <constraint firstItem="UNQ-nK-9D7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="nI3-Wx-pSQ"/>
                     <constraint firstItem="dPw-ix-mGE" firstAttribute="trailing" secondItem="G68-LU-Dua" secondAttribute="trailing" constant="-8" id="tng-Ct-Gfk"/>
                     <constraint firstItem="dPw-ix-mGE" firstAttribute="bottom" secondItem="G68-LU-Dua" secondAttribute="bottom" constant="-8" id="vck-cX-iA8"/>
-                    <constraint firstAttribute="bottom" secondItem="dPw-ix-mGE" secondAttribute="bottom" constant="12" id="y6a-ET-OZu"/>
+                    <constraint firstAttribute="bottom" secondItem="dPw-ix-mGE" secondAttribute="bottom" constant="16" id="y6a-ET-OZu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

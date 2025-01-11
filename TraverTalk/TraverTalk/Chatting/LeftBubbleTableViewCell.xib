@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-LA-J3U">
-                        <rect key="frame" x="56" y="33" width="57.333333333333343" height="120"/>
+                        <rect key="frame" x="56" y="33" width="57.333333333333343" height="116"/>
                         <color key="backgroundColor" systemColor="tableCellBlueTextColor"/>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7kw-Nz-vzW">
@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBP-Nn-kTS">
-                        <rect key="frame" x="64" y="41" width="41.333333333333343" height="104"/>
+                        <rect key="frame" x="64" y="41" width="41.333333333333343" height="100"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                     <constraint firstItem="GBP-Nn-kTS" firstAttribute="leading" secondItem="NAh-LA-J3U" secondAttribute="leading" constant="8" id="Sjf-lv-QJY"/>
                     <constraint firstItem="7kw-Nz-vzW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="TZg-fg-JHw"/>
                     <constraint firstItem="GBP-Nn-kTS" firstAttribute="trailing" secondItem="NAh-LA-J3U" secondAttribute="trailing" constant="-8" id="cY6-RS-QXc"/>
-                    <constraint firstAttribute="bottom" secondItem="GBP-Nn-kTS" secondAttribute="bottom" constant="12" id="j6a-qE-XnQ"/>
+                    <constraint firstAttribute="bottom" secondItem="GBP-Nn-kTS" secondAttribute="bottom" constant="16" id="j6a-qE-XnQ"/>
                     <constraint firstItem="7u2-Jt-3Hi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nCj-f1-h5V"/>
                     <constraint firstItem="xik-nY-faj" firstAttribute="leading" secondItem="GBP-Nn-kTS" secondAttribute="trailing" constant="12" id="sKo-6W-FCV"/>
                     <constraint firstAttribute="bottom" secondItem="xik-nY-faj" secondAttribute="bottom" constant="8" id="snM-4K-9fJ"/>

@@ -86,7 +86,7 @@
                                 <rect key="frame" x="0.0" y="778" width="393" height="74"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="27Y-ET-y6y">
-                                        <rect key="frame" x="16" y="4" width="361" height="44"/>
+                                        <rect key="frame" x="30" y="4" width="333" height="44"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="xcy-jF-LN3"/>
@@ -97,7 +97,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuC-qY-3wG">
-                                        <rect key="frame" x="333" y="4" width="44" height="44"/>
+                                        <rect key="frame" x="319" y="4" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="NuC-qY-3wG" secondAttribute="height" multiplier="1:1" id="8ku-eu-13u"/>
                                         </constraints>
@@ -109,10 +109,10 @@
                                 <constraints>
                                     <constraint firstItem="NuC-qY-3wG" firstAttribute="top" secondItem="27Y-ET-y6y" secondAttribute="top" id="6sv-4b-I44"/>
                                     <constraint firstItem="27Y-ET-y6y" firstAttribute="bottom" secondItem="NuC-qY-3wG" secondAttribute="bottom" id="9Wx-Om-Jiw"/>
-                                    <constraint firstAttribute="trailing" secondItem="27Y-ET-y6y" secondAttribute="trailing" constant="16" id="GMx-42-tU2"/>
+                                    <constraint firstAttribute="trailing" secondItem="27Y-ET-y6y" secondAttribute="trailing" constant="30" id="GMx-42-tU2"/>
                                     <constraint firstItem="27Y-ET-y6y" firstAttribute="trailing" secondItem="NuC-qY-3wG" secondAttribute="trailing" id="PvU-BQ-XmP"/>
                                     <constraint firstAttribute="height" constant="74" id="TJQ-En-rX1"/>
-                                    <constraint firstItem="27Y-ET-y6y" firstAttribute="leading" secondItem="ElJ-j3-O60" secondAttribute="leading" constant="16" id="UCP-F3-Uow"/>
+                                    <constraint firstItem="27Y-ET-y6y" firstAttribute="leading" secondItem="ElJ-j3-O60" secondAttribute="leading" constant="30" id="UCP-F3-Uow"/>
                                     <constraint firstItem="27Y-ET-y6y" firstAttribute="top" secondItem="ElJ-j3-O60" secondAttribute="top" constant="4" id="g6w-I7-yxW"/>
                                 </constraints>
                             </view>

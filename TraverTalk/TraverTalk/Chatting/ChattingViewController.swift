@@ -14,15 +14,17 @@ class ChattingViewController: UIViewController {
     @IBOutlet var sendButton: UIButton!
     
     var chatList = ChatInfo().mockChatList
-    
     var chatRoomIdContents: Int?
     var titleContents: String?
+    let textViewPlaceholder = "메세지를 입력하세요"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationDesign()
         tableViewConfig()
+        textViewConfig()
+        sendButtonDesign()
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -38,10 +40,27 @@ class ChattingViewController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = .black
     }
     
+    func textViewConfig() {
+        messageTextView.delegate = self
+        
+        messageTextView.text = textViewPlaceholder
+        messageTextView.textColor = .lightGray
+        messageTextView.font = .systemFont(ofSize: 17)
+        messageTextView.backgroundColor = .systemGray6
+        messageTextView.layer.cornerRadius = 8
+    }
+    
+    func sendButtonDesign() {
+        sendButton.configuration = .sendButtonStyle()
+        sendButton.isEnabled = false
+    }
+    
+    // 스크롤 디폴트를 맨 아래로 내리기? (가장 최근 채팅보이기)
     func tableViewConfig() {
         chattingTableView.delegate = self
         chattingTableView.dataSource = self
         chattingTableView.separatorStyle = .none
+        chattingTableView.allowsSelection = false
         
         let leftBubbleXib = UINib(nibName: Identifier.LeftBubbleTableViewCell.rawValue, bundle: nil)
         chattingTableView.register(leftBubbleXib, forCellReuseIdentifier: Identifier.LeftBubbleTableViewCell.rawValue)
@@ -82,5 +101,40 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         }
+    }
+}
+
+extension ChattingViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print(#function)
+        
+        // 플레이스홀더 처리
+        if messageTextView.textColor == UIColor.lightGray {
+            messageTextView.text = nil
+            messageTextView.textColor = UIColor.black
+        }
+        
+        sendButton.isEnabled = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print(#function)
+        
+        // 플레이스홀더
+        if messageTextView.text.isEmpty {
+            messageTextView.text = textViewPlaceholder
+            messageTextView.textColor = UIColor.lightGray
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        print(#function)
+        // 키보드 내리기 코드 -> 연구해보기!
+        if text == "\n" {
+            messageTextView.resignFirstResponder()
+        } else {
+            
+        }
+        return true
     }
 }
