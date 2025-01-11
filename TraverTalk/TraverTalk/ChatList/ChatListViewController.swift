@@ -19,7 +19,6 @@ class ChatListViewController: UIViewController {
         
         navigationDesign()
         collectionViewConfig()
-        collectionViewLayoutConfig()
     }
     
     func collectionViewConfig() {
@@ -28,19 +27,10 @@ class ChatListViewController: UIViewController {
         
         let xib = UINib(nibName: "ChatListCollectionViewCell", bundle: nil)
         chatListCollectionView.register(xib, forCellWithReuseIdentifier: "ChatListCollectionViewCell")
-    }
-    
-    func collectionViewLayoutConfig() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 80)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
-        chatListCollectionView.collectionViewLayout = layout
+        chatListCollectionView.collectionViewLayout = collectionViewLayout()
     }
-    
+
     func navigationDesign() {
         navigationItem.title = "TRAVEL TALK"
     }
@@ -59,7 +49,7 @@ extension ChatListViewController: UICollectionViewDelegate, UICollectionViewData
         cell.chatRoomImage.image = UIImage(named: row.chatroomImage.first ?? "")
         cell.chatRoomTitleLabel.text = row.chatroomName
         cell.chatRoomPreviewLabel.text = row.chatList.last?.message
-        cell.dateLabel.text = row.chatList.last?.date
+        cell.dateLabel.text = row.chatList.last?.date.toDate()?.toString()
         
         return cell
     }
