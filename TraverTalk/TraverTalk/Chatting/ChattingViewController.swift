@@ -23,7 +23,16 @@ class ChattingViewController: UIViewController {
         navigationDesign()
     }
     
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func navigationDesign() {
         navigationItem.title = titleContents
+        
+        let chevron = UIImage(systemName: "chevron.left")
+        let backButton = (UIBarButtonItem(image: chevron, style: .plain, target: self, action: #selector(backButtonTapped)))
+        navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem?.tintColor = .black
     }
 }
