@@ -77,9 +77,63 @@
                     <view key="view" contentMode="scaleToFill" id="4zb-of-S1b">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bTQ-z0-Mhf">
+                                <rect key="frame" x="0.0" y="59" width="393" height="719"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElJ-j3-O60">
+                                <rect key="frame" x="0.0" y="778" width="393" height="74"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="27Y-ET-y6y">
+                                        <rect key="frame" x="16" y="4" width="361" height="44"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="xcy-jF-LN3"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuC-qY-3wG">
+                                        <rect key="frame" x="333" y="4" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="NuC-qY-3wG" secondAttribute="height" multiplier="1:1" id="8ku-eu-13u"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="NuC-qY-3wG" firstAttribute="top" secondItem="27Y-ET-y6y" secondAttribute="top" id="6sv-4b-I44"/>
+                                    <constraint firstItem="27Y-ET-y6y" firstAttribute="bottom" secondItem="NuC-qY-3wG" secondAttribute="bottom" id="9Wx-Om-Jiw"/>
+                                    <constraint firstAttribute="trailing" secondItem="27Y-ET-y6y" secondAttribute="trailing" constant="16" id="GMx-42-tU2"/>
+                                    <constraint firstItem="27Y-ET-y6y" firstAttribute="trailing" secondItem="NuC-qY-3wG" secondAttribute="trailing" id="PvU-BQ-XmP"/>
+                                    <constraint firstAttribute="height" constant="74" id="TJQ-En-rX1"/>
+                                    <constraint firstItem="27Y-ET-y6y" firstAttribute="leading" secondItem="ElJ-j3-O60" secondAttribute="leading" constant="16" id="UCP-F3-Uow"/>
+                                    <constraint firstItem="27Y-ET-y6y" firstAttribute="top" secondItem="ElJ-j3-O60" secondAttribute="top" constant="4" id="g6w-I7-yxW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="JBa-2H-tMO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ElJ-j3-O60" firstAttribute="leading" secondItem="JBa-2H-tMO" secondAttribute="leading" id="2TS-FL-lky"/>
+                            <constraint firstItem="ElJ-j3-O60" firstAttribute="top" secondItem="bTQ-z0-Mhf" secondAttribute="bottom" id="2xe-yC-IP3"/>
+                            <constraint firstItem="JBa-2H-tMO" firstAttribute="trailing" secondItem="ElJ-j3-O60" secondAttribute="trailing" id="3pf-OV-Bfg"/>
+                            <constraint firstItem="bTQ-z0-Mhf" firstAttribute="top" secondItem="JBa-2H-tMO" secondAttribute="top" id="6ah-Dy-Tp0"/>
+                            <constraint firstItem="bTQ-z0-Mhf" firstAttribute="leading" secondItem="JBa-2H-tMO" secondAttribute="leading" id="JSu-wE-pLe"/>
+                            <constraint firstAttribute="bottom" secondItem="ElJ-j3-O60" secondAttribute="bottom" id="P40-AC-98B"/>
+                            <constraint firstItem="JBa-2H-tMO" firstAttribute="trailing" secondItem="bTQ-z0-Mhf" secondAttribute="trailing" id="S3Y-fL-bUR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ChattingTableView" destination="bTQ-z0-Mhf" id="V7W-Fq-fMc"/>
+                        <outlet property="messageTextView" destination="27Y-ET-y6y" id="VhU-1a-bQI"/>
+                        <outlet property="sendButton" destination="NuC-qY-3wG" id="xrd-Jd-3hP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIv-p6-caG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,6 +159,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
