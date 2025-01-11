@@ -17,7 +17,7 @@ class ChattingViewController: UIViewController {
     
     var chatRoomIdContents: Int?
     var titleContents: String?
-    var chatListContents: String?
+//    var chatListContents: String?
     var imageContents: UIImage?
     
     override func viewDidLoad() {
@@ -43,6 +43,7 @@ class ChattingViewController: UIViewController {
     func tableViewConfig() {
         chattingTableView.delegate = self
         chattingTableView.dataSource = self
+        chattingTableView.separatorStyle = .none
         
         let xib = UINib(nibName: Identifier.LeftBubbleTableViewCell.rawValue, bundle: nil)
         chattingTableView.register(xib, forCellReuseIdentifier: Identifier.LeftBubbleTableViewCell.rawValue)
@@ -56,8 +57,8 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
             return 0
         }
         
-        let index = chatRoomIdContents - 1
-        return chatList[index].chatList.count
+        let chatRoomIndex = chatRoomIdContents - 1
+        return chatList[chatRoomIndex].chatList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,10 +67,19 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         }
         
-        let cell = chattingTableView.dequeueReusableCell(withIdentifier: Identifier.LeftBubbleTableViewCell.rawValue) as! LeftBubbleTableViewCell
-        let index = chatRoomIdContents - 1
-        let row = chatList[index].chatList[indexPath.row]
+        let chatRoomIndex = chatRoomIdContents - 1
+        let row = chatList[chatRoomIndex].chatList[indexPath.row]
         
-        return cell
+//        if row.user != .user {
+            let cell = chattingTableView.dequeueReusableCell(withIdentifier: Identifier.LeftBubbleTableViewCell.rawValue) as! LeftBubbleTableViewCell
+        cell.nameLabel.text = row.user.rawValue
+        cell.profileImage.image = imageContents
+        cell.messageLabel.text = row.message
+        cell.timeLabel.text = row.date.toDate()?.toTimeString()
+        
+            return cell
+//        } else {
+//            // RightBubbleTableViewCell
+//        }
     }
 }
