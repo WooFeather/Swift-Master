@@ -80,4 +80,14 @@ extension ChatListViewController: UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = filteredChatList[indexPath.item]
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: Identifier.ChattingViewController.rawValue) as! ChattingViewController
+        vc.titleContents = item.chatroomName
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

@@ -130,7 +130,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ChattingTableView" destination="bTQ-z0-Mhf" id="V7W-Fq-fMc"/>
+                        <outlet property="chattingTableView" destination="bTQ-z0-Mhf" id="V7W-Fq-fMc"/>
                         <outlet property="messageTextView" destination="27Y-ET-y6y" id="VhU-1a-bQI"/>
                         <outlet property="sendButton" destination="NuC-qY-3wG" id="xrd-Jd-3hP"/>
                     </connections>

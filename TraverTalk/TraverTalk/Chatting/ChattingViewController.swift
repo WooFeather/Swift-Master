@@ -9,12 +9,21 @@ import UIKit
 
 class ChattingViewController: UIViewController {
 
-    @IBOutlet var ChattingTableView: UITableView!
+    @IBOutlet var chattingTableView: UITableView!
     @IBOutlet var messageTextView: UITextView!
     @IBOutlet var sendButton: UIButton!
     
+    var titleContents: String?
+    var chatListContents: String?
+    var imageContents: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationDesign()
+    }
+    
+    func navigationDesign() {
+        navigationItem.title = titleContents
     }
 }
