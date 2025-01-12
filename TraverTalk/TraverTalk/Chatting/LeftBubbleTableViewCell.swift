@@ -39,5 +39,6 @@ class LeftBubbleTableViewCell: UITableViewCell {
         profileImage.image = UIImage(named: row.user.profileImage)
         messageLabel.text = row.message
         timeLabel.text = row.date.toDate()?.toTimeString()
+        print("시간: \(row.date.toDate())")
     }
 }
