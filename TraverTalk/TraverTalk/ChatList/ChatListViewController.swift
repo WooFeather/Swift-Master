@@ -30,8 +30,8 @@ class ChatListViewController: UIViewController {
         let chatListXib = UINib(nibName: Identifier.ChatListCollectionViewCell.rawValue, bundle: nil)
         chatListCollectionView.register(chatListXib, forCellWithReuseIdentifier: Identifier.ChatListCollectionViewCell.rawValue)
         
-        let groupChatXib = UINib(nibName: Identifier.GropChatCollectionViewCell.rawValue, bundle: nil)
-        chatListCollectionView.register(groupChatXib, forCellWithReuseIdentifier: Identifier.GropChatCollectionViewCell.rawValue)
+        let groupChatXib = UINib(nibName: Identifier.GroupChatCollectionViewCell.rawValue, bundle: nil)
+        chatListCollectionView.register(groupChatXib, forCellWithReuseIdentifier: Identifier.GroupChatCollectionViewCell.rawValue)
         
         chatListCollectionView.collectionViewLayout = collectionViewLayout()
     }
@@ -76,12 +76,21 @@ extension ChatListViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = chatListCollectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ChatListCollectionViewCell.rawValue, for: indexPath) as! ChatListCollectionViewCell
         let item = filteredChatList[indexPath.item]
         
-        cell.configureData(item: item)
-        
-        return cell
+        if item.chatroomImage.count == 1 {
+            let cell = chatListCollectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ChatListCollectionViewCell.rawValue, for: indexPath) as! ChatListCollectionViewCell
+            
+            cell.configureData(item: item)
+            
+            return cell
+        } else {
+            let cell = chatListCollectionView.dequeueReusableCell(withReuseIdentifier: Identifier.GroupChatCollectionViewCell.rawValue, for: indexPath) as! GroupChatCollectionViewCell
+            
+            cell.configureData(item: item)
+            
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

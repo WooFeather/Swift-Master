@@ -9,7 +9,7 @@ import Foundation
 
 enum Identifier: String {
     case ChatListCollectionViewCell = "ChatListCollectionViewCell"
-    case GropChatCollectionViewCell = "GropChatCollectionViewCell"
+    case GroupChatCollectionViewCell = "GroupChatCollectionViewCell"
     case LeftBubbleTableViewCell = "LeftBubbleTableViewCell"
     case RightBubbleTableViewCell = "RightBubbleTableViewCell"
     case ChattingViewController = "ChattingViewController"
