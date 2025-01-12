@@ -129,7 +129,7 @@ extension ChattingViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         print(#function)
-        // 키보드 내리기 코드 -> 연구해보기!
+        // 구글링해서 찾은 키보드 내리기 코드 -> 연구해보기!
         if text == "\n" {
             messageTextView.resignFirstResponder()
         } else {
