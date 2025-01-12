@@ -27,8 +27,11 @@ class ChatListViewController: UIViewController {
         chatListCollectionView.delegate = self
         chatListCollectionView.dataSource = self
         
-        let xib = UINib(nibName: Identifier.ChatListCollectionViewCell.rawValue, bundle: nil)
-        chatListCollectionView.register(xib, forCellWithReuseIdentifier: Identifier.ChatListCollectionViewCell.rawValue)
+        let chatListXib = UINib(nibName: Identifier.ChatListCollectionViewCell.rawValue, bundle: nil)
+        chatListCollectionView.register(chatListXib, forCellWithReuseIdentifier: Identifier.ChatListCollectionViewCell.rawValue)
+        
+        let groupChatXib = UINib(nibName: Identifier.GropChatCollectionViewCell.rawValue, bundle: nil)
+        chatListCollectionView.register(groupChatXib, forCellWithReuseIdentifier: Identifier.GropChatCollectionViewCell.rawValue)
         
         chatListCollectionView.collectionViewLayout = collectionViewLayout()
     }
