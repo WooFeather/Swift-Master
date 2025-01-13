@@ -37,6 +37,12 @@ class NPayViewController: UIViewController {
         return btn
     }()
     
+    lazy var closeButton = {
+        let btn = UIButton()
+        btn.configuration = .xButtonStyle()
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +51,7 @@ class NPayViewController: UIViewController {
         backgroundViewConfig()
         logoImageConfig()
         dropDownButtonConfig()
+        closeButtonConfig()
     }
     
     func segmentControleConfig() {
@@ -85,6 +92,16 @@ class NPayViewController: UIViewController {
             make.centerY.equalTo(logoImage.snp.centerY)
             make.leading.equalTo(logoImage.snp.trailing)
             make.height.equalTo(20)
+        }
+    }
+    
+    func closeButtonConfig() {
+        backgroundView.addSubview(closeButton)
+        
+        closeButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.size.equalTo(20)
         }
     }
     
