@@ -25,4 +25,17 @@ extension UIButton.Configuration {
         configuration.baseForegroundColor = .gray
         return configuration
     }
+    
+    static func selectionButtonStyle() -> UIButton.Configuration {
+        var configuration = UIButton.Configuration.plain()
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 20)
+        configuration.title = "바로결제 사용하기"
+        configuration.image = UIImage(systemName: "checkmark.circle.fill")
+        configuration.preferredSymbolConfigurationForImage = imageConfig
+        configuration.imagePlacement = .leading
+        configuration.imagePadding = 0.5
+        configuration.image?.withTintColor(.nPayAccent)
+        configuration.baseForegroundColor = .black
+        return configuration
+    }
 }

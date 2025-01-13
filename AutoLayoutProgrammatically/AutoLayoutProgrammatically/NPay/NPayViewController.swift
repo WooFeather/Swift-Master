@@ -59,6 +59,12 @@ class NPayViewController: UIViewController {
         return label
     }()
     
+    lazy var selectionButton = {
+        let btn = UIButton()
+        btn.configuration = .selectionButtonStyle()
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,6 +76,7 @@ class NPayViewController: UIViewController {
         closeButtonConfig()
         lockImageConfig()
         mainLabelConfig()
+        selectionButtonConfig()
     }
     
     func segmentControleConfig() {
@@ -138,6 +145,16 @@ class NPayViewController: UIViewController {
             make.top.equalTo(lockImage.snp.bottom).offset(28)
             make.horizontalEdges.equalToSuperview().inset(24)
             make.height.equalTo(48)
+        }
+    }
+    
+    func selectionButtonConfig() {
+        backgroundView.addSubview(selectionButton)
+        
+        selectionButton.snp.makeConstraints { make in
+            make.top.equalTo(mainLabel.snp.bottom).offset(50)
+            make.horizontalEdges.equalToSuperview().inset(72)
+            make.height.equalTo(35)
         }
     }
     
