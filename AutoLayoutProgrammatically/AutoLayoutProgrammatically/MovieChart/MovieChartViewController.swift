@@ -48,6 +48,10 @@ class MovieChartViewController: UIViewController {
         btn.backgroundColor = .white
         return btn
     }()
+    
+    lazy var movieTableView = UITableView(frame: .zero)
+    
+    let movieList = MovieData().movieList
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +59,7 @@ class MovieChartViewController: UIViewController {
         backgroundImageConfig()
         searchTextFieldConfig()
         searchButtonConfig()
+        movieTableViewConfig()
     }
     
     @objc
@@ -87,7 +92,7 @@ class MovieChartViewController: UIViewController {
             make.top.equalTo(searchTextField.snp.bottom).offset(8)
             make.leading.equalTo(view).offset(24)
             make.width.equalTo(250)
-            make.height.equalTo(2)
+            make.height.equalTo(3)
         }
     }
     
@@ -100,5 +105,32 @@ class MovieChartViewController: UIViewController {
             make.trailing.equalTo(view).offset(-24)
             make.height.equalTo(50)
         }
+    }
+    
+    func movieTableViewConfig() {
+        view.addSubview(movieTableView)
+        
+        movieTableView.backgroundColor = .clear
+        
+        movieTableView.delegate = self
+        movieTableView.dataSource = self
+        movieTableView.register(MovieChartTableViewCell.self, forCellReuseIdentifier: MovieChartTableViewCell.identifier)
+        
+        movieTableView.snp.makeConstraints { make in
+            make.top.equalTo(textFieldBottomLine.snp.bottom).offset(12)
+            make.horizontalEdges.equalTo(view).inset(24)
+            make.bottom.equalToSuperview()
+        }
+    }
+}
+
+extension MovieChartViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movieList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = movieTableView.dequeueReusableCell(withIdentifier: MovieChartTableViewCell.identifier, for: indexPath) as! MovieChartTableViewCell
+        return cell
     }
 }
