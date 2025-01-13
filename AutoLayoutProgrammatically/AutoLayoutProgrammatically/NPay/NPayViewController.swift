@@ -17,11 +17,19 @@ class NPayViewController: UIViewController {
         return segmentControl
     }()
     
+    lazy var backgroundView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 8
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         essentialDesign()
         segmentControleConfig()
+        backgroundViewConfig()
     }
     
     func segmentControleConfig() {
@@ -31,6 +39,16 @@ class NPayViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(14)
             make.horizontalEdges.equalTo(view).inset(24)
             make.height.equalTo(36)
+        }
+    }
+    
+    func backgroundViewConfig() {
+        view.addSubview(backgroundView)
+        
+        backgroundView.snp.makeConstraints { make in
+            make.top.equalTo(selectionSegmentControl.snp.bottom).offset(22)
+            make.horizontalEdges.equalTo(view).inset(24)
+            make.height.equalTo(450)
         }
     }
     
