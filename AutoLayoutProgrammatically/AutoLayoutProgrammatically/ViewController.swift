@@ -13,7 +13,6 @@ class ViewController: UIViewController {
         let btn = UIButton()
         btn.setTitle("BONGFLIX", for: .normal)
         btn.setTitleColor(.black, for: .normal)
-        btn.layer.cornerRadius = 10
         btn.layer.borderWidth = 2
         btn.layer.borderColor = UIColor.red.cgColor
         btn.addTarget(self, action: #selector(bongflixButtonTapped), for: .touchUpInside)
@@ -27,6 +26,17 @@ class ViewController: UIViewController {
         btn.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         btn.layer.cornerRadius = 10
         btn.addTarget(self, action: #selector(nPayButtonTapped), for: .touchUpInside)
+        return btn
+    }()
+    
+    lazy var movieChartButton = {
+        let btn = UIButton()
+        btn.setTitle("MoviewChart", for: .normal)
+        btn.backgroundColor = .blue
+        DispatchQueue.main.async {
+            btn.layer.cornerRadius = btn.frame.width / 2
+        }
+        btn.addTarget(self, action: #selector(movieChartButtonTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -50,9 +60,17 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc
+    func movieChartButtonTapped() {
+        print(#function)
+        let vc = MoviewChartViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func buttonConfig() {
         view.addSubview(bongflixButton)
         view.addSubview(nPayButton)
+        view.addSubview(movieChartButton)
         
         bongflixButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(200)
@@ -65,6 +83,12 @@ class ViewController: UIViewController {
             make.centerX.equalTo(bongflixButton.snp.centerX)
             make.width.equalTo(200)
             make.height.equalTo(50)
+        }
+        
+        movieChartButton.snp.makeConstraints { make in
+            make.top.equalTo(nPayButton.snp.bottom).offset(44)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(150)
         }
     }
 }
