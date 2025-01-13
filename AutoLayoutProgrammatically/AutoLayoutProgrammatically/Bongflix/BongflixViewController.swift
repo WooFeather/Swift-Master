@@ -69,6 +69,7 @@ class BongflixViewController: UIViewController {
     func configureTextField(placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.placeholder = placeholder
+        textField.setColor(.white)
         textField.textAlignment = .center
         textField.backgroundColor = .lightGray
         textField.layer.cornerRadius = 4
