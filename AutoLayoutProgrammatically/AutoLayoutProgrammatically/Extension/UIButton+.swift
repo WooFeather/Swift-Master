@@ -38,4 +38,14 @@ extension UIButton.Configuration {
         configuration.baseForegroundColor = .black
         return configuration
     }
+    
+    static func confirmButtonStyle() -> UIButton.Configuration {
+        var configuration = UIButton.Configuration.plain()
+        configuration.title = "확인"
+        configuration.titleAlignment = .center
+        configuration.baseForegroundColor = .white
+        configuration.background.backgroundColor = .nPayAccent
+        configuration.cornerStyle = .capsule
+        return configuration
+    }
 }

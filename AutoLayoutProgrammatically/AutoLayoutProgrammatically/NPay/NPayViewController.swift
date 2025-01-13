@@ -65,6 +65,12 @@ class NPayViewController: UIViewController {
         return btn
     }()
     
+    lazy var confirmButton = {
+        let btn = UIButton()
+        btn.configuration = .confirmButtonStyle()
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,6 +83,7 @@ class NPayViewController: UIViewController {
         lockImageConfig()
         mainLabelConfig()
         selectionButtonConfig()
+        confirmButtonConfig()
     }
     
     func segmentControleConfig() {
@@ -155,6 +162,16 @@ class NPayViewController: UIViewController {
             make.top.equalTo(mainLabel.snp.bottom).offset(50)
             make.horizontalEdges.equalToSuperview().inset(72)
             make.height.equalTo(35)
+        }
+    }
+    
+    func confirmButtonConfig() {
+        backgroundView.addSubview(confirmButton)
+        
+        confirmButton.snp.makeConstraints { make in
+            make.top.equalTo(selectionButton.snp.bottom).offset(14)
+            make.horizontalEdges.equalToSuperview().inset(24)
+            make.height.equalTo(44)
         }
     }
     
