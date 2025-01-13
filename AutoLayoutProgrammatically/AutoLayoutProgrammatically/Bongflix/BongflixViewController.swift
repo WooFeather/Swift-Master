@@ -19,6 +19,14 @@ class BongflixViewController: UIViewController {
         return label
     }()
     
+    lazy var additionalInfoLabel = {
+        let label = UILabel()
+        label.text = "추가 정보 입력"
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+    
     lazy var emailTextField: UITextField = configureTextField(placeholder: Placeholder.email.rawValue)
     lazy var passwordTextField: UITextField = configureTextField(placeholder: Placeholder.password.rawValue)
     lazy var nicknameTextField: UITextField = configureTextField(placeholder: Placeholder.nickname.rawValue)
@@ -34,6 +42,13 @@ class BongflixViewController: UIViewController {
         btn.layer.cornerRadius = 4
         return btn
     }()
+    
+    lazy var additionalInfoSwitch = {
+        let addSwitch = UISwitch()
+        addSwitch.isOn = false
+        addSwitch.onTintColor = .red
+        return addSwitch
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +57,8 @@ class BongflixViewController: UIViewController {
         labelConfig()
         textFieldConfig()
         buttonConfig()
+        additionalLabelConfig()
+        switchConfig()
     }
     
     @objc
@@ -113,6 +130,24 @@ class BongflixViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(44)
             make.centerX.equalTo(view.snp.centerX)
             make.height.equalTo(30)
+        }
+    }
+    
+    func additionalLabelConfig() {
+        view.addSubview(additionalInfoLabel)
+        
+        additionalInfoLabel.snp.makeConstraints { make in
+            make.top.equalTo(signUpButton.snp.bottom).offset(14)
+            make.leading.equalTo(view).offset(42)
+        }
+    }
+    
+    func switchConfig() {
+        view.addSubview(additionalInfoSwitch)
+        
+        additionalInfoSwitch.snp.makeConstraints { make in
+            make.top.equalTo(signUpButton.snp.bottom).offset(14)
+            make.trailing.equalTo(view).offset(-42)
         }
     }
     
