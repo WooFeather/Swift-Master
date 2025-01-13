@@ -43,6 +43,22 @@ class NPayViewController: UIViewController {
         return btn
     }()
     
+    lazy var lockImage = {
+        let img = UIImageView()
+        img.image = .npayLock
+        img.contentMode = .scaleAspectFill
+        return img
+    }()
+    
+    lazy var mainLabel = {
+        let label = UILabel()
+        label.text = "한 번만 인증하고\n비밀번호 없이 결제하세요"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +68,8 @@ class NPayViewController: UIViewController {
         logoImageConfig()
         dropDownButtonConfig()
         closeButtonConfig()
+        lockImageConfig()
+        mainLabelConfig()
     }
     
     func segmentControleConfig() {
@@ -78,8 +96,7 @@ class NPayViewController: UIViewController {
         backgroundView.addSubview(logoImage)
         
         logoImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(8)
+            make.top.leading.equalToSuperview().offset(8)
             make.width.equalTo(90)
             make.height.equalTo(40)
         }
@@ -102,6 +119,25 @@ class NPayViewController: UIViewController {
             make.top.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.size.equalTo(20)
+        }
+    }
+    
+    func lockImageConfig() {
+        backgroundView.addSubview(lockImage)
+        
+        lockImage.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalToSuperview().inset(110)
+            make.size.equalTo(100)
+        }
+    }
+    
+    func mainLabelConfig() {
+        backgroundView.addSubview(mainLabel)
+        
+        mainLabel.snp.makeConstraints { make in
+            make.top.equalTo(lockImage.snp.bottom).offset(28)
+            make.horizontalEdges.equalToSuperview().inset(24)
+            make.height.equalTo(48)
         }
     }
     
