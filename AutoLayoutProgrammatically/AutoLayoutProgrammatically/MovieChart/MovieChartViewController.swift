@@ -40,12 +40,21 @@ class MovieChartViewController: UIViewController {
         view.backgroundColor = .white
         return view
     }()
+    
+    lazy var searchButton = {
+        let btn = UIButton()
+        btn.setTitle("검색", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .white
+        return btn
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         backgroundImageConfig()
         searchTextFieldConfig()
+        searchButtonConfig()
     }
     
     @objc
@@ -79,6 +88,17 @@ class MovieChartViewController: UIViewController {
             make.leading.equalTo(view).offset(24)
             make.width.equalTo(250)
             make.height.equalTo(2)
+        }
+    }
+    
+    func searchButtonConfig() {
+        view.addSubview(searchButton)
+        
+        searchButton.snp.makeConstraints { make in
+            make.centerY.equalTo(searchTextField.snp.centerY)
+            make.leading.equalTo(searchTextField.snp.trailing).offset(12)
+            make.trailing.equalTo(view).offset(-24)
+            make.height.equalTo(50)
         }
     }
 }
