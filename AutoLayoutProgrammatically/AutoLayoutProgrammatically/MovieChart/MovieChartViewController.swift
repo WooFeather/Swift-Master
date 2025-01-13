@@ -49,7 +49,7 @@ class MovieChartViewController: UIViewController {
         return btn
     }()
     
-    lazy var movieTableView = UITableView(frame: .zero)
+    let movieTableView = UITableView()
     
     let movieList = MovieData().movieList
 
@@ -112,15 +112,14 @@ class MovieChartViewController: UIViewController {
         
         movieTableView.backgroundColor = .clear
         
+        movieTableView.snp.makeConstraints { make in
+            make.top.equalTo(textFieldBottomLine.snp.bottom).offset(12)
+            make.bottom.horizontalEdges.equalToSuperview()
+        }
+        
         movieTableView.delegate = self
         movieTableView.dataSource = self
         movieTableView.register(MovieChartTableViewCell.self, forCellReuseIdentifier: MovieChartTableViewCell.identifier)
-        
-        movieTableView.snp.makeConstraints { make in
-            make.top.equalTo(textFieldBottomLine.snp.bottom).offset(12)
-            make.horizontalEdges.equalTo(view).inset(24)
-            make.bottom.equalToSuperview()
-        }
     }
 }
 
@@ -130,7 +129,13 @@ extension MovieChartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(#function)
         let cell = movieTableView.dequeueReusableCell(withIdentifier: MovieChartTableViewCell.identifier, for: indexPath) as! MovieChartTableViewCell
+        let row = movieList[indexPath.row]
+        
+        cell.backgroundColor = .clear
+        cell.configureData(row: row)
+        
         return cell
     }
 }
