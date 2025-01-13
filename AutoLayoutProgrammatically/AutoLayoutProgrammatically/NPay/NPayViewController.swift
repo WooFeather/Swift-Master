@@ -6,23 +6,35 @@
 //
 
 import UIKit
+import SnapKit
 
 class NPayViewController: UIViewController {
 
+    lazy var selectionSegmentControl = {
+        let segmentControl = UISegmentedControl(items: ["멤버십", "현장결제", "쿠폰"])
+        segmentControl.selectedSegmentIndex = 1
+        segmentControl.selectedSegmentTintColor = .npaySeg
+        return segmentControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
+        
+        essentialDesign()
+        segmentControleConfig()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func segmentControleConfig() {
+        view.addSubview(selectionSegmentControl)
+        
+        selectionSegmentControl.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(14)
+            make.horizontalEdges.equalTo(view).inset(24)
+            make.height.equalTo(36)
+        }
     }
-    */
-
+    
+    func essentialDesign() {
+        view.backgroundColor = .npayBackground
+    }
 }

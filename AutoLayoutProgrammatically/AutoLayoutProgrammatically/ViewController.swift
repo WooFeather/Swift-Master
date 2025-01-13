@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
     lazy var movieChartButton = {
         let btn = UIButton()
-        btn.setTitle("MoviewChart", for: .normal)
+        btn.setTitle("MovieChart", for: .normal)
         btn.backgroundColor = .blue
         DispatchQueue.main.async {
             btn.layer.cornerRadius = btn.frame.width / 2
