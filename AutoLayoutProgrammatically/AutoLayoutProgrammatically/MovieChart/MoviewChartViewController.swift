@@ -1,5 +1,5 @@
 //
-//  NPayViewController.swift
+//  MoviewChartViewController.swift
 //  AutoLayoutProgrammatically
 //
 //  Created by 조우현 on 1/13/25.
@@ -7,12 +7,11 @@
 
 import UIKit
 
-class NPayViewController: UIViewController {
+class MoviewChartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print(#function)
     }
     
 
