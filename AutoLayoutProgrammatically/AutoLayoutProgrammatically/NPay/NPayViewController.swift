@@ -24,12 +24,27 @@ class NPayViewController: UIViewController {
         return view
     }()
     
+    lazy var logoImage = {
+        let img = UIImageView()
+        img.image = .npayLogo
+        img.contentMode = .scaleAspectFill
+        return img
+    }()
+    
+    lazy var dropDownButton = {
+        let btn = UIButton()
+        btn.configuration = .dropDownButtonStyle()
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         essentialDesign()
         segmentControleConfig()
         backgroundViewConfig()
+        logoImageConfig()
+        dropDownButtonConfig()
     }
     
     func segmentControleConfig() {
@@ -49,6 +64,27 @@ class NPayViewController: UIViewController {
             make.top.equalTo(selectionSegmentControl.snp.bottom).offset(22)
             make.horizontalEdges.equalTo(view).inset(24)
             make.height.equalTo(450)
+        }
+    }
+    
+    func logoImageConfig() {
+        backgroundView.addSubview(logoImage)
+        
+        logoImage.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(8)
+            make.width.equalTo(90)
+            make.height.equalTo(40)
+        }
+    }
+    
+    func dropDownButtonConfig() {
+        backgroundView.addSubview(dropDownButton)
+        
+        dropDownButton.snp.makeConstraints { make in
+            make.centerY.equalTo(logoImage.snp.centerY)
+            make.leading.equalTo(logoImage.snp.trailing)
+            make.height.equalTo(20)
         }
     }
     
