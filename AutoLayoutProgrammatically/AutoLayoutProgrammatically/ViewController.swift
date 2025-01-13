@@ -63,7 +63,7 @@ class ViewController: UIViewController {
     @objc
     func movieChartButtonTapped() {
         print(#function)
-        let vc = MoviewChartViewController()
+        let vc = MovieChartViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
