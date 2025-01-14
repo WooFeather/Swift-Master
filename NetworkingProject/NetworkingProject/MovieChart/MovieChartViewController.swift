@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class MovieChartViewController: UIViewController {
     
@@ -20,7 +21,6 @@ class MovieChartViewController: UIViewController {
     lazy var dimmingView = {
         let view = UIImageView()
         view.backgroundColor = .black
-        // view.alpha = 0.7
         view.layer.opacity = 0.7
         return view
     }()
@@ -51,7 +51,8 @@ class MovieChartViewController: UIViewController {
     
     let movieTableView = UITableView()
     
-    let movieList = MovieData().movieList
+    static let apiKey = "04b35f8603fa63738f28b50e8ae94a4d"
+    var searchDate = "20250113"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,20 +122,38 @@ class MovieChartViewController: UIViewController {
         movieTableView.dataSource = self
         movieTableView.register(MovieChartTableViewCell.self, forCellReuseIdentifier: MovieChartTableViewCell.identifier)
     }
+    
+//    func networking() {
+//        let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=04b35f8603fa63738f28b50e8ae94a4d&targetDt=\(searchDate)"
+//        AF.request(url, method: .get).responseString { response in
+//            dump(response)
+//        }
+//    }
 }
 
 extension MovieChartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieList.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(#function)
         let cell = movieTableView.dequeueReusableCell(withIdentifier: MovieChartTableViewCell.identifier, for: indexPath) as! MovieChartTableViewCell
-        let row = movieList[indexPath.row]
+        let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=04b35f8603fa63738f28b50e8ae94a4d&targetDt=\(searchDate)"
+        AF.request(url, method: .get).responseDecodable(of: BoxOffice.self) { response in
+            switch response.result {
+            case .success(let value):
+                let row = value.boxOfficeResult.dailyBoxOfficeList[indexPath.row]
+                cell.rankingLabel.text = row.rank
+                cell.titleLabel.text = row.movieNm
+                cell.releaseDateLabel.text = row.openDt
+            case .failure(let error):
+                print(error)
+            }
+        }
         
         cell.backgroundColor = .clear
-        cell.configureData(row: row)
+//        cell.configureData(row: row)
         
         return cell
     }
