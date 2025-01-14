@@ -18,9 +18,10 @@ class LotteryViewController: UIViewController, ViewConfiguration {
     let resultLabel = UILabel()
     let movieButton = UIButton()
     let plusLabel = UILabel()
+    let bonusLabel = UILabel()
     // 원래는 숫자 뷰를 나타낼 때 컬렉션뷰로 나타내보려고 했었는데, 셀 재사용 매커니즘을 생각하면 배열이 아닌, 변수 하나하나하나를 가져오는건 힘들듯…
 //    lazy var numberCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
-    var pickerItems: [Int] = Array(1000...1154)
+    var pickerItems: [Int] = Array(1...1154)
     var pickedItem = 0
     
     let firstNumLabel = UILabel()
@@ -30,6 +31,8 @@ class LotteryViewController: UIViewController, ViewConfiguration {
     let fifthNumLabel = UILabel()
     let sixthNumLabel = UILabel()
     let bonusNumLabel = UILabel()
+    
+    let tapGesture = UITapGestureRecognizer()
     
     // 네트워킹 전에 뷰를 보기 위해 더미데이터 생성
     let dummyLottery = LotteryDummy().dummy
@@ -50,7 +53,7 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         view.addSubview(dividerView)
         view.addSubview(resultLabel)
         view.addSubview(movieButton)
-        [firstNumLabel, secondNumLabel, thirdNumLabel, fourthNumLabel, fifthNumLabel, sixthNumLabel, bonusNumLabel, plusLabel].forEach {
+        [firstNumLabel, secondNumLabel, thirdNumLabel, fourthNumLabel, fifthNumLabel, sixthNumLabel, bonusNumLabel, plusLabel, bonusLabel].forEach {
             view.addSubview($0)
         }
     }
@@ -89,7 +92,7 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         firstNumLabel.snp.makeConstraints { make in
             make.top.equalTo(resultLabel.snp.bottom).offset(24)
             make.leading.equalTo(view).offset(24)
-            make.size.equalTo(35)
+            make.size.equalTo(40)
         }
         numberLayout(secondNumLabel, to: firstNumLabel)
         numberLayout(thirdNumLabel, to: secondNumLabel)
@@ -100,12 +103,23 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         bonusNumLabel.snp.makeConstraints { make in
             make.top.equalTo(resultLabel.snp.bottom).offset(24)
             make.trailing.equalTo(view).offset(-24)
-            make.size.equalTo(35)
+            make.size.equalTo(40)
         }
         
         plusLabel.snp.makeConstraints { make in
             make.centerY.equalTo(bonusNumLabel.snp.centerY)
-            make.trailing.equalTo(bonusNumLabel.snp.leading).offset(-30)
+            make.trailing.equalTo(bonusNumLabel.snp.leading).offset(-10)
+        }
+        
+        bonusLabel.snp.makeConstraints { make in
+            make.top.equalTo(bonusNumLabel.snp.bottom).offset(4)
+            make.centerX.equalTo(bonusNumLabel.snp.centerX)
+        }
+        
+        movieButton.snp.makeConstraints { make in
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+            make.center.equalToSuperview()
         }
     }
     
@@ -141,6 +155,20 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         
         plusLabel.text = "+"
         plusLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        
+        bonusLabel.text = "보너스"
+        bonusLabel.font = .systemFont(ofSize: 12)
+        bonusLabel.textColor = .gray
+        
+        movieButton.setTitle("MovieChart로 이동", for: .normal)
+        movieButton.setTitleColor(.systemBlue, for: .normal)
+        movieButton.addTarget(self, action: #selector(movieButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func movieButtonTapped() {
+        let vc = MovieChartViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func numberBackground(_ number: Int) -> UIColor {
@@ -160,7 +188,7 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         currentLabel.snp.makeConstraints { make in
             make.centerY.equalTo(to.snp.centerY)
             make.leading.equalTo(to.snp.trailing).offset(8)
-            make.size.equalTo(35)
+            make.size.equalTo(40)
         }
     }
     
