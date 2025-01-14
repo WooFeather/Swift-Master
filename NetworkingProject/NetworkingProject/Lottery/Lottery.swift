@@ -18,3 +18,17 @@ struct Lottery: Decodable {
     let drwtNo6: Int
     let bnusNo: Int
 }
+
+struct LotteryDummy {
+    let dummy = Lottery(
+        drwNoDate: "2020-05-30",
+        drwNo: 913,
+        drwtNo1: 6,
+        drwtNo2: 14,
+        drwtNo3: 16,
+        drwtNo4: 21,
+        drwtNo5: 27,
+        drwtNo6: 37,
+        bnusNo: 40
+    )
+}

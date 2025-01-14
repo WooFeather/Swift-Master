@@ -17,9 +17,21 @@ class LotteryViewController: UIViewController, ViewConfiguration {
     let dividerView = UIView()
     let resultLabel = UILabel()
     let movieButton = UIButton()
-    lazy var numberCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
+    // 원래는 숫자 뷰를 나타낼 때 컬렉션뷰로 나타내보려고 했었는데, 셀 재사용 매커니즘을 생각하면 배열이 아닌, 변수 하나하나하나를 가져오는건 힘들듯…
+//    lazy var numberCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
     var pickerItems: [Int] = Array(1000...1154)
     var pickedItem = 0
+    
+    let firstNumLabel = UILabel()
+    let secondNumLabel = UILabel()
+    let thirdNumLabel = UILabel()
+    let fourthNumLabel = UILabel()
+    let fifthNumLabel = UILabel()
+    let sixthNumLabel = UILabel()
+    let bonusNumLabel = UILabel()
+    
+    // 네트워킹 전에 뷰를 보기 위해 더미데이터 생성
+    let dummyLottery = LotteryDummy().dummy
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +48,10 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         view.addSubview(dateLabel)
         view.addSubview(dividerView)
         view.addSubview(resultLabel)
-        view.addSubview(numberCollectionView)
         view.addSubview(movieButton)
+        [firstNumLabel, secondNumLabel, thirdNumLabel, fourthNumLabel, fifthNumLabel, sixthNumLabel, bonusNumLabel].forEach {
+            view.addSubview($0)
+        }
     }
     
     func configureLayout() {
@@ -83,16 +97,16 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         infoLabel.text = "당첨번호 안내"
         infoLabel.font = .systemFont(ofSize: 14)
         
-        dateLabel.text = "2020-05-30 추첨" // 네트워킹 연결이후 수정예정
+        dateLabel.text = "\(dummyLottery.drwNoDate.toDate()?.toString() ?? "-") 추첨" // 네트워킹 연결이후 수정예정
         dateLabel.font = .systemFont(ofSize: 12)
         dateLabel.textColor = .gray
         
         dividerView.backgroundColor = .systemGray5
         
-        resultLabel.text = "913회 당첨결과" // 네트워킹 연결이후 수정예정
+        resultLabel.text = "\(dummyLottery.drwNo)회 당첨결과" // 네트워킹 연결이후 수정예정
         resultLabel.font = .systemFont(ofSize: 25, weight: .bold)
         resultLabel.textColor = .orange
-        resultLabel.attributedText = resultLabelTextAttribute()
+        resultLabel.attributedText = resultLabel.text?.resultLabelTextAttribute()
     }
     
     func pickerTextFieldConfig() {
@@ -101,24 +115,7 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         pickerView.dataSource = self
     }
     
-    func resultLabelTextAttribute() -> NSMutableAttributedString {
-        if let text = self.resultLabel.text {
-            let attributeString = NSMutableAttributedString(string: text)
-            attributeString.addAttribute(.foregroundColor, value: UIColor.black, range: (text as NSString).range(of: "당첨결과"))
-            attributeString.addAttribute(.font, value: UIFont.systemFont(ofSize: 25, weight: .regular), range: (text as NSString).range(of: "당첨결과"))
-            
-            return attributeString
-        }
-        return NSMutableAttributedString.init()
-    }
     
-    func createCollectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 50, height: 50)
-        layout.scrollDirection = .vertical
-        
-        return layout
-    }
 }
 
 extension LotteryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
