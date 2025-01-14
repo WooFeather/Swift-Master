@@ -27,7 +27,6 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         configureLayout()
         configureView()
         
-        print(pickerItems)
         pickerTextFieldConfig()
     }
 
@@ -37,6 +36,7 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         view.addSubview(dateLabel)
         view.addSubview(resultLabel)
         view.addSubview(numberCollectionView)
+        view.addSubview(movieButton)
     }
     
     func configureLayout() {
@@ -45,6 +45,12 @@ class LotteryViewController: UIViewController, ViewConfiguration {
             make.horizontalEdges.equalTo(view).inset(24)
             make.height.equalTo(44)
         }
+        
+        infoLabel.snp.makeConstraints { make in
+            make.top.equalTo(pickerTextField.snp.bottom).offset(24)
+            make.leading.equalTo(view).offset(24)
+            make.height.equalTo(17)
+        }
     }
     
     func configureView() {
@@ -52,6 +58,9 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         pickerTextField.borderStyle = .roundedRect
         pickerTextField.placeholder = "원하는 회차를 선택하세요"
         pickerTextField.tintColor = .clear
+        
+        infoLabel.text = "당첨번호 안내"
+        infoLabel.font = .systemFont(ofSize: 14)
     }
     
     func pickerTextFieldConfig() {
