@@ -77,6 +77,7 @@ class MovieChartViewController: UIViewController {
                 searchTextField.text = ""
             } else {
                 searchDate = text
+                print("선택 날짜: \(searchDate)")
                 movieTableView.reloadData()
             }
         } else {
@@ -156,6 +157,8 @@ class MovieChartViewController: UIViewController {
     func movieTableViewConfig() {
         view.addSubview(movieTableView)
         
+        movieTableView.rowHeight = 44
+        movieTableView.separatorStyle = .none
         movieTableView.backgroundColor = .clear
         
         movieTableView.snp.makeConstraints { make in
@@ -200,7 +203,6 @@ extension MovieChartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
         let cell = movieTableView.dequeueReusableCell(withIdentifier: MovieChartTableViewCell.identifier, for: indexPath) as! MovieChartTableViewCell
         let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=04b35f8603fa63738f28b50e8ae94a4d&targetDt=\(searchDate)"
         AF.request(url, method: .get).responseDecodable(of: BoxOffice.self) { response in
