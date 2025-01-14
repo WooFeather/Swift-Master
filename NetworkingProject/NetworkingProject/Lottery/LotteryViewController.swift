@@ -22,7 +22,6 @@ class LotteryViewController: UIViewController, ViewConfiguration {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         configureHierarchy()
         configureLayout()
         configureView()
@@ -34,6 +33,7 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         view.addSubview(pickerTextField)
         view.addSubview(infoLabel)
         view.addSubview(dateLabel)
+        view.addSubview(dividerView)
         view.addSubview(resultLabel)
         view.addSubview(numberCollectionView)
         view.addSubview(movieButton)
@@ -51,9 +51,23 @@ class LotteryViewController: UIViewController, ViewConfiguration {
             make.leading.equalTo(view).offset(24)
             make.height.equalTo(17)
         }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(pickerTextField.snp.bottom).offset(24)
+            make.trailing.equalTo(view).offset(-24)
+            make.height.equalTo(17)
+        }
+        
+        dividerView.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel.snp.bottom).offset(8)
+            make.horizontalEdges.equalTo(view).inset(24)
+            make.height.equalTo(1)
+        }
     }
     
     func configureView() {
+        view.backgroundColor = .white
+        
         pickerTextField.textAlignment = .center
         pickerTextField.borderStyle = .roundedRect
         pickerTextField.placeholder = "원하는 회차를 선택하세요"
@@ -61,6 +75,12 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         
         infoLabel.text = "당첨번호 안내"
         infoLabel.font = .systemFont(ofSize: 14)
+        
+        dateLabel.text = "2020-05-30 추첨" // 네트워킹 연결이후 수정예정
+        dateLabel.font = .systemFont(ofSize: 12)
+        dateLabel.textColor = .gray
+        
+        dividerView.backgroundColor = .systemGray5
     }
     
     func pickerTextFieldConfig() {
