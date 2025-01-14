@@ -46,14 +46,14 @@ class MovieChartTableViewCell: UITableViewCell {
         contentView.addSubview(releaseDateLabel)
         
         rankingLabel.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview().inset(12)
+            make.top.equalToSuperview().offset(12)
             make.leading.equalToSuperview().offset(24)
-            make.height.equalTo(24)
+            make.height.equalTo(20)
             make.width.equalTo(40)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview()
+            make.top.equalToSuperview().offset(12)
             make.leading.equalTo(rankingLabel.snp.trailing).offset(12)
             make.width.equalTo(200)
         }
