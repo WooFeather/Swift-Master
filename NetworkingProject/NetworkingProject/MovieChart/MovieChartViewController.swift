@@ -54,7 +54,7 @@ class MovieChartViewController: UIViewController {
     let movieTableView = UITableView()
     
     static let apiKey = "04b35f8603fa63738f28b50e8ae94a4d"
-    var searchDate: String = "20250113"
+    lazy var searchDate: String = dateCalculate()
     var rowCount = 10
 
     override func viewDidLoad() {
@@ -64,6 +64,7 @@ class MovieChartViewController: UIViewController {
         searchTextFieldConfig()
         searchButtonConfig()
         movieTableViewConfig()
+        print("어제 날짜: \(searchDate)")
     }
     
     @objc
@@ -83,11 +84,33 @@ class MovieChartViewController: UIViewController {
             searchTextField.text = ""
         }
         // 이상한 날짜일때(ex. 20059984)도 처리해줘야 함..
+        // String으로 해서 각 인덱스에 조건을 달아줘야하나..
+        // 당연히 문자열의 숫자 크기비교는 안되고, Int의 index를 알지도 모다니.. 좀더 알아봐야 할듯
+//        if text[0] != 2 || text[1] != 0 || text[2] > 2 || text[4] > 2 || text[6] > 3 {
+//            showAlert(title: "날짜를 다시 확인해주세요😭", message: "20050101 이후부터 어제 날짜까지 검색이 가능합니다.")
+//            searchTextField.text = ""
+//        } else {
+//            searchDate = text
+//            movieTableView.reloadData()
+//        }
+        view.endEditing(true)
     }
     
     @objc
     func textFieldDidEndOnExit() {
         view.endEditing(true)
+    }
+    
+    func dateCalculate() -> String {
+        let now = Date()
+        let calendar = Calendar.current
+        
+        let day = DateComponents(day: -1)
+        if let yesterday = calendar.date(byAdding: day, to: now) {
+            let dateString = yesterday.toString()
+            return dateString
+        }
+        return ""
     }
 
     func backgroundImageConfig() {
@@ -172,6 +195,7 @@ extension MovieChartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 검색버튼을 누르면, 서버에서 받아온 데이터의 개수만큼 생성하려했는데, 얘가 먼저 실행이되서 실패..
         // 아마 비동기처리를 해야될듯..?
+        // 일단 입력 예외처리를 통해 인덱스가 rownum이 10보다 낮은 데이터에 접근하지 못하게 해놨습니다.
         return rowCount
     }
     
