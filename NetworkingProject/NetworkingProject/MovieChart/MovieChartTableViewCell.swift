@@ -64,10 +64,9 @@ class MovieChartTableViewCell: UITableViewCell {
         }
     }
     
-    // 수정예정
-//    func configureData(row: Movie) {
-//        rankingLabel.text = String(row.boxOfficeList[0].rank)
-//        titleLabel.text = row.boxOfficeList[0].movieNm
-//        releaseDateLabel.text = row.boxOfficeList[0].openDt
-//    }
+    func configureData(row: BoxOffice.BoxOfficeInfo.Movie) {
+        rankingLabel.text = row.rank
+        titleLabel.text = row.movieNm
+        releaseDateLabel.text = row.openDt
+    }
 }

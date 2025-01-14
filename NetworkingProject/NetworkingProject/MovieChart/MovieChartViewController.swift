@@ -27,7 +27,8 @@ class MovieChartViewController: UIViewController {
     
     lazy var searchTextField = {
         let txt = UITextField()
-        txt.placeholder = "영화 정보를 검색하세요"
+        txt.placeholder = "일자를 검색하세요(YYYYMMDD)"
+        txt.keyboardType = .numberPad
         txt.textColor = .white
         txt.setColor(.systemGray3)
         txt.borderStyle = .none
@@ -46,13 +47,15 @@ class MovieChartViewController: UIViewController {
         btn.setTitle("검색", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .white
+        btn.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         return btn
     }()
     
     let movieTableView = UITableView()
     
     static let apiKey = "04b35f8603fa63738f28b50e8ae94a4d"
-    var searchDate = "20250113"
+    var searchDate: String = "20250113"
+    var rowCount = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +64,25 @@ class MovieChartViewController: UIViewController {
         searchTextFieldConfig()
         searchButtonConfig()
         movieTableViewConfig()
+    }
+    
+    @objc
+    func searchButtonTapped() {
+        guard let text = searchTextField.text else { return }
+        
+        if let dateNum = Int(text) {
+            if dateNum < 20050101 || dateNum >= Int(Date().toString()) ?? 20300000 {
+                showAlert(title: "날짜를 다시 확인해주세요😭", message: "20050101 이후부터 어제 날짜까지 검색이 가능합니다.")
+                searchTextField.text = ""
+            } else {
+                searchDate = text
+                movieTableView.reloadData()
+            }
+        } else {
+            showAlert(title: "다시 확인해주세요😭", message: "숫자가 아닌 문자나 공백은 입력할 수 없습니다.")
+            searchTextField.text = ""
+        }
+        // 이상한 날짜일때(ex. 20059984)도 처리해줘야 함..
     }
     
     @objc
@@ -123,6 +145,21 @@ class MovieChartViewController: UIViewController {
         movieTableView.register(MovieChartTableViewCell.self, forCellReuseIdentifier: MovieChartTableViewCell.identifier)
     }
     
+    // rowNum을 계산해주기 위한 함수
+//    func countRowNum() {
+//        let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=04b35f8603fa63738f28b50e8ae94a4d&targetDt=\(searchDate)"
+//        AF.request(url, method: .get).responseDecodable(of: BoxOffice.self) { [self] response in
+//            switch response.result {
+//            case .success(let value):
+//                rowCount = value.boxOfficeResult.dailyBoxOfficeList.count
+//                print("새로 계산된 rowNum\(rowCount)")
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
+    
+    // 네트워킹 확인을 위한 함수
 //    func networking() {
 //        let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=04b35f8603fa63738f28b50e8ae94a4d&targetDt=\(searchDate)"
 //        AF.request(url, method: .get).responseString { response in
@@ -133,7 +170,9 @@ class MovieChartViewController: UIViewController {
 
 extension MovieChartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        // 검색버튼을 누르면, 서버에서 받아온 데이터의 개수만큼 생성하려했는데, 얘가 먼저 실행이되서 실패..
+        // 아마 비동기처리를 해야될듯..?
+        return rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -144,16 +183,13 @@ extension MovieChartViewController: UITableViewDelegate, UITableViewDataSource {
             switch response.result {
             case .success(let value):
                 let row = value.boxOfficeResult.dailyBoxOfficeList[indexPath.row]
-                cell.rankingLabel.text = row.rank
-                cell.titleLabel.text = row.movieNm
-                cell.releaseDateLabel.text = row.openDt
+                cell.configureData(row: row)
             case .failure(let error):
                 print(error)
             }
         }
         
         cell.backgroundColor = .clear
-//        cell.configureData(row: row)
         
         return cell
     }
