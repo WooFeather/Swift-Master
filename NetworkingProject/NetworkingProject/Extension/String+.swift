@@ -8,13 +8,6 @@
 import UIKit
 
 extension String {
-    func toDate() -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.date(from: self)
-    }
-    
     // extension을 활용해 빼봤습니당
     func resultLabelTextAttribute() -> NSMutableAttributedString {
         let attributeString = NSMutableAttributedString(string: self)

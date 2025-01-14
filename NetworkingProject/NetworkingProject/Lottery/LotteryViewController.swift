@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class LotteryViewController: UIViewController, ViewConfiguration {
     
@@ -22,7 +23,6 @@ class LotteryViewController: UIViewController, ViewConfiguration {
     // 원래는 숫자 뷰를 나타낼 때 컬렉션뷰로 나타내보려고 했었는데, 셀 재사용 매커니즘을 생각하면 배열이 아닌, 변수 하나하나하나를 가져오는건 힘들듯…
 //    lazy var numberCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
     var pickerItems: [Int] = Array(1...1154)
-    var pickedItem = 0
     
     let firstNumLabel = UILabel()
     let secondNumLabel = UILabel()
@@ -32,10 +32,9 @@ class LotteryViewController: UIViewController, ViewConfiguration {
     let sixthNumLabel = UILabel()
     let bonusNumLabel = UILabel()
     
-    let tapGesture = UITapGestureRecognizer()
-    
     // 네트워킹 전에 뷰를 보기 위해 더미데이터 생성
-    let dummyLottery = LotteryDummy().dummy
+//    let dummyLottery = LotteryDummy().dummy
+    lazy var labelList = [firstNumLabel, secondNumLabel, thirdNumLabel, fourthNumLabel, fifthNumLabel, sixthNumLabel, bonusNumLabel]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,11 +93,12 @@ class LotteryViewController: UIViewController, ViewConfiguration {
             make.leading.equalTo(view).offset(24)
             make.size.equalTo(40)
         }
-        numberLayout(secondNumLabel, to: firstNumLabel)
-        numberLayout(thirdNumLabel, to: secondNumLabel)
-        numberLayout(fourthNumLabel, to: thirdNumLabel)
-        numberLayout(fifthNumLabel, to: fourthNumLabel)
-        numberLayout(sixthNumLabel, to: fifthNumLabel)
+        
+        numberLayout(secondNumLabel, from: firstNumLabel)
+        numberLayout(thirdNumLabel, from: secondNumLabel)
+        numberLayout(fourthNumLabel, from: thirdNumLabel)
+        numberLayout(fifthNumLabel, from: fourthNumLabel)
+        numberLayout(sixthNumLabel, from: fifthNumLabel)
         
         bonusNumLabel.snp.makeConstraints { make in
             make.top.equalTo(resultLabel.snp.bottom).offset(24)
@@ -134,24 +134,20 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         infoLabel.text = "당첨번호 안내"
         infoLabel.font = .systemFont(ofSize: 14)
         
-        dateLabel.text = "\(dummyLottery.drwNoDate.toDate()?.toString() ?? "-") 추첨" // 네트워킹 연결이후 수정예정
+        dateLabel.text = "- 추첨"
         dateLabel.font = .systemFont(ofSize: 12)
         dateLabel.textColor = .gray
         
         dividerView.backgroundColor = .systemGray5
         
-        resultLabel.text = "\(dummyLottery.drwNo)회 당첨결과" // 네트워킹 연결이후 수정예정
+        resultLabel.text = "000회 당첨결과"
         resultLabel.font = .systemFont(ofSize: 25, weight: .bold)
         resultLabel.textColor = .orange
         resultLabel.attributedText = resultLabel.text?.resultLabelTextAttribute()
         
-        numberDesign(firstNumLabel, number: dummyLottery.drwtNo1)
-        numberDesign(secondNumLabel, number: dummyLottery.drwtNo2)
-        numberDesign(thirdNumLabel, number: dummyLottery.drwtNo3)
-        numberDesign(fourthNumLabel, number: dummyLottery.drwtNo4)
-        numberDesign(fifthNumLabel, number: dummyLottery.drwtNo5)
-        numberDesign(sixthNumLabel, number: dummyLottery.drwtNo6)
-        numberDesign(bonusNumLabel, number: dummyLottery.bnusNo)
+        for item in labelList {
+            numberDesign(item, number: 0)
+        }
         
         plusLabel.text = "+"
         plusLabel.font = .systemFont(ofSize: 17, weight: .semibold)
@@ -184,10 +180,10 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         }
     }
     
-    func numberLayout(_ currentLabel: UILabel, to: UILabel) {
+    func numberLayout(_ currentLabel: UILabel, from: UILabel) {
         currentLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(to.snp.centerY)
-            make.leading.equalTo(to.snp.trailing).offset(8)
+            make.centerY.equalTo(from.snp.centerY)
+            make.leading.equalTo(from.snp.trailing).offset(8)
             make.size.equalTo(40)
         }
     }
@@ -226,6 +222,25 @@ extension LotteryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // 네트워크 요청
+        let rowItem = pickerItems.reversed()[row]
+        pickerTextField.text = "\(rowItem)회"
+        
+        let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(rowItem)"
+        AF.request(url, method: .get).responseDecodable(of: Lottery.self) { [self] response in
+            switch response.result {
+            case .success(let value):
+                // dateLabel, resultLabel, numberLabel
+                let labelList = [firstNumLabel: value.drwtNo1, secondNumLabel: value.drwtNo2, thirdNumLabel: value.drwtNo3, fourthNumLabel: value.drwtNo4, fifthNumLabel: value.drwtNo5, sixthNumLabel: value.drwtNo6, bonusNumLabel: value.bnusNo]
+                
+                self.dateLabel.text = "\(value.drwNoDate) 추첨"
+                self.resultLabel.text = "\(value.drwNo)회 당첨결과"
+                self.resultLabel.attributedText = resultLabel.text?.resultLabelTextAttribute()
+                for item in labelList {
+                    numberDesign(item.key, number: item.value)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
