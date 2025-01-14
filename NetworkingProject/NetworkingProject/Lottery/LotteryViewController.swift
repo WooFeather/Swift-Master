@@ -19,6 +19,7 @@ class LotteryViewController: UIViewController, ViewConfiguration {
     let movieButton = UIButton()
     lazy var numberCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
     var pickerItems: [Int] = Array(1000...1154)
+    var pickedItem = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +64,12 @@ class LotteryViewController: UIViewController, ViewConfiguration {
             make.horizontalEdges.equalTo(view).inset(24)
             make.height.equalTo(1)
         }
+        
+        resultLabel.snp.makeConstraints { make in
+            make.top.equalTo(dividerView.snp.bottom).offset(24)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(30)
+        }
     }
     
     func configureView() {
@@ -81,12 +88,28 @@ class LotteryViewController: UIViewController, ViewConfiguration {
         dateLabel.textColor = .gray
         
         dividerView.backgroundColor = .systemGray5
+        
+        resultLabel.text = "913회 당첨결과" // 네트워킹 연결이후 수정예정
+        resultLabel.font = .systemFont(ofSize: 25, weight: .bold)
+        resultLabel.textColor = .orange
+        resultLabel.attributedText = resultLabelTextAttribute()
     }
     
     func pickerTextFieldConfig() {
         pickerTextField.inputView = pickerView
         pickerView.delegate = self
         pickerView.dataSource = self
+    }
+    
+    func resultLabelTextAttribute() -> NSMutableAttributedString {
+        if let text = self.resultLabel.text {
+            let attributeString = NSMutableAttributedString(string: text)
+            attributeString.addAttribute(.foregroundColor, value: UIColor.black, range: (text as NSString).range(of: "당첨결과"))
+            attributeString.addAttribute(.font, value: UIFont.systemFont(ofSize: 25, weight: .regular), range: (text as NSString).range(of: "당첨결과"))
+            
+            return attributeString
+        }
+        return NSMutableAttributedString.init()
     }
     
     func createCollectionViewLayout() -> UICollectionViewLayout {
