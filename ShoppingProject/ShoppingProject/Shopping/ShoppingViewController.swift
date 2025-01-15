@@ -16,6 +16,8 @@ class ShoppingViewController: UIViewController {
     let sampleButton = UIButton()
     var navTitleContents: String?
     
+    var list: [Item] = []
+    
     // 네트워킹 이후 삭제 예정
     let sampleCount = 13235449
     
@@ -80,7 +82,6 @@ class ShoppingViewController: UIViewController {
         shoppingCollectionView.dataSource = self
         shoppingCollectionView.register(ShoppingCollectionViewCell.self, forCellWithReuseIdentifier: ShoppingCollectionViewCell.id)
         
-        // 위에 검색결과와 정렬 들어오면서 변경 예정
         shoppingCollectionView.snp.makeConstraints { make in
             make.top.equalTo(sampleButton.snp.bottom).offset(8)
             make.bottom.horizontalEdges.equalToSuperview()
@@ -111,20 +112,28 @@ class ShoppingViewController: UIViewController {
             "X-Naver-Client-Secret": APIKey.naverSecret
         ]
         
-        AF.request(url, method: .get, headers: header).responseString { response in
-            print(response)
+        AF.request(url, method: .get, headers: header).responseDecodable(of: SearchItem.self) { response in
+            switch response.result {
+            case .success(let value):
+                print("✅ SUCCESS")
+                self.list = value.items
+                self.shoppingCollectionView.reloadData()
+            case .failure(let error):
+                print("❌ FAILURE \(error)")
+            }
         }
     }
 }
 
 extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100  // 네트워킹 이후 수정 예정
+        return list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = shoppingCollectionView.dequeueReusableCell(withReuseIdentifier: ShoppingCollectionViewCell.id, for: indexPath) as? ShoppingCollectionViewCell else { return UICollectionViewCell() }
         
+        let data = list[indexPath.row]
         
         return cell
     }
