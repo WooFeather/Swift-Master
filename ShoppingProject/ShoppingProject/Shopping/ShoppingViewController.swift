@@ -12,7 +12,12 @@ import SnapKit
 class ShoppingViewController: UIViewController {
 
     lazy var shoppingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCollectionViewLayout())
+    let resultCountLabel = UILabel()
+    let sampleButton = UIButton()
     var navTitleContents: String?
+    
+    // 네트워킹 이후 삭제 예정
+    let sampleCount = 13235449
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +26,7 @@ class ShoppingViewController: UIViewController {
         if let titleText = navTitleContents {
             callRequest(query: titleText)
         }
+        configureResultCountLabel()
         configureCollectionView()
     }
     
@@ -29,6 +35,23 @@ class ShoppingViewController: UIViewController {
         navigationItem.title = navTitleContents
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
+    func configureResultCountLabel() {
+        view.addSubview(resultCountLabel)
+        
+        resultCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(8)
+            make.horizontalEdges.equalTo(view).inset(12)
+            make.height.equalTo(17)
+        }
+        
+        // 네트워킹 이후 수정 예정
+        if let count = sampleCount.numberFormatting() {
+            resultCountLabel.text = "\(count) 개의 검색 결과"
+        }
+        resultCountLabel.font = .boldSystemFont(ofSize: 14)
+        resultCountLabel.textColor = .green
     }
     
     func configureCollectionView() {
@@ -40,7 +63,8 @@ class ShoppingViewController: UIViewController {
         
         // 위에 검색결과와 정렬 들어오면서 변경 예정
         shoppingCollectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(resultCountLabel.snp.bottom).offset(8)
+            make.bottom.horizontalEdges.equalToSuperview()
         }
         
         shoppingCollectionView.backgroundColor = .black
@@ -76,7 +100,7 @@ class ShoppingViewController: UIViewController {
 
 extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return 100  // 네트워킹 이후 수정 예정
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,6 +108,7 @@ extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewData
         
         print(#function)
         
+        // 네트워킹 이후 수정 예정
         cell.layer.cornerRadius = 8
         cell.layer.borderColor = UIColor.red.cgColor
         cell.layer.borderWidth = 2
