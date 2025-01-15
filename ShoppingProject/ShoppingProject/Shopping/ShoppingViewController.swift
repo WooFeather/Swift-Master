@@ -16,6 +16,11 @@ class ShoppingViewController: UIViewController {
     let sampleButton = UIButton()
     var navTitleContents: String?
     
+    let accuracyButton = SortButton(title: "정확도")
+    let dateButton = SortButton(title: "날짜순")
+    let highPriceButton = SortButton(title: "가격높은순")
+    let lowPriceButton = SortButton(title: "가격낮은순")
+    
     var list: [Item] = []
     // 네트워킹 -> 변수에 값 할당 -> 그 변수의 값 사용하려고 했는데 실패..
 //    var totalCount = 0
@@ -28,8 +33,10 @@ class ShoppingViewController: UIViewController {
             callRequest(query: titleText)
         }
         configureResultCountLabel()
-        configureSampleButton()
+        configureButtons()
         configureCollectionView()
+        
+        accuracyButton.isSelected = true
     }
     
     func configureView() {
@@ -54,22 +61,25 @@ class ShoppingViewController: UIViewController {
         resultCountLabel.textColor = .green
     }
     
-    // 다른뷰 레이아웃잡기위함 추후 커스텀뷰로 뺄 예정
-    func configureSampleButton() {
-        view.addSubview(sampleButton)
+    func configureButtons() {
+        let buttons = [accuracyButton, dateButton, highPriceButton, lowPriceButton]
+        buttons.forEach { view.addSubview($0) }
         
-        sampleButton.snp.makeConstraints { make in
-            make.top.equalTo(resultCountLabel.snp.bottom).offset(10)
-            make.leading.equalTo(view).offset(12)
-            make.height.equalTo(36)
+        for i in 0..<buttons.count {
+            if i == 0 {
+                buttons[i].snp.makeConstraints { make in
+                    make.top.equalTo(resultCountLabel.snp.bottom).offset(10)
+                    make.leading.equalTo(view).offset(12)
+                    make.height.equalTo(36)
+                }
+            } else {
+                buttons[i].snp.makeConstraints { make in
+                    make.top.equalTo(resultCountLabel.snp.bottom).offset(10)
+                    make.leading.equalTo(buttons[i - 1].snp.trailing).offset(8)
+                    make.height.equalTo(36)
+                }
+            }
         }
-        
-        sampleButton.setTitle("정확도    ", for: .normal)
-        sampleButton.titleLabel?.textAlignment = .center
-        sampleButton.setTitleColor(.white, for: .normal)
-        sampleButton.layer.borderColor = UIColor.white.cgColor
-        sampleButton.layer.borderWidth = 1
-        sampleButton.layer.cornerRadius = 8
     }
     
     func configureCollectionView() {
@@ -80,7 +90,7 @@ class ShoppingViewController: UIViewController {
         shoppingCollectionView.register(ShoppingCollectionViewCell.self, forCellWithReuseIdentifier: ShoppingCollectionViewCell.id)
         
         shoppingCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(sampleButton.snp.bottom).offset(8)
+            make.top.equalTo(accuracyButton.snp.bottom).offset(8)
             make.bottom.horizontalEdges.equalToSuperview()
         }
         
