@@ -83,7 +83,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
     func configureData(data: Item) {
         thumbnailImageView.kf.setImage(with: URL(string: data.image))
         mallNameLabel.text = data.mallName
-        titleLabel.text = data.title
+        titleLabel.text = data.title.escapingHTML
         priceLabel.text = Int(data.price)?.numberFormatting()
     }
 }

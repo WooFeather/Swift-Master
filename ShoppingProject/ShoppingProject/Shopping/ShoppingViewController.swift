@@ -76,7 +76,7 @@ class ShoppingViewController: UIViewController {
         lowPriceButton.isSelected = false
         
         if let titleText = navTitleContents {
-            callRequest(query: titleText, sort: .asc)
+            callRequest(query: titleText, sort: .dsc)
         }
     }
     
@@ -89,7 +89,7 @@ class ShoppingViewController: UIViewController {
         lowPriceButton.isSelected = true
         
         if let titleText = navTitleContents {
-            callRequest(query: titleText, sort: .dsc)
+            callRequest(query: titleText, sort: .asc)
         }
     }
     
