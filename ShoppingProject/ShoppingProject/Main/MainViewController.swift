@@ -92,5 +92,7 @@ extension MainViewController: UISearchBarDelegate {
             navigationController?.pushViewController(vc, animated: true)
             vc.navTitleContents = trimmingText
         }
+        
+        view.endEditing(true)
     }
 }
