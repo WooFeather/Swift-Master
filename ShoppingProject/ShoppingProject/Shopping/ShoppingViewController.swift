@@ -47,6 +47,11 @@ class ShoppingViewController: UIViewController {
         dateButton.isSelected = false
         highPriceButton.isSelected = false
         lowPriceButton.isSelected = false
+        
+        // 옵셔널처리도 살짝 아쉽다..
+        if let titleText = navTitleContents {
+            callRequest(query: titleText, sort: .sim)
+        }
     }
     
     @objc
@@ -56,6 +61,10 @@ class ShoppingViewController: UIViewController {
         dateButton.isSelected = true
         highPriceButton.isSelected = false
         lowPriceButton.isSelected = false
+        
+        if let titleText = navTitleContents {
+            callRequest(query: titleText, sort: .date)
+        }
     }
     
     @objc
@@ -65,6 +74,10 @@ class ShoppingViewController: UIViewController {
         dateButton.isSelected = false
         highPriceButton.isSelected = true
         lowPriceButton.isSelected = false
+        
+        if let titleText = navTitleContents {
+            callRequest(query: titleText, sort: .asc)
+        }
     }
     
     @objc
@@ -74,6 +87,10 @@ class ShoppingViewController: UIViewController {
         dateButton.isSelected = false
         highPriceButton.isSelected = false
         lowPriceButton.isSelected = true
+        
+        if let titleText = navTitleContents {
+            callRequest(query: titleText, sort: .dsc)
+        }
     }
     
     func configureView() {
@@ -155,8 +172,8 @@ class ShoppingViewController: UIViewController {
         return layout
     }
     
-    func callRequest(query: String) {
-        let url = "https://openapi.naver.com/v1/search/shop.json?query=\(query)&display=100"
+    func callRequest(query: String, sort: RequestSort = .sim) {
+        let url = "https://openapi.naver.com/v1/search/shop.json?query=\(query)&display=100&sort=\(sort)"
         let header: HTTPHeaders = [
             "X-Naver-Client-Id": APIKey.naverId,
             "X-Naver-Client-Secret": APIKey.naverSecret
