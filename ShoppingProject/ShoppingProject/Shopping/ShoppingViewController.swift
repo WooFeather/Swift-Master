@@ -93,11 +93,21 @@ class ShoppingViewController: UIViewController {
         }
     }
     
+    @objc
+    func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func configureView() {
         view.backgroundColor = .black
         navigationItem.title = navTitleContents
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        let chevron = UIImage(systemName: "chevron.left")
+        let backButton = (UIBarButtonItem(image: chevron, style: .plain, target: self, action: #selector(backButtonTapped)))
+        navigationItem.leftBarButtonItem = backButton
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func configureResultCountLabel() {
