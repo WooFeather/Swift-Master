@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ShoppingCollectionViewCell: UICollectionViewCell {
+class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
     
     static let id = "ShoppingCollectionViewCell"
     let thumbnailImageView = UIImageView()
@@ -18,19 +18,25 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        configureHierarchy()
         configureLayout()
+        configureView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
+    func configureHierarchy() {
         contentView.addSubview(thumbnailImageView)
+        
     }
     
-    private func configureLayout() {
+    func configureView() {
+        thumbnailImageView.image = UIImage(systemName: "person")
+    }
+    
+    func configureLayout() {
         thumbnailImageView.snp.makeConstraints { make in
             make.edges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }

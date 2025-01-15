@@ -131,7 +131,6 @@ extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewData
         cell.layer.cornerRadius = 8
         cell.layer.borderColor = UIColor.red.cgColor
         cell.layer.borderWidth = 2
-        cell.thumbnailImageView.image = UIImage(systemName: "person")
         
         return cell
     }
