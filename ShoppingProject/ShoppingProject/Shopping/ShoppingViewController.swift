@@ -39,6 +39,43 @@ class ShoppingViewController: UIViewController {
         accuracyButton.isSelected = true
     }
     
+    @objc
+    func accuracyButtonTapped() {
+        print(#function)
+        // 이부분도 단순화 할수있을거같은데
+        accuracyButton.isSelected = true
+        dateButton.isSelected = false
+        highPriceButton.isSelected = false
+        lowPriceButton.isSelected = false
+    }
+    
+    @objc
+    func dateButtonTapped() {
+        print(#function)
+        accuracyButton.isSelected = false
+        dateButton.isSelected = true
+        highPriceButton.isSelected = false
+        lowPriceButton.isSelected = false
+    }
+    
+    @objc
+    func highPriceButtonTapped() {
+        print(#function)
+        accuracyButton.isSelected = false
+        dateButton.isSelected = false
+        highPriceButton.isSelected = true
+        lowPriceButton.isSelected = false
+    }
+    
+    @objc
+    func lowPriceButtonTapped() {
+        print(#function)
+        accuracyButton.isSelected = false
+        dateButton.isSelected = false
+        highPriceButton.isSelected = false
+        lowPriceButton.isSelected = true
+    }
+    
     func configureView() {
         view.backgroundColor = .black
         navigationItem.title = navTitleContents
@@ -80,6 +117,12 @@ class ShoppingViewController: UIViewController {
                 }
             }
         }
+        
+        // 뭔가... selector함수도 하나로 만들어서 그 안에서 분기처리를 할 순 없을까?
+        accuracyButton.addTarget(self, action: #selector(accuracyButtonTapped), for: .touchUpInside)
+        dateButton.addTarget(self, action: #selector(dateButtonTapped), for: .touchUpInside)
+        highPriceButton.addTarget(self, action: #selector(highPriceButtonTapped), for: .touchUpInside)
+        lowPriceButton.addTarget(self, action: #selector(lowPriceButtonTapped), for: .touchUpInside)
     }
     
     func configureCollectionView() {
