@@ -17,9 +17,8 @@ class ShoppingViewController: UIViewController {
     var navTitleContents: String?
     
     var list: [Item] = []
-    
-    // 네트워킹 이후 삭제 예정
-    let sampleCount = 13235449
+    // 네트워킹 -> 변수에 값 할당 -> 그 변수의 값 사용하려고 했는데 실패..
+//    var totalCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +48,8 @@ class ShoppingViewController: UIViewController {
             make.height.equalTo(17)
         }
         
-        // 네트워킹 이후 수정 예정
-        if let count = sampleCount.numberFormatting() {
-            resultCountLabel.text = "\(count) 개의 검색 결과"
-        }
+        // 네트워킹 -> 변수에 값 할당 -> 그 변수의 값 사용하려고 했는데 실패..
+//        resultCountLabel.text = "\(totalCount.numberFormatting() ?? "") 개의 검색 결과"
         resultCountLabel.font = .boldSystemFont(ofSize: 15)
         resultCountLabel.textColor = .green
     }
@@ -116,6 +113,18 @@ class ShoppingViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 print("✅ SUCCESS")
+                
+                // 네트워킹 -> 변수에 값 할당 -> 그 변수의 값 사용하려고 했는데 실패..
+//                var countNumber: Int {
+//                    get {
+//                        self.totalCount
+//                    }
+//                    set {
+//                        self.totalCount = newValue
+//                    }
+//                }
+//                countNumber = value.totalCount
+                self.resultCountLabel.text = "\(value.totalCount.numberFormatting() ?? "") 개의 검색 결과"
                 self.list = value.items
                 self.shoppingCollectionView.reloadData()
             case .failure(let error):
@@ -134,6 +143,7 @@ extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = shoppingCollectionView.dequeueReusableCell(withReuseIdentifier: ShoppingCollectionViewCell.id, for: indexPath) as? ShoppingCollectionViewCell else { return UICollectionViewCell() }
         
         let data = list[indexPath.row]
+        cell.configureData(data: data)
         
         return cell
     }

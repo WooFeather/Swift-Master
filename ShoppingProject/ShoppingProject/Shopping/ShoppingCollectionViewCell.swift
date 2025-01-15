@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 import SnapKit
 
 class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
@@ -63,22 +64,26 @@ class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
     }
     
     func configureView() {
-        thumbnailImageView.backgroundColor = .brown
         DispatchQueue.main.async { [self] in
             thumbnailImageView.layer.cornerRadius = thumbnailImageView.frame.width / 8
+            thumbnailImageView.clipsToBounds = true
         }
         
-        mallNameLabel.text = "월드캠핑카"
         mallNameLabel.font = .systemFont(ofSize: 12, weight: .medium)
         mallNameLabel.textColor = .gray
         
-        titleLabel.text = "국산 캠핑 카라 국산 캠핑 카라국산 캠핑 카라 국산 캠핑 카라 국산 캠핑 카라 국산 캠핑 카라"
         titleLabel.font = .systemFont(ofSize: 14, weight: .medium)
         titleLabel.textColor = .systemGray3
         titleLabel.numberOfLines = 2
         
-        priceLabel.text = 19000000.numberFormatting()
         priceLabel.font = .boldSystemFont(ofSize: 17)
         priceLabel.textColor = .white
+    }
+    
+    func configureData(data: Item) {
+        thumbnailImageView.kf.setImage(with: URL(string: data.image))
+        mallNameLabel.text = data.mallName
+        titleLabel.text = data.title
+        priceLabel.text = Int(data.price)?.numberFormatting()
     }
 }
