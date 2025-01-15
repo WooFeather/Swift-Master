@@ -90,8 +90,8 @@ class ShoppingViewController: UIViewController {
     }
     
     func createCollectionViewLayout() -> UICollectionViewLayout {
-        let sectionInset: CGFloat = 16
-        let cellSpacing: CGFloat = 16
+        let sectionInset: CGFloat = 10
+        let cellSpacing: CGFloat = 10
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -125,12 +125,6 @@ extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = shoppingCollectionView.dequeueReusableCell(withReuseIdentifier: ShoppingCollectionViewCell.id, for: indexPath) as? ShoppingCollectionViewCell else { return UICollectionViewCell() }
         
-        print(#function)
-        
-        // 네트워킹 이후 수정 예정
-        cell.layer.cornerRadius = 8
-        cell.layer.borderColor = UIColor.red.cgColor
-        cell.layer.borderWidth = 2
         
         return cell
     }
