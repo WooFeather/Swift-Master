@@ -27,6 +27,7 @@ class ShoppingViewController: UIViewController {
             callRequest(query: titleText)
         }
         configureResultCountLabel()
+        configureSampleButton()
         configureCollectionView()
     }
     
@@ -50,8 +51,26 @@ class ShoppingViewController: UIViewController {
         if let count = sampleCount.numberFormatting() {
             resultCountLabel.text = "\(count) 개의 검색 결과"
         }
-        resultCountLabel.font = .boldSystemFont(ofSize: 14)
+        resultCountLabel.font = .boldSystemFont(ofSize: 15)
         resultCountLabel.textColor = .green
+    }
+    
+    // 다른뷰 레이아웃잡기위함 추후 커스텀뷰로 뺄 예정
+    func configureSampleButton() {
+        view.addSubview(sampleButton)
+        
+        sampleButton.snp.makeConstraints { make in
+            make.top.equalTo(resultCountLabel.snp.bottom).offset(10)
+            make.leading.equalTo(view).offset(12)
+            make.height.equalTo(36)
+        }
+        
+        sampleButton.setTitle("정확도    ", for: .normal)
+        sampleButton.titleLabel?.textAlignment = .center
+        sampleButton.setTitleColor(.white, for: .normal)
+        sampleButton.layer.borderColor = UIColor.white.cgColor
+        sampleButton.layer.borderWidth = 1
+        sampleButton.layer.cornerRadius = 8
     }
     
     func configureCollectionView() {
@@ -63,7 +82,7 @@ class ShoppingViewController: UIViewController {
         
         // 위에 검색결과와 정렬 들어오면서 변경 예정
         shoppingCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(resultCountLabel.snp.bottom).offset(8)
+            make.top.equalTo(sampleButton.snp.bottom).offset(8)
             make.bottom.horizontalEdges.equalToSuperview()
         }
         
