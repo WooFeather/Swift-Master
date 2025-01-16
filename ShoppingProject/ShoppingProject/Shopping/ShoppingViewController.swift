@@ -22,6 +22,7 @@ class ShoppingViewController: UIViewController {
     let lowPriceButton = SortButton(title: "가격낮은순")
     
     var list: [Item] = []
+    // 이건 지금 방법이 최선임
     // 네트워킹 -> 변수에 값 할당 -> 그 변수의 값 사용하려고 했는데 실패..
 //    var totalCount = 0
     
@@ -39,6 +40,8 @@ class ShoppingViewController: UIViewController {
         accuracyButton.isSelected = true
     }
     
+    
+    // 아래 부분 단순화
     @objc
     func accuracyButtonTapped() {
         print(#function)
