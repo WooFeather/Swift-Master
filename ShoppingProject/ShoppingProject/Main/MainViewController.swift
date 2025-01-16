@@ -43,7 +43,10 @@ extension MainViewController: UISearchBarDelegate {
         
         // 유효성검사(2글자 이상), 뷰전환(push), 값전달
         if trimmingText.count < 2 {
-            showAlert(title: "검색어를 다시 확인해주세요😭", message: "검색어는 2글자 이상이어야 합니다.")
+//            showAlert(title: "검색어를 다시 확인해주세요😭", message: "검색어는 2글자 이상이어야 합니다.")
+            showAlert(title: "검색어를 다시 확인해주세요😭", message: "검색어는 2글자 이상이어야 합니다.", button: "확인") {
+                self.dismiss(animated: true)
+            }
         } else {
             let vc = ShoppingViewController()
             vc.navTitleContents = trimmingText

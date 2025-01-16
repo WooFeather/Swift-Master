@@ -7,6 +7,7 @@
 
 import UIKit
 
+// ButtonConfiguration 적용해보기
 class SortButton: UIButton {
     init(title: String) {
         super.init(frame: .zero)
