@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
+class ShoppingCollectionViewCell: BaseCollectionViewCell {
     
     static let id = "ShoppingCollectionViewCell"
     
@@ -18,25 +18,14 @@ class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
     let titleLabel = UILabel()
     let priceLabel = UILabel()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureHierarchy()
-        configureLayout()
-        configureView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(thumbnailImageView)
         contentView.addSubview(mallNameLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(priceLabel)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         thumbnailImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
             make.centerX.equalTo(snp.centerX)
@@ -63,7 +52,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
         }
     }
     
-    func configureView() {
+    override func configureView() {
         DispatchQueue.main.async { [self] in
             thumbnailImageView.layer.cornerRadius = thumbnailImageView.frame.width / 8
             thumbnailImageView.clipsToBounds = true
@@ -84,7 +73,6 @@ class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
         thumbnailImageView.kf.setImage(with: URL(string: data.image))
         mallNameLabel.text = data.mallName
         titleLabel.text = data.title.escapingHTML
-//        priceLabel.text = Int(data.price)?.numberFormatting()
         priceLabel.text = NumberFormattingManager.shared.numberFormatting(number: Int(data.price) ?? 0)
     }
 }
