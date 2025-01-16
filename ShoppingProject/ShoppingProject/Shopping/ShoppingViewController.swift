@@ -22,6 +22,7 @@ class ShoppingViewController: UIViewController {
     let lowPriceButton = SortButton(title: "가격낮은순")
     
     var start = 1
+    var maxNum = 0
     
     var list: [Item] = []
     
@@ -29,9 +30,8 @@ class ShoppingViewController: UIViewController {
         super.viewDidLoad()
         
         configureView()
-        if let titleText = navTitleContents {
-            callRequest(query: titleText)
-        }
+        
+        callRequest(query: navTitleContents ?? "")
         configureResultCountLabel()
         configureButtons()
         configureCollectionView()
@@ -50,10 +50,8 @@ class ShoppingViewController: UIViewController {
         highPriceButton.isSelected = false
         lowPriceButton.isSelected = false
         
-        // 옵셔널처리도 살짝 아쉽다..
-        if let titleText = navTitleContents {
-            callRequest(query: titleText, sort: .sim)
-        }
+        start = 1
+        callRequest(query: navTitleContents ?? "", sort: .sim)
     }
     
     @objc
@@ -64,9 +62,8 @@ class ShoppingViewController: UIViewController {
         highPriceButton.isSelected = false
         lowPriceButton.isSelected = false
         
-        if let titleText = navTitleContents {
-            callRequest(query: titleText, sort: .date)
-        }
+        start = 1
+        callRequest(query: navTitleContents ?? "", sort: .date)
     }
     
     @objc
@@ -77,9 +74,8 @@ class ShoppingViewController: UIViewController {
         highPriceButton.isSelected = true
         lowPriceButton.isSelected = false
         
-        if let titleText = navTitleContents {
-            callRequest(query: titleText, sort: .dsc)
-        }
+        start = 1
+        callRequest(query: navTitleContents ?? "", sort: .dsc)
     }
     
     @objc
@@ -90,9 +86,8 @@ class ShoppingViewController: UIViewController {
         highPriceButton.isSelected = false
         lowPriceButton.isSelected = true
         
-        if let titleText = navTitleContents {
-            callRequest(query: titleText, sort: .asc)
-        }
+        start = 1
+        callRequest(query: navTitleContents ?? "", sort: .asc)
     }
     
     @objc
@@ -202,6 +197,14 @@ class ShoppingViewController: UIViewController {
 
                 self.resultCountLabel.text = "\(value.totalCount.numberFormatting() ?? "") 개의 검색 결과"
                 
+                if value.totalCount > 100000 {
+                    self.maxNum = 100000
+                } else {
+                    self.maxNum = value.totalCount
+                }
+                
+                print("maxNum이야!! \(self.maxNum)")
+                
                 if self.start == 1 {
                     self.list = value.items
                 } else {
@@ -209,6 +212,10 @@ class ShoppingViewController: UIViewController {
                 }
                 
                 self.shoppingCollectionView.reloadData()
+                
+                if self.start == 1 {
+                    self.shoppingCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                }
             case .failure(let error):
                 print("❌ FAILURE \(error)")
             }
@@ -220,10 +227,15 @@ extension ShoppingViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         print("❗️indexPath야 \(indexPaths)")
         
+        // max값을 구해서 분기처리 (10만보다 많으면 맥스값은 10만, 적으면 그 불러온 아이템수 값
         for item in indexPaths {
             if list.count - 3 == item.item {
-                start += 1
-                callRequest(query: navTitleContents ?? "")
+                if list.count < maxNum {
+                    start += 1
+                    callRequest(query: navTitleContents ?? "")
+                } else {
+                    print("🔗 마지막 페이지야!!")
+                }
             }
         }
     }
