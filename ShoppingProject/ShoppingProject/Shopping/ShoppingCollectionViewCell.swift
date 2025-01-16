@@ -84,6 +84,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell, ViewConfiguration {
         thumbnailImageView.kf.setImage(with: URL(string: data.image))
         mallNameLabel.text = data.mallName
         titleLabel.text = data.title.escapingHTML
-        priceLabel.text = Int(data.price)?.numberFormatting()
+//        priceLabel.text = Int(data.price)?.numberFormatting()
+        priceLabel.text = NumberFormattingManager.shared.numberFormatting(number: Int(data.price) ?? 0)
     }
 }

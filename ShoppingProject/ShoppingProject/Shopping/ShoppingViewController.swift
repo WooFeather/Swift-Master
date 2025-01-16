@@ -195,7 +195,7 @@ class ShoppingViewController: UIViewController {
             case .success(let value):
                 print("✅ SUCCESS")
 
-                self.resultCountLabel.text = "\(value.totalCount.numberFormatting() ?? "") 개의 검색 결과"
+                self.resultCountLabel.text = "\(NumberFormattingManager.shared.numberFormatting(number: value.totalCount) ?? "") 개의 검색 결과"
                 
                 if value.totalCount > 100000 {
                     self.maxNum = 100000
