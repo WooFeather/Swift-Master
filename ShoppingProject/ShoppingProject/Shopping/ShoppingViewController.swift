@@ -22,9 +22,6 @@ class ShoppingViewController: UIViewController {
     let lowPriceButton = SortButton(title: "가격낮은순")
     
     var list: [Item] = []
-    // 이건 지금 방법이 최선임
-    // 네트워킹 -> 변수에 값 할당 -> 그 변수의 값 사용하려고 했는데 실패..
-//    var totalCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +120,8 @@ class ShoppingViewController: UIViewController {
         }
         
         // 네트워킹 -> 변수에 값 할당 -> 그 변수의 값 사용하려고 했는데 실패..
-//        resultCountLabel.text = "\(totalCount.numberFormatting() ?? "") 개의 검색 결과"
+        // 이건 지금 방법이 최선임 만약 개선하고 싶다면 MainView에서 검색버튼을 눌렀을 때 네트워킹 통신을해서 ShoppingView의 viewDidLoad에서 보여줄순 있을듯
+        // resultCountLabel.text = "\(totalCount.numberFormatting() ?? "") 개의 검색 결과"
         resultCountLabel.font = .boldSystemFont(ofSize: 15)
         resultCountLabel.textColor = .green
     }
@@ -196,17 +194,7 @@ class ShoppingViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 print("✅ SUCCESS")
-                
-                // 네트워킹 -> 변수에 값 할당 -> 그 변수의 값 사용하려고 했는데 실패..
-//                var countNumber: Int {
-//                    get {
-//                        self.totalCount
-//                    }
-//                    set {
-//                        self.totalCount = newValue
-//                    }
-//                }
-//                countNumber = value.totalCount
+
                 self.resultCountLabel.text = "\(value.totalCount.numberFormatting() ?? "") 개의 검색 결과"
                 self.list = value.items
                 self.shoppingCollectionView.reloadData()

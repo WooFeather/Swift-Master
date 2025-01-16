@@ -88,11 +88,9 @@ extension MainViewController: UISearchBarDelegate {
         if trimmingText.count < 2 {
             showAlert(title: "검색어를 다시 확인해주세요😭", message: "검색어는 2글자 이상이어야 합니다.")
         } else {
-            // vc.navTitleContents = trimmingText를 push 다음에 한 이유?
-            // 사실 vc라는 인스턴스를 생성했으면, 그 인스턴스에 대한 처리를 다 해주고 push해주는게 좋음
             let vc = ShoppingViewController()
-            navigationController?.pushViewController(vc, animated: true)
             vc.navTitleContents = trimmingText
+            navigationController?.pushViewController(vc, animated: true)
         }
         
         view.endEditing(true)
