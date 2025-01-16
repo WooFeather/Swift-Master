@@ -213,7 +213,8 @@ class ShoppingViewController: UIViewController {
                 
                 self.shoppingCollectionView.reloadData()
                 
-                if self.start == 1 {
+                // self.list.count != 0 이 조건을 추가해줌으로써 검색결과가 없을때 앱이 터지는걸 방지
+                if self.start == 1 && self.list.count != 0 {
                     self.shoppingCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
                 }
             case .failure(let error):
@@ -225,7 +226,7 @@ class ShoppingViewController: UIViewController {
 
 extension ShoppingViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print("❗️indexPath야 \(indexPaths)")
+        print("🔗indexPath야 \(indexPaths)")
         
         // max값을 구해서 분기처리 (10만보다 많으면 맥스값은 10만, 적으면 그 불러온 아이템수 값
         for item in indexPaths {
@@ -234,7 +235,7 @@ extension ShoppingViewController: UICollectionViewDataSourcePrefetching {
                     start += 1
                     callRequest(query: navTitleContents ?? "")
                 } else {
-                    print("🔗 마지막 페이지야!!")
+                    print("❗️마지막 페이지야!!")
                 }
             }
         }
