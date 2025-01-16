@@ -21,6 +21,8 @@ class ShoppingViewController: UIViewController {
     let highPriceButton = SortButton(title: "가격높은순")
     let lowPriceButton = SortButton(title: "가격낮은순")
     
+    var start = 1
+    
     var list: [Item] = []
     
     override func viewDidLoad() {
@@ -158,6 +160,7 @@ class ShoppingViewController: UIViewController {
         
         shoppingCollectionView.delegate = self
         shoppingCollectionView.dataSource = self
+        shoppingCollectionView.prefetchDataSource = self
         shoppingCollectionView.register(ShoppingCollectionViewCell.self, forCellWithReuseIdentifier: ShoppingCollectionViewCell.id)
         
         shoppingCollectionView.snp.makeConstraints { make in
@@ -184,11 +187,13 @@ class ShoppingViewController: UIViewController {
     }
     
     func callRequest(query: String, sort: RequestSort = .sim) {
-        let url = "https://openapi.naver.com/v1/search/shop.json?query=\(query)&display=100&sort=\(sort)"
+        let url = "https://openapi.naver.com/v1/search/shop.json?query=\(query)&display=30&start=\(start)&sort=\(sort)"
         let header: HTTPHeaders = [
             "X-Naver-Client-Id": APIKey.naverId,
             "X-Naver-Client-Secret": APIKey.naverSecret
         ]
+        
+        print("💙 URL이야 \(url)")
         
         AF.request(url, method: .get, headers: header).responseDecodable(of: SearchItem.self) { response in
             switch response.result {
@@ -196,10 +201,29 @@ class ShoppingViewController: UIViewController {
                 print("✅ SUCCESS")
 
                 self.resultCountLabel.text = "\(value.totalCount.numberFormatting() ?? "") 개의 검색 결과"
-                self.list = value.items
+                
+                if self.start == 1 {
+                    self.list = value.items
+                } else {
+                    self.list.append(contentsOf: value.items)
+                }
+                
                 self.shoppingCollectionView.reloadData()
             case .failure(let error):
                 print("❌ FAILURE \(error)")
+            }
+        }
+    }
+}
+
+extension ShoppingViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print("❗️indexPath야 \(indexPaths)")
+        
+        for item in indexPaths {
+            if list.count - 3 == item.item {
+                start += 1
+                callRequest(query: navTitleContents ?? "")
             }
         }
     }
